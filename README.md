@@ -5,11 +5,13 @@ Artificial intelligence is becoming increasingly personalized and specialized. A
 
 ## Usage
 
-1. Clone this repository
-2. Implement HTTP REST service using llm-open-connector openapi specification
-* [OpenAPI Speficication](api-specs/llm-open-connector/llm-open-connector.yml)
-3. Test your service connection using [Bring Your Own Large Language Model in Einstein 1 Studio](https://developer.salesforce.com/blogs/2024/03/bring-your-own-large-language-model-in-einstein-1-studio)
+1. Clone this repository.
+2. Implement an HTTP REST service using the [llm-open-connector OpenAPI specification](api-specs/llm-open-connector/llm-open-connector.yml).
+3. Test your service connection using Bring Your Own Large Language Model in Einstein 1 Studio.
+   * Blog post: [Bring Your Own Large Language Model in Einstein 1 Studio](https://developer.salesforce.com/blogs/2024/03/bring-your-own-large-language-model-in-einstein-1-studio)
+   * Help content: [Bring Your Own Large Language Model](https://help.salesforce.com/s/articleView?id=sf.c360_a_ai_foundation_models.htm)
 
+You can now use your LLM from anywhere that can access generative models from Einstein Studio.
 
 License Info
 ------------
