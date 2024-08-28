@@ -1,23 +1,24 @@
 # LLM Open Connector
 
-Artificial intelligence is becoming increasingly personalized and specialized. At Salesforce we recognize the growing need for businesses and developers to integrate their chosen large language models (LLMs) into the Einstein AI Platform. To address this need, we've developed the Bring Your Own Large Language Model (BYO LLM) Open Connector. With this connector, you can connect the Einstein AI Platform to any language model, whether it's an industry established leader or a niche, custom-built solution. The Open Connector is designed to provide powerful AI solutions to customers, independent software vendors (ISVs), and internal Salesforce teams. Our goal is to provide unparalleled flexibility and choice to meet the evolving demands of our users.
-<p>The BYO LLM Open Connector is more than just a technical upgrade; it's a commitment to community-driven growth and innovation. By allowing users to integrate any LLM—from those hosted on major cloud platforms to those developed in-house—we're opening up a world of possibilities for enhanced, bespoke AI applications. This capability not only caters to the needs of large enterprises looking to leverage specific models like IBM Granite or Databricks DBRX but also supports smaller teams eager to experiment with open-source models. With features designed to ensure ease of use, such as a streamlined UX in Einstein Studio and API specifications closely based on the OpenAI API, this connector empowers our users to enhance their AI-driven applications while maintaining high standards of security and compatibility.
+Artificial intelligence is becoming increasingly personalized and specialized. At Salesforce we recognize the growing need for businesses and developers to integrate their chosen large language models (LLMs) into the Einstein AI Platform. To address this need, we've developed the Bring Your Own Large Language Model (BYOLLM) Open Connector. With this connector, you can connect the Einstein AI Platform to any language model, whether it's an industry established leader or a niche, custom-built solution. The Open Connector is designed to provide powerful AI solutions to customers, independent software vendors (ISVs), and internal Salesforce teams. Our goal is to provide unparalleled flexibility and choice to meet the evolving demands of our users.
+
+<p>The BYOLLM Open Connector is more than just a technical upgrade; it's a commitment to community-driven growth and innovation. By allowing users to integrate any LLM—from those models hosted on major cloud platforms to those models developed in-house—we're opening up a world of possibilities for enhanced, bespoke AI applications. This capability not only caters to the needs of large enterprises looking to leverage specific models like IBM Granite or Databricks DBRX but also supports smaller teams eager to experiment with open-source models. With features designed to ensure ease of use, such as a streamlined UX in Einstein Studio and API specifications closely based on the OpenAI API, this connector empowers our users to enhance their AI-driven applications while maintaining high standards of security and compatibility.
 
 ## Usage
 
 1. Clone this repository
 2. Implement HTTP REST service using llm-open-connector openapi specification
-* [OpenAPI Speficication](api-specs/llm-open-connector/llm-open-connector.yml)
+
+- [OpenAPI Specification](api-specs/llm-open-connector/llm-open-connector.yml)
+
 3. Test your service connection using [Bring Your Own Large Language Model in Einstein 1 Studio](https://developer.salesforce.com/blogs/2024/03/bring-your-own-large-language-model-in-einstein-1-studio)
 
-
-License Info
-------------
+## License Info
 
 [Apache License v2](https://opensource.org/license/apache-2-0/) license.
 
+The shorter version of license text must be added as a comment to all Salesforce-authored source code and configuration files that support comments. This rule applies to file formats like HTML, CSS, JavaScript, and so on, which aren't directly code, but are still critical to the project code.
 
-The shorter version of license text should be added as a comment to all Salesforce-authored source code and configuration files that support comments. This include file formats like HTML, CSS, JavaScript, XML, etc. which aren't directly code, but are still critical to the project code. Like:
 ```
 /*
  * Copyright (c) 2023, Salesforce, Inc.
@@ -35,7 +36,7 @@ The shorter version of license text should be added as a comment to all Salesfor
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- ```
+```
 
 # Salesforce Open Source Community Code of Conduct
 
@@ -53,7 +54,7 @@ other similar personal characteristics.
 
 The goal of this code of conduct is to specify a baseline standard of behavior so
 that people with different social values and communication styles can work
-together effectively, productively, and respectfully in our open source community.
+together effectively, productively, and respectfully in our open-source community.
 It also establishes a mechanism for reporting issues and resolving conflicts.
 
 All questions and reports of abusive, harassing, or otherwise unacceptable behavior
@@ -74,23 +75,23 @@ socioeconomic status, or other similar personal characteristics.
 Examples of behavior that contributes to creating a positive environment
 include:
 
-* Using welcoming and inclusive language
-* Being respectful of differing viewpoints and experiences
-* Gracefully accepting constructive criticism
-* Focusing on what is best for the community
-* Showing empathy toward other community members
+- Using welcoming and inclusive language
+- Being respectful of differing viewpoints and experiences
+- Gracefully accepting constructive criticism
+- Focusing on what is best for the community
+- Showing empathy toward other community members
 
 Examples of unacceptable behavior by participants include:
 
-* The use of sexualized language or imagery and unwelcome sexual attention or
+- The use of sexualized language or imagery and unwelcome sexual attention or
   advances
-* Personal attacks, insulting/derogatory comments, or trolling
-* Public or private harassment
-* Publishing, or threatening to publish, others' private information—such as
+- Personal attacks, insulting/derogatory comments, or trolling
+- Public or private harassment
+- Publishing, or threatening to publish, others' private information—such as
   a physical or electronic address—without explicit permission
-* Other conduct which could reasonably be considered inappropriate in a
+- Other conduct which could reasonably be considered inappropriate in a
   professional setting
-* Advocating for or encouraging any of the above behaviors
+- Advocating for or encouraging any of the above behaviors
 
 ## Our Responsibilities
 
@@ -137,12 +138,11 @@ It includes adaptions and additions from [Go Community Code of Conduct][golang-c
 
 This Code of Conduct is licensed under the [Creative Commons Attribution 3.0 License][cc-by-3-us].
 
-[contributor-covenant-home]: https://www.contributor-covenant.org (https://www.contributor-covenant.org/)
+[contributor-covenant-home]: https://www.contributor-covenant.org "https://www.contributor-covenant.org/"
 [golang-coc]: https://golang.org/conduct
 [cncf-coc]: https://github.com/cncf/foundation/blob/master/code-of-conduct.md
 [microsoft-coc]: https://opensource.microsoft.com/codeofconduct/
 [cc-by-3-us]: https://creativecommons.org/licenses/by/3.0/us/
-
 
 # Security
 
@@ -157,6 +157,7 @@ products (3PP) like this one and their dependencies.
 This page lists the operational governance model of this project, as well as the recommendations and requirements for how to best contribute to llm-open-connector. We strive to obey these as best as possible. As always, thanks for contributing – we hope these guidelines make it easier and shed some light on our approach and processes.
 
 # Governance Model
+
 ## Salesforce Sponsored
 
 The intent and goal of open sourcing this project is to increase the contributor and user base. However, only Salesforce employees will be given `admin` rights and will be the final arbitrars of what contributions are accepted or not.
@@ -170,29 +171,32 @@ Please join the community on Slack [#salesforce-einstein-llm-open-connector](). 
 Use GitHub Issues page to submit issues, enhancement requests and discuss ideas.
 
 ### Bug Reports and Fixes
--  If you find a bug, please search for it in the [Issues](https://github.com/{project_slug}/issues), and if it isn't already tracked,
-   [create a new issue](https://github.com/{project_slug}/issues/new). Fill out the "Bug Report" section of the issue template. Even if an Issue is closed, feel free to comment and add details, it will still
-   be reviewed.
--  Issues that have already been identified as a bug (note: able to reproduce) will be labelled `bug`.
--  If you'd like to submit a fix for a bug, [send a Pull Request](#creating_a_pull_request) and mention the Issue number.
--  Include tests that isolate the bug and verifies that it was fixed.
+
+- If you find a bug, please search for it in the [Issues](https://github.com/{project_slug}/issues), and if it isn't already tracked,
+  [create a new issue](https://github.com/{project_slug}/issues/new). Fill out the "Bug Report" section of the issue template. Even if an Issue is closed, feel free to comment and add details, it will still
+  be reviewed.
+- Issues that have already been identified as a bug (note: able to reproduce) will be labeled `bug`.
+- If you'd like to submit a fix for a bug, [send a Pull Request](#creating_a_pull_request) and mention the Issue number.
+- Include tests that isolate the bug and verifies that it was fixed.
 
 ### New Features
--  If you'd like to add new functionality to this project, describe the problem you want to solve in a [new Issue](https://github.com/{project_slug}/issues/new).
--  Issues that have been identified as a feature request will be labelled `enhancement`.
--  If you'd like to implement the new feature, please wait for feedback from the project
-   maintainers before spending too much time writing the code. In some cases, `enhancement`s may
-   not align well with the project objectives at the time.
+
+- If you'd like to add new functionality to this project, describe the problem you want to solve in a [new Issue](https://github.com/{project_slug}/issues/new).
+- Issues that have been identified as a feature request will be labeled `enhancement`.
+- If you'd like to implement the new feature, please wait for feedback from the project
+  maintainers before spending too much time writing the code. In some cases, `enhancement`s may
+  not align well with the project objectives at the time.
 
 ### Tests, Documentation, Miscellaneous
--  If you'd like to improve the tests, you want to make the documentation clearer, you have an
-   alternative implementation of something that may have advantages over the way its currently
-   done, or you have any other change, we would be happy to hear about it!
--  If its a trivial change, go ahead and [send a Pull Request](#creating_a_pull_request) with the changes you have in mind.
--  If not, [open an Issue](https://github.com/{project_slug}/issues/new) to discuss the idea first.
+
+- If you'd like to improve the tests, you want to make the documentation clearer, you have an
+  alternative implementation of something that may have advantages over the way it's currently
+  done, or you have any other change, we would be happy to hear about it!
+- If it's a trivial change, go ahead and [send a Pull Request](#creating_a_pull_request) with the changes you have in mind.
+- If not, [open an Issue](https://github.com/{project_slug}/issues/new) to discuss the idea first.
 
 If you're new to our project and looking for some way to make your first contribution, look for
-Issues labelled `good first contribution`.
+Issues labeled `good first contribution`.
 
 # Contribution Checklist
 
@@ -207,25 +211,26 @@ Issues labelled `good first contribution`.
   - Use any of our testkits that contains a bunch of testing facilities you would need. For example: `import com.salesforce.op.test._` and borrow inspiration from existing tests.
 - [x] Dependencies
   - Minimize number of dependencies.
-  - Prefer Apache 2.0, BSD3, MIT, ISC and MPL licenses.
+  - Prefer Apache 2.0, BSD3, MIT, ISC, and MPL licenses.
 - [x] Reviews
   - Changes must be approved via peer code review
 
 # Creating a Pull Request
 
-1. **Ensure the bug/feature was not already reported** by searching on GitHub under Issues.  If none exists, create a new issue so that other contributors can keep track of what you are trying to add/fix and offer suggestions (or let you know if there is already an effort in progress).
-3. **Clone** the forked repo to your machine.
-4. **Create** a new branch to contain your work (e.g. `git br fix-issue-11`)
+1. **Ensure the bug/feature was not already reported** by searching on GitHub under Issues. If none exists, create a new issue so that other contributors can keep track of what you are trying to add/fix and offer suggestions (or let you know if there is already an effort in progress).
+2. **Clone** the forked repo to your machine.
+3. **Create** a new branch to contain your work (for example, `git br fix-issue-11`)
 4. **Commit** changes to your own branch.
-5. **Push** your work back up to your fork. (e.g. `git push fix-issue-11`)
-6. **Submit** a Pull Request against the `main` branch and refer to the issue(s) you are fixing. Try not to pollute your pull request with unintended changes. Keep it simple and small.
-7. **Sign** the Salesforce CLA (you will be prompted to do so when submitting the Pull Request)
+5. **Push** your work back up to your fork. (for example, `git push fix-issue-11`)
+6. **Submit** a Pull Request against the `main` branch and refer to the issue (or issues) that you are fixing. Try not to pollute your pull request with unintended changes. Keep it simple and small.
+7. **Sign** the Salesforce CLA (you will be prompted to do so when submitting the pull request)
 
 > **NOTE**: Be sure to [sync your fork](https://help.github.com/articles/syncing-a-fork/) before making a pull request.
 
-
 # Code of Conduct
+
 Please follow our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 # License
+
 By contributing your code, you agree to license your contribution under the terms of our project [LICENSE](LICENSE.txt) and to sign the [Salesforce CLA](https://cla.salesforce.com/sign-cla)
