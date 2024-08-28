@@ -7,7 +7,7 @@ Artificial intelligence is becoming increasingly personalized and specialized. A
 
 1. Clone this repository.
 2. Implement an HTTP REST service using the [llm-open-connector OpenAPI specification](api-specs/llm-open-connector/llm-open-connector.yml).
-3. Test your service connection using Bring Your Own Large Language Model in Einstein 1 Studio.
+3. Test your service connection using Bring Your Own Large Language Model (BYOLLM) in Einstein 1 Studio.
    * Blog post: [Bring Your Own Large Language Model in Einstein 1 Studio](https://developer.salesforce.com/blogs/2024/03/bring-your-own-large-language-model-in-einstein-1-studio)
    * Help content: [Bring Your Own Large Language Model](https://help.salesforce.com/s/articleView?id=sf.c360_a_ai_foundation_models.htm)
 
