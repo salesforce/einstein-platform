@@ -59,7 +59,7 @@ issues labeled `good first contribution`.
 
 ## Create a Pull Request
 
-1. **Ensure the bug/feature was not already reported** by searching on GitHub under the [Issues](https://github.com/salesforce/einstein-platform/issues) page. If none exists, create a new issue so that other contributors can keep track of what you are trying to add/fix and offer suggestions (or let you know if there is already an effort in progress).
+1. **Ensure the bug/feature was not already reported** by searching on GitHub under the [Issues](https://github.com/salesforce/einstein-platform/issues) page. If none exists, create a new issue so that other contributors can keep track of what you are trying to add or fix and offer suggestions (or let you know if there is already an effort in progress).
 2. **Clone** the forked repo to your machine.
 3. **Create** a new branch to contain your work (for example, `git br fix-issue-11`)
 4. **Commit** changes to your own branch.
