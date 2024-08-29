@@ -18,6 +18,12 @@ The BYOLLM Open Connector is a commitment to community-driven growth and innovat
 
 You can now use your LLM from anywhere that can access generative models from Einstein Studio.
 
+## Models API
+
+The Models API connects your application to large language models (LLMs) through the Einstein Trust Layer. It supports the BYOLLM feature of Einstein Studio, including models created with the [LLM Open Connector](#llm-open-connector).
+
+To get started, see the [Models API Developer Guide](https://developer.salesforce.com/docs/einstein/genai/guide/models-api.html).
+
 ## Contribute
 
 Your contributions to this repository are welcome! Refer to the [Contributing Guide](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) to get started.

@@ -1,0 +1,877 @@
+openapi: 3.0.0
+
+info:
+  title: Models REST API (Beta)
+  version: "v1"
+  description: |
+
+    The Models REST API connects your application to large language models (LLMs) through the Einstein Trust Layer. To get started, see [Access Models API with REST](https://developer.salesforce.com/docs/einstein/genai/guide/access-models-api-with-rest.html).
+
+    ## Postman Collection
+
+    The quickest way to get started with the Models REST API is with our [Postman collection](https://www.postman.com/salesforce-developers/workspace/salesforce-developers/collection/12721794-582bb775-b99d-46d8-88cf-df0d3a341040).
+
+    ## Endpoints
+
+    - [Generate Chat](https://developer.salesforce.com/docs/einstein/genai/references/models-api?meta=generateChat): Generate a response based on a list of messages representing a chat conversation.
+    - [Generate Embeddings](https://developer.salesforce.com/docs/einstein/genai/references/models-api?meta=generateEmbeddings): Create an embedding vector representing the input text.
+    - [Generate Text](https://developer.salesforce.com/docs/einstein/genai/references/models-api?meta=generateText): Generate a response based on the provided prompt.
+    - [Submit Feedback](https://developer.salesforce.com/docs/einstein/genai/references/models-api?meta=submitFeedback): Submit feedback for generated text.
+
+servers:
+  - url: https://api.salesforce.com/einstein/platform/v1
+    description: The Salesforce API Platform (SFAP) server.
+
+paths:
+  /models/{modelName}/chat-generations:
+    post:
+      summary: "Generate a response based on a list of messages representing a chat conversation."
+      operationId: "generateChat"
+      parameters:
+        - in: path
+          name: modelName
+          schema:
+            type: string
+          required: true
+          description: Configured model name.
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+            example: "Bearer •••••"
+          required: true
+          description: "Authorization information that contains the JWT. For guidance, see [Access Models API with REST](https://developer.salesforce.com/docs/einstein/genai/guide/access-models-api-with-rest.html)."
+        - in: header
+          name: x-sfdc-app-context
+          schema:
+            type: string
+            example: "EinsteinGPT"
+          required: true
+          description: "This value is reserved for future use. For now, specify `EinsteinGPT`."
+        - in: header
+          name: x-client-feature-id
+          schema:
+            type: string
+            example: "ai-platform-models-connected-app"
+          required: true
+          description: "This value is reserved for future use. For now, specify `ai-platform-models-connected-app`."
+      security:
+        - orgJWT: []
+      requestBody:
+        required: true
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/ChatGenerationsRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessfulChatGenerationsResponse"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "423":
+          $ref: "#/components/responses/ServerBusyError"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+        "503":
+          $ref: "#/components/responses/ServiceUnavailable"
+        default:
+          $ref: "#/components/responses/ErrorResponse"
+
+  /models/{modelName}/embeddings:
+    post:
+      summary: "Create an embedding vector representing the input text."
+      operationId: "generateEmbeddings"
+      parameters:
+        - in: path
+          name: modelName
+          schema:
+            type: string
+          required: true
+          description: Configured model name.
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+            example: "Bearer •••••"
+          required: true
+          description: "Authorization information that contains the JWT. For guidance, see [Access Models API with REST](https://developer.salesforce.com/docs/einstein/genai/guide/access-models-api-with-rest.html)."
+        - in: header
+          name: x-sfdc-app-context
+          schema:
+            type: string
+            example: "EinsteinGPT"
+          required: true
+          description: "This value is reserved for future use. For now, specify `EinsteinGPT`."
+        - in: header
+          name: x-client-feature-id
+          schema:
+            type: string
+            example: "ai-platform-models-connected-app"
+          required: true
+          description: "This value is reserved for future use. For now, specify `ai-platform-models-connected-app`."
+      security:
+        - orgJWT: []
+      requestBody:
+        required: true
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/EmbeddingRequest"
+            examples:
+              example1:
+                summary: "Give yourself a present"
+                value:
+                  input: ["Every day, once a day, give yourself a present"]
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessfulEmbeddingResponse"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "423":
+          $ref: "#/components/responses/ServerBusyError"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+        "503":
+          $ref: "#/components/responses/ServiceUnavailable"
+        default:
+          $ref: "#/components/responses/ErrorResponse"
+
+  /models/{modelName}/generations:
+    post:
+      summary: "Generate a response based on the provided prompt."
+      operationId: "generateText"
+      parameters:
+        - in: path
+          name: modelName
+          schema:
+            type: string
+            example: "sfdc_ai__DefaultAzureOpenAIGPT35Turbo"
+          required: true
+          description: Configured model name.
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+            example: "Bearer •••••"
+          required: true
+          description: "Authorization information that contains the JWT. For guidance, see [Access Models API with REST](https://developer.salesforce.com/docs/einstein/genai/guide/access-models-api-with-rest.html)."
+        - in: header
+          name: x-sfdc-app-context
+          schema:
+            type: string
+            example: "EinsteinGPT"
+          required: true
+          description: "This value is reserved for future use. For now, specify `EinsteinGPT`."
+        - in: header
+          name: x-client-feature-id
+          schema:
+            type: string
+            example: "ai-platform-models-connected-app"
+          required: true
+          description: "This value is reserved for future use. For now, specify `ai-platform-models-connected-app`."
+      security:
+        - orgJWT: []
+      requestBody:
+        required: true
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/GenerationRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessfulGenerationResponse"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "423":
+          $ref: "#/components/responses/ServerBusyError"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+        "503":
+          $ref: "#/components/responses/ServiceUnavailable"
+        default:
+          $ref: "#/components/responses/ErrorResponse"
+  /feedback:
+    post:
+      summary: "Submit feedback for generated text."
+      operationId: "submitFeedback"
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+            example: "Bearer •••••"
+          required: true
+          description: "Authorization information that contains the JWT. For guidance, see [Access Models API with REST](https://developer.salesforce.com/docs/einstein/genai/guide/access-models-api-with-rest.html)."
+        - in: header
+          name: x-sfdc-app-context
+          schema:
+            type: string
+            example: "EinsteinGPT"
+          required: true
+          description: "This value is reserved for future use. For now, specify `EinsteinGPT`."
+        - in: header
+          name: x-client-feature-id
+          schema:
+            type: string
+            example: "ai-platform-models-connected-app"
+          required: true
+          description: "This value is reserved for future use. For now, specify `ai-platform-models-connected-app`."
+      security:
+        - orgJWT: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FeedbackRequest"
+      responses:
+        "202":
+          $ref: "#/components/responses/FeedbackSuccessResponse"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "423":
+          $ref: "#/components/responses/ServerBusyError"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsError"
+        "503":
+          $ref: "#/components/responses/ServiceUnavailable"
+        default:
+          $ref: "#/components/responses/ErrorResponse"
+
+components:
+  securitySchemes:
+    orgJWT:
+      description: "JSON web token (JWT) from your org. Header format: `Authorization: Bearer <OrgJWT>`. For guidance, see [Access Models API with REST](https://developer.salesforce.com/docs/einstein/genai/guide/access-models-api-with-rest.html)."
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    GenerationRequest:
+      type: object
+      description: "A generation request."
+      properties:
+        prompt:
+          description: "The prompt or text to be completed."
+          type: "string"
+          example: "Invent 3 fun names for donuts"
+        localization:
+          $ref: "#/components/schemas/Localization"
+        tags:
+          $ref: "#/components/schemas/Tags"
+      required:
+        - "prompt"
+
+    FeedbackRequest:
+      type: object
+      description: "A feedback request."
+      properties:
+        id:
+          description: "A unique ID for the feedback object."
+          type: "string"
+          example: "d123449d-afed-4abe-9a0e-19c90726d2ea"
+        generationId:
+          description: "Identifies the target of this feedback data. You can specify the ID of a `/generations` response, or use any other identifier as a string value. The Models API doesn’t do any semantic validation on this field and it’s only meant for you to identify this information in the datastore."
+          type: "string"
+          example: "d321449d-afed-4abe-9a0e-19c90726d2ea"
+        feedback:
+          description: "The feedback sentiment. Can be `null`."
+          x-nullable: true
+          type: "string"
+          enum:
+            - "GOOD"
+            - "BAD"
+        feedbackText:
+          description: "The textual representation of the feedback as provided by the user."
+          type: "string"
+        source:
+          description: "The source of the feedback. For example, `human` or `app`."
+          type: "string"
+        appFeedback:
+          description: "Dictionary of any app-level feedback and any other free-form parameters."
+          type: object
+          additionalProperties: true
+        appGenerationId:
+          description: "App-specific generation ID to support cases where the client has multiple responses in a single generation."
+          type: "string"
+        appGeneration:
+          description: "App-specific generation text to support cases where the client has multiple responses in a single generation."
+          type: "string"
+          example: "d567849d-afed-4abe-9a0e-19c90726d2ea"
+
+    GenerationResponse:
+      type: "object"
+      description: "A generation response."
+      properties:
+        id:
+          description: "ID of the generation request."
+          type: "string"
+          example: "chatcmpl-8diKGsPooFDwwhbJxmibpUc7437at"
+        generation:
+          $ref: "#/components/schemas/GenerationRepresentation"
+        moreGenerations:
+          description: "List of generated text items if the number of requested generations is greater than one."
+          type: "array"
+          items:
+            $ref: "#/components/schemas/GenerationRepresentation"
+        prompt:
+          type: string
+          description: "Prompt used for the generation. Can be `null`."
+          x-nullable: true
+          example: "Invent 3 fun names for donuts"
+        parameters:
+          type: object
+          x-nullable: true
+          additionalProperties: true
+          description: "Any provider-specific attributes included as part of this object. Can be `null`."
+          example:
+            model: "gpt-3.5-turbo-0125"
+            object: "chat.completion"
+            usage:
+              prompt_tokens: 14
+              completion_tokens: 15
+              total_tokens: 29
+      required:
+        - "id"
+        - "generation"
+
+    GenerationRepresentation:
+      type: "object"
+      description: "The generated text that is part of the generation response."
+      properties:
+        id:
+          description: "Generation ID. This value is required to register feedback."
+          type: "string"
+          example: "4399c4ea-89d4-44ca-ae8d-cf5926b41bc4"
+        generatedText:
+          description: "The generated text."
+          type: "string"
+          example: "The generated text."
+        contentQuality:
+          $ref: "#/components/schemas/ContentTrustRepresentation"
+        parameters:
+          type: object
+          x-nullable: true
+          additionalProperties: true
+          description: "Any provider-specific attributes included as part of this object. Can be `null`."
+          example: { "finish_reason": "stop", "index": 0, "logprobs": null }
+      required:
+        - "text"
+
+    ContentTrustRepresentation:
+      type: object
+      description: "Content moderation details for generated content, including its safety and quality scores."
+      properties:
+        scanToxicity:
+          $ref: "#/components/schemas/TrustScannerRepresentation"
+
+    TrustScannerRepresentation:
+      type: object
+      description: "Represents safety and toxicity data."
+      x-nullable: true
+      properties:
+        isDetected:
+          type: boolean
+          description: "Indicates whether a scan detected any toxic content. A false value doesn’t necessarily mean that the content isn’t toxic."
+        categories:
+          type: array
+          description: "A list of categories that were scanned for toxic content."
+          items:
+            $ref: "#/components/schemas/TrustCategoryDetail"
+
+    TrustCategoryDetail:
+      type: object
+      description: "Toxicity score for a given category."
+      properties:
+        categoryName:
+          type: string
+          description: "Name of the category."
+          example: "profanity"
+        score:
+          $ref: "#/components/schemas/Score"
+
+    Score:
+      type: number
+      description: "A toxicity score value. A higher score means the response is more likely to be toxic."
+      example: 0.0
+      x-nullable: true
+      format: float
+      default: 0.0
+      minimum: 0
+      maximum: 1
+
+    ChatGenerationsResponse:
+      type: object
+      description: "A chat generation response."
+      properties:
+        id:
+          $ref: "#/components/schemas/ResponseId"
+        generationDetails:
+          $ref: "#/components/schemas/GenerationDetails"
+      required:
+        - id
+        - generationDetails
+
+    GenerationDetails:
+      description: "Details for a chat generation response."
+      type: object
+      properties:
+        generations:
+          description: "Generated responses from the LLM."
+          type: "array"
+          items:
+            $ref: "#/components/schemas/ChatMessage"
+        parameters:
+          type: object
+          additionalProperties: true
+          description: "Any provider-specific attributes included as part of this object."
+          example:
+            {
+              "model": "gpt-3.5-turbo",
+              "object": "text_completion",
+              "usage":
+                {
+                  "completion_tokens": 235,
+                  "prompt_tokens": 91,
+                  "total_tokens": 326,
+                },
+            }
+      required:
+        - generations
+
+    ChatMessage:
+      description: "A message in a conversation. This message is used in a chat generation response."
+      type: object
+      properties:
+        id:
+          description: "Generation ID. This value is required to register feedback."
+          type: "string"
+        role:
+          description: "Persona that sent the message."
+          type: string
+          enum: ["user", "assistant", "system"]
+        content:
+          description: "The content of the message."
+          type: string
+          example: "Can you give me a recipe for cherry pie?"
+        timestamp:
+          description: "Timestamp when the message was sent."
+          type: integer
+          format: int64
+          example: 1682536893
+        parameters:
+          type: object
+          x-nullable: true
+          additionalProperties: true
+          description: "Any provider-specific attributes included as part of this object."
+          example: { "finish_reason": "stop", "index": 0, "logprobs": null }
+        contentQuality:
+          $ref: "#/components/schemas/ContentTrustRepresentation"
+      required:
+        - role
+        - content
+
+    ChatGenerationsRequest:
+      type: "object"
+      description: "A chat generation request."
+      properties:
+        messages:
+          description: "List of messages to send to the model. These messages should be in chronological order."
+          type: "array"
+          items:
+            $ref: "#/components/schemas/ChatMessageRequest"
+        localization:
+          $ref: "#/components/schemas/Localization"
+        tags:
+          $ref: "#/components/schemas/Tags"
+      required:
+        - messages
+
+    ChatMessageRequest:
+      description: "A message in a conversation. This message is used in a chat generation request."
+      type: object
+      properties:
+        role:
+          description: "Persona that sent the message."
+          type: string
+          enum: ["user", "assistant", "system"]
+        content:
+          description: "The content of the message."
+          type: string
+          example: "Can you give me a recipe for cherry pie?"
+      required:
+        - role
+        - content
+
+    ResponseId:
+      description: "Identifier for a response."
+      type: string
+      example: "014DFFD2-04B5-4765-8EA7-507585268CD3"
+
+    EmbeddingRequest:
+      type: object
+      description: "An embedding request."
+      properties:
+        input:
+          description: "Input text used for generating an embedding. Data is encoded as an array of strings."
+          type: "array"
+          items:
+            type: string
+        localization:
+          $ref: "#/components/schemas/Localization"
+        tags:
+          $ref: "#/components/schemas/Tags"
+      required:
+        - "input"
+
+    EmbeddingResponse:
+      type: "object"
+      description: "An embedding response."
+      properties:
+        embeddings:
+          description: "Array of `Embeddings` in the response."
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Embeddings"
+        parameters:
+          type: object
+          additionalProperties: true
+          description: "Any provider-specific attributes are included as part of this object."
+          example: { "texts": ["input"] }
+
+    Embeddings:
+      type: "object"
+      description: "An embedding vector for the text."
+      properties:
+        embedding:
+          description: "Embedding of the text. Data is specified as an array of numbers."
+          type: "array"
+          items:
+            type: number
+        index:
+          type: integer
+          description: "Index of the input text to which the embedding belongs."
+
+    Localization:
+      description: "Localization information, which can include the default locale, input locale(s), and expected output locale(s)."
+      type: object
+      properties:
+        defaultLocale:
+          $ref: "#/components/schemas/Locale"
+        inputLocales:
+          description: "The list of language codes or locales found in the prompt’s text."
+          type: "array"
+          items:
+            $ref: "#/components/schemas/ProbableLocale"
+        expectedLocales:
+          description: "Expected output languages of the generations. Derived from the output language instructions of the prompt."
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Locale"
+      required:
+        - "defaultLocale"
+
+    ProbableLocale:
+      description: The locale and an optional probability value.
+      type: object
+      properties:
+        locale:
+          $ref: "#/components/schemas/Locale"
+        probability:
+          description: An estimate of how frequently you expect this language or locale to appear in the input.
+          type: number
+          maximum: 1.0
+          minimum: 0
+          example: 0.8
+      required:
+        - locale
+
+    Locale:
+      description: "Language and region code."
+      example: "en_US"
+      type: string
+
+    Tags:
+      description: "Entries used by the Models API for non-generative purposes and entries used by the client for free-form data."
+      type: object
+      additionalProperties: true
+      x-nullable: true
+
+    Error:
+      type: "object"
+      description: "Models API error."
+      properties:
+        errorCode:
+          description: "Error code to map the error message"
+          type: "string"
+          example: "INTERNAL_ERROR"
+        messageCode:
+          description: "The messageCode field is a specification of the error and uniquely identifies an error message."
+          type: "string"
+          example: "E00001"
+        message:
+          description: "Description of the error."
+          type: "string"
+          example: "A generic error emitted by the API platform and mapped to the 500 HTTP status code"
+        targets:
+          description: "A collection of references that represent the specific occurrence of the problem."
+          type: "array"
+          items:
+            type: "object"
+            properties:
+              type:
+                description: "FIELD | QUERY_PARAMETER | HTTP_HEADER"
+                type: string
+                example: "FIELD"
+              reference:
+                type: string
+                example: "$['order']['payment']['billingAddress']['postalCode']"
+        parameters:
+          description: "A collection of name-value pairs where each item in the collection represents a parameter leveraged in the error message."
+          type: "array"
+          items:
+            type: "object"
+            properties:
+              name:
+                type: string
+                example: "postalCode"
+              value:
+                type: string
+                example: "123456789"
+      additionalProperties: true
+      required:
+        - "message"
+        - "errorCode"
+        - "messageCode"
+
+  responses:
+    FeedbackSuccessResponse:
+      description: "Accepted"
+      headers:
+        content-type:
+          schema:
+            type: string
+            example: application/json
+        content-length:
+          schema:
+            type: integer
+            example: 1149
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: "string"
+          examples:
+            example1:
+              value:
+                message: "Feedback received, Thank you!"
+
+    ErrorResponse:
+      description: "Something went wrong"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+    SuccessfulEmbeddingResponse:
+      description: "OK"
+      headers:
+        date:
+          schema:
+            type: string
+            example: Fri, 18 Aug 2023 03:10:42 GMT
+        content-type:
+          schema:
+            type: string
+            example: application/json
+        x-request-id:
+          schema:
+            type: string
+            example: 51633d74-bdd1-42b0-9ea6-518eb9346d18
+        x-b3-traceid:
+          schema:
+            type: string
+            example: ce8728ae2ad06aff48f8e19132aaeeaf
+        x-b3-spanid:
+          schema:
+            type: string
+            example: 1c8ace90f95631a9
+        x-envoy-upstream-service-time:
+          schema:
+            type: integer
+            example: 923
+        transfer-encoding:
+          schema:
+            type: string
+            example: chunked
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/EmbeddingResponse"
+          examples:
+            example1:
+              summary: "Give yourself a present: Success"
+              description: "Note: Embedding array truncated to 1 item for brevity."
+              value:
+                embeddings:
+                  - embedding: [0.0015662104]
+                    index: 0
+                parameters:
+                  usage:
+                    prompt_tokens: 11
+                    total_tokens: 11
+                  model: "text-embedding-ada-002-v2"
+                  object: "list"
+
+    SuccessfulGenerationResponse:
+      description: "OK"
+      headers:
+        content-type:
+          schema:
+            type: string
+            example: application/json
+        content-length:
+          schema:
+            type: integer
+            example: 1149
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/GenerationResponse"
+
+    SuccessfulChatGenerationsResponse:
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ChatGenerationsResponse"
+
+    BadRequestError:
+      description: "Bad Request"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            errorCode: "REQUIRED_FIELD_MISSING"
+            messageCode: "EXXXXX"
+            message: "Field is required"
+
+    UnauthorizedError:
+      description: "Access bearer token is missing or invalid"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            errorCode: "INVALID_AUTH"
+            messageCode: "EXXXXX"
+            message: "Access bearer token is missing or invalid"
+
+    ForbiddenError:
+      description: "User forbidden from accessing the resource"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            errorCode: "NOT_FOUND"
+            messageCode: "EXXXXX"
+            message: "User forbidden from accessing the resource"
+
+    NotFoundError:
+      description: "Resource not found or auth token is invalid"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            errorCode: "NOT_FOUND"
+            messageCode: "EXXXXX"
+            message: "Resource not found"
+
+    NotAvailableError:
+      description: "Resource not available at the time of the request"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            errorCode: "NOT_FOUND"
+            messageCode: "EXXXXX"
+            message: "Resource not available at the time of the request"
+
+    ServerBusyError:
+      description: "Server is busy and cannot process the request at this time"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            errorCode: "NOT_FOUND"
+            messageCode: "EXXXXX"
+            message: "Server is busy and cannot process the request at this time"
+
+    TooManyRequestsError:
+      description: "Too many requests for the server to handle"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            errorCode: "LIMIT_EXCEEDED"
+            messageCode: "EXXXXX"
+            message: "Too many requests for the server to handle"
+
+    InternalServerError:
+      description: "Internal server error"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            errorCode: "INTERNAL_ERROR"
+            messageCode: "EXXXXX"
+            message: "Internal server error"
+
+    ServiceUnavailable:
+      description: "Service is unavailable"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            errorCode: "INTERNAL_ERROR"
+            messageCode: "EXXXXX"
+            message: "Service is unavailable"
