@@ -4,7 +4,7 @@ Artificial intelligence is becoming increasingly personalized and specialized. A
 
 ## LLM Open Connector
 
-The Bring Your Own Large Language Model (BYOLLM) Open Connector is designed to provide powerful AI solutions to customers, independent software vendors (ISVs), and internal Salesforce teams. With this connector, you can connect the Einstein AI Platform to any language model, whether it's an industry established leader or a custom-built solution.
+The Bring Your Own Large Language Model (BYOLLM) Open Connector is designed to provide powerful AI solutions to customers, independent software vendors (ISVs), and internal Salesforce teams. With this connector, you can connect the Einstein AI Platform to any language model, including custom-built models.
 
 The BYOLLM Open Connector is a commitment to community-driven growth and innovation. By allowing users to integrate any LLM—from those models hosted on major cloud platforms to those models developed in-house—we're opening up a world of possibilities for enhanced, bespoke AI applications. This capability not only caters to the needs of large enterprises looking to leverage specific models like IBM Granite or Databricks DBRX, but also supports smaller teams eager to experiment with open-source models. With features designed to ensure ease of use, such as a streamlined UX in Einstein Studio and API specifications closely based on the OpenAI API, this connector empowers our users to enhance their AI-driven applications while maintaining high standards of security and compatibility.
 
