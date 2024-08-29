@@ -34,12 +34,12 @@ Before you begin, make sure that your development environment meets these prereq
 
 3. Create these files in your project directory:
 
-   - [app.py](app.py)
-   - [requirements.txt](requirements.txt)
-   - [Procfile](Procfile)
-   - [runtime.txt](runtime.txt)
-   - [.env](.env)
    - [.gitignore](.gitignore)
+   - [app.py](app.py)
+   - [index.html](index.html)
+   - [Procfile](Procfile)
+   - [requirements.txt](requirements.txt)
+   - [runtime.txt](runtime.txt)
 
 4. Copy the contents of each file from the provided artifacts into the corresponding files in your project directory.
 
@@ -50,7 +50,13 @@ Before you begin, make sure that your development environment meets these prereq
 
 ## Step 2: Configure Your Local Environment
 
-1. Open the `.env` file and replace `your_groq_api_key_here` with your actual Groq API key.
+1. For local testing, create a `.env` file in your project directory and add your Groq API key:
+
+   ```
+   GROQ_API_KEY=your_groq_api_key_here
+   ```
+
+   Replace `your_groq_api_key_here` with your actual Groq API key.
 
 2. Make sure your `.gitignore` file includes the `.env` file to avoid accidentally committing sensitive information.
 
@@ -66,7 +72,7 @@ Before you begin, make sure that your development environment meets these prereq
 
 3. Test the endpoints using a tool like cURL or Postman to ensure they're working correctly.
 
-To test the `completions` endpoint, run this `curl` command.
+To test the `completions` endpoint, run this `curl` command. We're using Meta's Llama 3 8B model for this example, but you can use any of Groq's [supported models](https://console.groq.com/docs/models).
 
 ```bash
 curl -X POST http://127.0.0.1:5000/completions \
@@ -80,7 +86,7 @@ curl -X POST http://127.0.0.1:5000/completions \
 }'
 ```
 
-To test the `completions/endpoint`, run this `curl` command.
+To test the `chat/completions` endpoint, run this `curl` command:
 
 ```bash
 curl -X POST http://127.0.0.1:5000/chat/completions \
@@ -132,7 +138,7 @@ curl -X POST http://127.0.0.1:5000/chat/completions \
 
    Replace `your-app-name` with a unique name for your application.
 
-3. Set the GROQ_API_KEY environment variable on Heroku:
+3. Set the GROQ_API_KEY config var on Heroku:
 
    ```
    heroku config:set GROQ_API_KEY=your_groq_api_key_here
@@ -155,16 +161,25 @@ Your LLM Open Connector should now be deployed and accessible via the Heroku URL
 
 ## Step 6: Test Your Deployed Application
 
-Use a tool like cURL or Postman to test the endpoints of your Flask app:
+You can test your deployed application in two ways:
 
-1. Completions: `POST https://your-app-name.herokuapp.com/completions`
-2. Chat Completions: `POST https://your-app-name.herokuapp.com/chat/completions`
+1. Using the example UI:
 
-Note that the Embeddings endpoint (`POST /embeddings`) returns an error because embeddings are not supported by the Groq API with the specified model.
+   - Open your browser and navigate to `https://your-app-name.herokuapp.com`
+   - You'll see a simple interface where you can input prompts and get responses from the LLM
+   - Try different prompts and get super fast responses!
+
+2. Using API endpoints:
+   Use a tool like cURL or Postman to test the endpoints of your Flask app:
+
+   - Completions: `POST https://your-app-name.herokuapp.com/completions`
+   - Chat Completions: `POST https://your-app-name.herokuapp.com/chat/completions`
+
+   Note that the Embeddings endpoint (`POST /embeddings`) returns an error because embeddings are not supported by the Groq API with the specified model.
 
 ## Conclusion
 
-You have successfully created and deployed an LLM Open Connector using Flask and the Groq API and deployed it to Heroku! This connector adheres to the Salesforce LLM Open Connector API specification, allowing for seamless integration with the Einstein AI Platform.
+You have successfully created and deployed an LLM Open Connector using the Groq API and deployed it to Heroku! This connector adheres to the Salesforce LLM Open Connector API specification, allowing for seamless integration with the Einstein AI Platform using the BYOLLM feature.
 
 With this connector, you can bring new foundation models like Llama 3 into Einstein Studio that take advantage of Groq's fast inference platform.
 
