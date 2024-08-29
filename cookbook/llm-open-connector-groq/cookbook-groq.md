@@ -4,7 +4,7 @@
 
 The Bring Your Own Large Language Model (BYOLLM) Open Connector is designed to empower customers, independent software vendors (ISVs), and internal Salesforce teams with advanced AI capabilities. This connector bridges the gap between the Einstein AI Platform and any language model, including custom-built ones, opening up a world of possibilities for enhanced, bespoke AI applications.
 
-This cookbook provides a step-by-step guide to implementing an LLM Open Connector using Flask, the [Groq](https://groq.com/) API with the Meta Llama 3 8B model, and deploying it to Heroku. By following this guide, you'll be able to create a custom connector that adheres to the Salesforce LLM Open Connector API specification, enabling seamless integration with Einstein Studio's BYOLLM feature.
+This cookbook provides a step-by-step guide to implementing an LLM Open Connector with the [Groq](https://groq.com/) platform for fast AI inference and deploy the connector as a Flask app on Heroku.
 
 ## Prerequisites
 
@@ -164,10 +164,8 @@ Note that the Embeddings endpoint (`POST /embeddings`) will return an error as i
 
 ## Conclusion
 
-You have successfully created and deployed an LLM Open Connector using Flask, the Groq API with the Meta Llama 3 8B model, and Heroku. This connector adheres to the Salesforce LLM Open Connector API specification, allowing for seamless integration with the Einstein AI Platform.
+You have successfully created and deployed an LLM Open Connector using Flask and the Groq API and deployed it to Heroku! This connector adheres to the Salesforce LLM Open Connector API specification, allowing for seamless integration with the Einstein AI Platform.
 
-By leveraging this connector, you can now take advantage of the powerful Meta Llama 3 8B model in your Salesforce AI applications, opening up new possibilities for enhanced AI-driven solutions.
+With this connector, you can bring new foundation models like Llama 3 into Einstein Studio that take advantage of Groq's fast inference platform.
 
 Remember to monitor your usage and costs associated with the Groq API, and consider implementing additional security measures, such as rate limiting and user authentication, before using this connector in a production environment.
-
-For more information on the BYOLLM Open Connector and its capabilities, please refer to the official Salesforce documentation and community resources.
