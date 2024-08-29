@@ -1,17 +1,17 @@
-# Einstein Platform Integrations
+# Einstein AI Platform
 
-Artificial intelligence is becoming increasingly personalized and specialized. At Salesforce we recognize the growing need for businesses and developers to integrate their chosen large language models (LLMs) into the Einstein AI Platform. To address this need, we're sharing API specifications and other developer tools with the open-source community.
+Artificial intelligence is becoming increasingly personalized and specialized. At Salesforce we recognize the growing need for businesses and developers to integrate their chosen large language models (LLMs) into the Einstein AI Platform. To address this need, we're sharing API specifications, sample code, and other developer tools with the open-source community.
 
-## Open Connector
+## LLM Open Connector
 
-The Bring Your Own Large Language Model (BYOLLM) Open Connector is designed to provide powerful AI solutions to customers, independent software vendors (ISVs), and internal Salesforce teams. With this connector, you can connect the Einstein AI Platform to any language model, whether it's an industry established leader or a niche, custom-built solution.
+The Bring Your Own Large Language Model (BYOLLM) Open Connector is designed to provide powerful AI solutions to customers, independent software vendors (ISVs), and internal Salesforce teams. With this connector, you can connect the Einstein AI Platform to any language model, whether it's an industry established leader or a custom-built solution.
 
-The BYOLLM Open Connector is more than just a technical upgrade; it's a commitment to community-driven growth and innovation. By allowing users to integrate any LLM—from those models hosted on major cloud platforms to those models developed in-house—we're opening up a world of possibilities for enhanced, bespoke AI applications. This capability not only caters to the needs of large enterprises looking to leverage specific models like IBM Granite or Databricks DBRX but also supports smaller teams eager to experiment with open-source models. With features designed to ensure ease of use, such as a streamlined UX in Einstein Studio and API specifications closely based on the OpenAI API, this connector empowers our users to enhance their AI-driven applications while maintaining high standards of security and compatibility.
+The BYOLLM Open Connector is a commitment to community-driven growth and innovation. By allowing users to integrate any LLM—from those models hosted on major cloud platforms to those models developed in-house—we're opening up a world of possibilities for enhanced, bespoke AI applications. This capability not only caters to the needs of large enterprises looking to leverage specific models like IBM Granite or Databricks DBRX, but also supports smaller teams eager to experiment with open-source models. With features designed to ensure ease of use, such as a streamlined UX in Einstein Studio and API specifications closely based on the OpenAI API, this connector empowers our users to enhance their AI-driven applications while maintaining high standards of security and compatibility.
 
 ### Usage
 
 1. Clone this repository.
-2. Implement an HTTP REST service using the [llm-open-connector OpenAPI specification](api-specs/llm-open-connector/llm-open-connector.yml).
+2. Implement an HTTP REST service using the [LLM Open Connector OpenAPI specification](api-specs/llm-open-connector/llm-open-connector.yml).
 3. Test your service connection using Bring Your Own Large Language Model (BYOLLM) in Einstein 1 Studio.
    - Blog post: [Bring Your Own Large Language Model in Einstein 1 Studio](https://developer.salesforce.com/blogs/2024/03/bring-your-own-large-language-model-in-einstein-1-studio)
    - Help content: [Bring Your Own Large Language Model](https://help.salesforce.com/s/articleView?id=sf.c360_a_ai_foundation_models.htm)
@@ -20,7 +20,7 @@ You can now use your LLM from anywhere that can access generative models from Ei
 
 ## Contribute
 
-Your contributions to this repository are welcome! Refer to the [CONTRIBUTING](CONTRIBUTING.md) guide to get started.
+Your contributions to this repository are welcome! Refer to the [Contributing Guide](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) to get started.
 
 If you like the projects that we've shared, consider adding a ⭐ on the GitHub Repo. It helps other people discover them!
 
@@ -38,7 +38,7 @@ products (3PP) like this one and their dependencies.
 
 ### Salesforce-authored Code
 
-The shorter version of license text must be added as a comment to all Salesforce-authored source code and configuration files that support comments. This rule applies to file formats like HTML, CSS, JavaScript, and so on, which aren't directly code, but are still critical to the project code.
+The shorter version of license text must be added as a comment to all Salesforce-authored source code and configuration files that support comments. This rule applies to file formats like HTML, CSS, and JavaScript, which aren't exactly source code, but are still critical to the project.
 
 ```
 /*
