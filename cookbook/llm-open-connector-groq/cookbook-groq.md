@@ -8,7 +8,7 @@ This cookbook provides a step-by-step guide to implementing an LLM Open Connecto
 
 ## Prerequisites
 
-Before you begin, make sure you have the following:
+Before you begin, make sure that your development environment meets these prerequisites.
 
 1. Python 3.9 or later installed on your local machine
 2. A Heroku account (sign up at https://signup.heroku.com/)
@@ -32,7 +32,7 @@ Before you begin, make sure you have the following:
    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
    ```
 
-3. Create the following files in your project directory:
+3. Create these files in your project directory:
 
    - [app.py](app.py)
    - [requirements.txt](requirements.txt)
@@ -155,12 +155,12 @@ Your LLM Open Connector should now be deployed and accessible via the Heroku URL
 
 ## Step 6: Test Your Deployed Application
 
-Use a tool like cURL or Postman to test the following endpoints on your deployed application:
+Use a tool like cURL or Postman to test the endpoints of your Flask app:
 
 1. Completions: `POST https://your-app-name.herokuapp.com/completions`
 2. Chat Completions: `POST https://your-app-name.herokuapp.com/chat/completions`
 
-Note that the Embeddings endpoint (`POST /embeddings`) will return an error as it's not supported by the Groq API with the specified model.
+Note that the Embeddings endpoint (`POST /embeddings`) returns an error because embeddings are not supported by the Groq API with the specified model.
 
 ## Conclusion
 
