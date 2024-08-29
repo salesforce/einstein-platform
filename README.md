@@ -58,3 +58,7 @@ The shorter version of license text must be added as a comment to all Salesforce
  * limitations under the License.
  */
 ```
+
+## Other Legal Disclaimers
+
+Rights of ALBERT EINSTEIN are used with permission of The Hebrew University of Jerusalem / [CMGWorldwide.com](http://cmgworldwide.com/).
