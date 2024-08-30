@@ -8,13 +8,13 @@ This guide provides a step-by-step guide to implementing an LLM Open Connector w
 
 ## Prerequisites
 
-Before you begin, make sure that your development environment meets these prerequisites.
+Before you begin, make sure that your local environment meets these prerequisites.
 
 1. Python 3.9 or later installed on your local machine
 2. A Heroku account (sign up at https://signup.heroku.com/)
 3. Heroku CLI installed (https://devcenter.heroku.com/articles/heroku-cli)
 4. Git installed on your local machine
-5. A Groq API key (sign up at https://console.groq.com/)
+5. A Groq API key (sign up for free at https://console.groq.com/)
 
 ## Step 1: Set Up Your Local Environment
 
