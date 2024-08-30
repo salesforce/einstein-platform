@@ -4,7 +4,9 @@
 
 The Bring Your Own Large Language Model (BYOLLM) Open Connector is designed to empower customers, independent software vendors (ISVs), and internal Salesforce teams with advanced AI capabilities. This connector bridges the gap between the Einstein AI Platform and any language model, including custom-built ones, opening up a world of possibilities for enhanced, bespoke AI applications.
 
-This guide provides a step-by-step guide to implementing an LLM Open Connector with the [Groq](https://groq.com/) platform for fast AI inference. We also cover how to deploy the connector as a Flask app on Heroku.
+This guide provides a step-by-step guide to implementing an LLM Open Connector with the [Groq](https://groq.com/) platform for fast AI inference. We also cover how to deploy the connector as a Flask app on Heroku with a simple UI for testing.
+
+<img width="978" alt="UI for LLM Open Connector" src="https://github.com/user-attachments/assets/306bc3ec-ba57-470a-9ccb-b3054475a4dc" />
 
 ## Prerequisites
 
