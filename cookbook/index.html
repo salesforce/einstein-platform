@@ -10,6 +10,7 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css"
@@ -156,11 +157,84 @@
         padding: 20px;
         border-radius: var(--border-radius);
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        white-space: pre-wrap;
         font-size: 16px;
         transition: all var(--transition-speed) ease;
         overflow-x: auto;
         min-height: 100px;
+        line-height: 1.6;
+      }
+
+      #response h1,
+      #response h2,
+      #response h3,
+      #response h4,
+      #response h5,
+      #response h6 {
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+        color: var(--text-color);
+      }
+
+      #response p {
+        margin-bottom: 1em;
+      }
+
+      #response ul,
+      #response ol {
+        margin-bottom: 1em;
+        padding-left: 2em;
+      }
+
+      #response li {
+        margin-bottom: 0.5em;
+      }
+
+      #response pre {
+        background-color: #f4f4f4;
+        padding: 1em;
+        border-radius: 4px;
+        overflow-x: auto;
+        margin-bottom: 1em;
+      }
+
+      #response code {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.9em;
+        padding: 0.2em 0.4em;
+        background-color: #f0f0f0;
+        border-radius: 3px;
+      }
+
+      #response pre code {
+        padding: 0;
+        background-color: transparent;
+      }
+
+      #response blockquote {
+        border-left: 4px solid var(--primary-color);
+        padding-left: 1em;
+        margin-left: 0;
+        margin-bottom: 1em;
+        font-style: italic;
+        color: #666;
+      }
+
+      #response table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 1em;
+      }
+
+      #response th,
+      #response td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      #response th {
+        background-color: #f4f4f4;
+        font-weight: bold;
       }
 
       .default-message {
@@ -291,8 +365,17 @@
             max_tokens: 1000,
           });
           const content = response.data.choices[0].message.content;
-          responseDiv.innerHTML = `<pre><code class="language-plaintext">${content}</code></pre>`;
-          hljs.highlightElement(responseDiv.querySelector("code"));
+
+          // Parse the Markdown content
+          const parsedContent = marked.parse(content);
+
+          // Set the parsed content to the response div
+          responseDiv.innerHTML = parsedContent;
+
+          // Highlight code blocks
+          document.querySelectorAll("pre code").forEach((block) => {
+            hljs.highlightElement(block);
+          });
         } catch (error) {
           responseDiv.textContent = "Error: " + error.message;
         }
