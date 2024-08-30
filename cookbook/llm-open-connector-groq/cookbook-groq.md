@@ -34,7 +34,7 @@ Before you begin, make sure that your local environment meets these prerequisite
    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
    ```
 
-3. Download these files from this repository.
+3. Download these files from this repository:
 
    - [.gitignore](.gitignore)
    - [app.py](app.py)
@@ -74,7 +74,7 @@ Before you begin, make sure that your local environment meets these prerequisite
 
 3. Test the endpoints using a tool like cURL or Postman to ensure they're working correctly.
 
-To test the `completions` endpoint, run this `curl` command. We're using Meta's Llama 3 8B model for this example, but you can use any of Groq's [supported models](https://console.groq.com/docs/models).
+To test the `completions` endpoint, run this cURL command. We're using Meta's Llama 3 8B model for this example, but you can use any of Groq's [supported models](https://console.groq.com/docs/models).
 
 ```bash
 curl -X POST http://127.0.0.1:5000/completions \
@@ -88,7 +88,7 @@ curl -X POST http://127.0.0.1:5000/completions \
 }'
 ```
 
-To test the `chat/completions` endpoint, run this `curl` command:
+To test the `chat/completions` endpoint, run this cURL command:
 
 ```bash
 curl -X POST http://127.0.0.1:5000/chat/completions \
