@@ -16,7 +16,7 @@ Before you begin, make sure that your local environment meets these prerequisite
 2. A Heroku account (sign up at https://signup.heroku.com/)
 3. Heroku CLI installed (https://devcenter.heroku.com/articles/heroku-cli)
 4. Git installed on your local machine
-5. A Groq API key (sign up for free at https://console.groq.com/)
+5. A Groq API key (sign up at https://console.groq.com/)
 
 ## Set Up Your Local Environment
 
