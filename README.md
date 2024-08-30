@@ -22,7 +22,7 @@ You can now use your LLM from anywhere that can access generative models from Ei
 
 See [Implement LLM Open Connector with Groq](./cookbook/llm-open-connector-groq/cookbook-groq.md) for a step-by-step guide to implementing an LLM Open Connector with the [Groq](https://groq.com/) platform for fast AI inference. This guide also covers how to deploy the connector as a Flask app on Heroku with a simple UI for testing.
 
-<img width="1131" alt="UI for LLM Open Connector" src="https://github.com/user-attachments/assets/920c63d8-0cd5-42da-83d8-1a36f9c7f801">
+<img width="978" alt="UI for LLM Open Connector" src="https://github.com/user-attachments/assets/306bc3ec-ba57-470a-9ccb-b3054475a4dc" />
 
 ## Models API
 
