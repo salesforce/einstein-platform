@@ -34,7 +34,7 @@ Before you begin, make sure that your local environment meets these prerequisite
    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
    ```
 
-3. Create these files in your project directory:
+3. Download these files from this repository.
 
    - [.gitignore](.gitignore)
    - [app.py](app.py)
@@ -43,7 +43,7 @@ Before you begin, make sure that your local environment meets these prerequisite
    - [requirements.txt](requirements.txt)
    - [runtime.txt](runtime.txt)
 
-4. Copy the contents of each file from the provided artifacts into the corresponding files in your project directory.
+4. Copy the downloaded files into your project directory.
 
 5. Install the required packages:
    ```
