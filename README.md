@@ -18,15 +18,15 @@ The BYOLLM Open Connector is a commitment to community-driven growth and innovat
 
 You can now use your LLM from anywhere that can access generative models from Einstein Studio.
 
+### Sample Implementation
+
+See [Implement LLM Open Connector with Groq](./cookbook/llm-open-connector-groq/cookbook-groq.md) for a step-by-step guide to implementing an LLM Open Connector with the [Groq](https://groq.com/) platform for fast AI inference. This guide also covers how to deploy the connector as a Flask app on Heroku.
+
 ## Models API
 
 The Models API connects your application to large language models (LLMs) through the Einstein Trust Layer. It supports the BYOLLM feature of Einstein Studio, including models created with the [LLM Open Connector](#llm-open-connector).
 
 To get started, see the [Models API Developer Guide](https://developer.salesforce.com/docs/einstein/genai/guide/models-api.html).
-
-## Sample Implementation
-
-See [Implement LLM Open Connector with Groq](./cookbook/llm-open-connector-groq/cookbook-groq.md) for a step-by-step guide to implementing an LLM Open Connector with the [Groq](https://groq.com/) platform for fast AI inference. This guide also covers how to deploy the connector as a Flask app on Heroku.
 
 ## Contribute
 
