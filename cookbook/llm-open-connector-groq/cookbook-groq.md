@@ -18,7 +18,7 @@ Before you begin, make sure that your local environment meets these prerequisite
 4. Git installed on your local machine
 5. A Groq API key (sign up for free at https://console.groq.com/)
 
-## Step 1: Set Up Your Local Environment
+## Set Up Your Local Environment
 
 1. Create a new directory for your project:
 
@@ -50,7 +50,7 @@ Before you begin, make sure that your local environment meets these prerequisite
    pip install -r requirements.txt
    ```
 
-## Step 2: Configure Your Local Environment
+## Configure Your Local Environment
 
 1. For local testing, create a `.env` file in your project directory and add your Groq API key:
 
@@ -62,7 +62,7 @@ Before you begin, make sure that your local environment meets these prerequisite
 
 2. Make sure your `.gitignore` file includes the `.env` file to avoid accidentally committing sensitive information.
 
-## Step 3: Test Your Application Locally
+## Test Your Application Locally
 
 1. Run your Flask application:
 
@@ -105,7 +105,7 @@ curl -X POST http://127.0.0.1:5000/chat/completions \
 }'
 ```
 
-## Step 4: Prepare for Heroku Deployment
+## Prepare for Heroku Deployment
 
 1. Initialize a Git repository in your project directory:
 
@@ -124,7 +124,7 @@ curl -X POST http://127.0.0.1:5000/chat/completions \
    git commit -m "Initial commit"
    ```
 
-## Step 5: Deploy to Heroku
+## Deploy to Heroku
 
 1. Make sure you're logged in to the Heroku CLI:
 
@@ -161,7 +161,7 @@ curl -X POST http://127.0.0.1:5000/chat/completions \
 
 Your LLM Open Connector should now be deployed and accessible via the Heroku URL.
 
-## Step 6: Test Your Deployed Application
+## Test Your Deployed Application
 
 You can test your deployed application in two ways:
 
