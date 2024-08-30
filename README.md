@@ -30,7 +30,7 @@ The Models API connects your application to large language models (LLMs) through
 
 To get started, see the [Models API Developer Guide](https://developer.salesforce.com/docs/einstein/genai/guide/models-api.html).
 
-## Policies for this Repo
+## Policies
 
 ### Contribute
 
