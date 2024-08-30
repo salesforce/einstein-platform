@@ -24,6 +24,10 @@ The Models API connects your application to large language models (LLMs) through
 
 To get started, see the [Models API Developer Guide](https://developer.salesforce.com/docs/einstein/genai/guide/models-api.html).
 
+## Sample Implementation
+
+The [Groq Cookbook](./cookbook/llm-open-connector-groq/cookbook-groq.md) provides a step-by-step guide to implementing an LLM Open Connector with the [Groq](https://groq.com/) platform for fast AI inference. This guide also shows you how to deploy the connector as a Flask app on Heroku.
+
 ## Contribute
 
 Your contributions to this repository are welcome! Refer to the [Contributing Guide](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) to get started.
