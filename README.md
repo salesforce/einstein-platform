@@ -26,7 +26,7 @@ To get started, see the [Models API Developer Guide](https://developer.salesforc
 
 ## Sample Implementation
 
-The [Groq Cookbook](./cookbook/llm-open-connector-groq/cookbook-groq.md) provides a step-by-step guide to implementing an LLM Open Connector with the [Groq](https://groq.com/) platform for fast AI inference. This guide also shows you how to deploy the connector as a Flask app on Heroku.
+See [Implement LLM Open Connector with Groq](./cookbook/llm-open-connector-groq/cookbook-groq.md) for a step-by-step guide to implementing an LLM Open Connector with the [Groq](https://groq.com/) platform for fast AI inference. This guide also covers how to deploy the connector as a Flask app on Heroku.
 
 ## Contribute
 
