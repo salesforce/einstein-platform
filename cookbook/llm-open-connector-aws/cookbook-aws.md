@@ -1,6 +1,6 @@
-# Implement LLM Open Connector with AWS
+# Implement LLM Open Connector with Amazon Web Services
 
-This cookbook demonstrates how to implement Salesforce's [LLM Open Connector](https://github.com/salesforce/einstein-platform?tab=readme-ov-file#llm-open-connector) using AWS Bedrock to host a Llama model from Meta. We'll use AWS Lambda for serverless compute and API Gateway to expose our API.
+This cookbook is a step-by-step guide to implementing Salesforce's [LLM Open Connector](https://github.com/salesforce/einstein-platform?tab=readme-ov-file#llm-open-connector) using Amazon Web Services (AWS). We use Amazon Bedrock to host a Llama model from Meta, a Lambda for serverless compute, and an API Gateway to expose our API.
 
 ## Prerequisites
 

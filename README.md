@@ -18,9 +18,12 @@ The BYOLLM Open Connector is a commitment to community-driven growth and innovat
 
 You can now use your LLM from anywhere that can access generative models from Einstein Studio.
 
-### Sample Implementation
+### Sample Implementations
 
-See [Implement LLM Open Connector with Groq](./cookbook/llm-open-connector-groq/cookbook-groq.md) for a step-by-step guide to implementing an LLM Open Connector with the [Groq](https://groq.com/) platform for fast AI inference.
+We've created a series of cookbooks with step-by-step instructions on how to implement the LLM Open Connector on a variety of platforms.
+
+- [Implement LLM Open Connector with Groq and Heroku](./cookbook/llm-open-connector-groq/cookbook-groq.md)
+- [Implement LLM Open Connector with Amazon Web Services](./cookbook/llm-open-connector-aws/cookbook-aws.md)
 
 ## Models API
 
