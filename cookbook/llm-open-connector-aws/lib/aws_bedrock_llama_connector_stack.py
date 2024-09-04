@@ -33,49 +33,37 @@ class AwsBedrockLlamaConnectorStack(Stack):
             description='This service provides an LLM Open Connector interface for Llama on AWS Bedrock.'
         )
 
-        # Create API Gateway resource and method with CORS enabled
+        # Create API Gateway resource and method for chat completions with CORS enabled
         chat_completions = api.root.add_resource('chat').add_resource('completions')
-        
-        # Enable CORS for the resource
-        chat_completions.add_method(
-            'POST',
-            apigateway.LambdaIntegration(bedrock_lambda),
-            authorization_type=apigateway.AuthorizationType.NONE,  # Change this if you plan to use authorization
+        self.add_cors_options(chat_completions)
+        chat_completions.add_method('POST', apigateway.LambdaIntegration(bedrock_lambda))
+
+        # Create API Gateway resource and method for completions with CORS enabled
+        completions = api.root.add_resource('completions')
+        self.add_cors_options(completions)
+        completions.add_method('POST', apigateway.LambdaIntegration(bedrock_lambda))
+
+    def add_cors_options(self, api_resource):
+        api_resource.add_method(
+            'OPTIONS',
+            apigateway.MockIntegration(
+                integration_responses=[{
+                    'statusCode': '200',
+                    'responseParameters': {
+                        'method.response.header.Access-Control-Allow-Headers': "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                        'method.response.header.Access-Control-Allow-Origin': "'*'",
+                        'method.response.header.Access-Control-Allow-Methods': "'OPTIONS,POST'"
+                    }
+                }],
+                passthrough_behavior=apigateway.PassthroughBehavior.NEVER,
+                request_templates={"application/json": "{\"statusCode\": 200}"}
+            ),
             method_responses=[{
                 'statusCode': '200',
                 'responseParameters': {
-                    'method.response.header.Access-Control-Allow-Origin': True,
                     'method.response.header.Access-Control-Allow-Headers': True,
                     'method.response.header.Access-Control-Allow-Methods': True,
+                    'method.response.header.Access-Control-Allow-Origin': True,
                 }
             }]
         )
-        
-        # Add CORS options to the resource if it doesn't already exist
-        try:
-            chat_completions.add_method(
-                'OPTIONS',
-                apigateway.MockIntegration(
-                    integration_responses=[{
-                        'statusCode': '200',
-                        'responseParameters': {
-                            'method.response.header.Access-Control-Allow-Origin': "'*'",
-                            'method.response.header.Access-Control-Allow-Headers': "'Content-Type,Authorization'",
-                            'method.response.header.Access-Control-Allow-Methods': "'OPTIONS,POST'",
-                        }
-                    }],
-                    passthrough_behavior=apigateway.PassthroughBehavior.WHEN_NO_MATCH,
-                    request_templates={"application/json": "{\"statusCode\": 200}"}
-                ),
-                method_responses=[{
-                    'statusCode': '200',
-                    'responseParameters': {
-                        'method.response.header.Access-Control-Allow-Origin': True,
-                        'method.response.header.Access-Control-Allow-Headers': True,
-                        'method.response.header.Access-Control-Allow-Methods': True,
-                    }
-                }]
-            )
-        except Exception as e:
-            print(f"OPTIONS method for 'chat/completions' already exists: {e}")
-
