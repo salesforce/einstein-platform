@@ -83,8 +83,14 @@ paths:
 components:
   securitySchemes:
     ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: api-key
+      description: "API key required to access the API, passed in the header."
+    BearerAuth:
       type: http
       scheme: "bearer"
+      description: "Bearer token authentication, typically using a JWT."
 
   schemas:
     Error:
