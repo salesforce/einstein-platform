@@ -11,7 +11,7 @@ The BYOLLM Open Connector is a commitment to community-driven growth and innovat
 ### Usage
 
 1. Clone this repository.
-2. Implement an HTTP REST service using the [LLM Open Connector OpenAPI specification](api-specs/llm-open-connector/llm-open-connector.yml). This specification contains three endpoints: `/completions`, `/chat/completions`, and `/embeddings`.
+2. Implement an HTTP REST service using the [LLM Open Connector OpenAPI specification](api-specs/llm-open-connector/llm-open-connector.yml). This service can contain three endpoints: `/completions`, `/chat/completions`, and `/embeddings`.
    - The `/completions` endpoint is used for simple text generation use cases. It is required for Einstein Studio.
    - The `/chat/completions` endpoint is used for chat-based use cases. It is required for Prompt Builder and Agentforce.
    - The `/embeddings` endpoint is used for embeddings use cases. It is optional.
