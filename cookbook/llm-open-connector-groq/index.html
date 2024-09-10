@@ -359,11 +359,19 @@
           '<div class="loading"><div class="spinner"></div></div>';
 
         try {
-          const response = await axios.post("/chat/completions", {
-            model: "llama3-8b-8192",
-            messages: [{ role: "user", content: prompt }],
-            max_tokens: 1000,
-          });
+          const response = await axios.post(
+            "/chat/completions",
+            {
+              model: "llama3-8b-8192",
+              messages: [{ role: "user", content: prompt }],
+              max_tokens: 1000,
+            },
+            {
+              headers: {
+                "api-key": "your-api-key-here",
+              },
+            }
+          );
           const content = response.data.choices[0].message.content;
 
           // Parse the Markdown content
