@@ -56,13 +56,31 @@ def create_completion():
         "n": data.get("n", 1),
     }
 
-    response = requests.post(
-        GROQ_API_URL,
-        headers={"Authorization": f"Bearer {GROQ_API_KEY}"},
-        json=groq_payload,
-    )
+    try:
+        response = requests.post(
+            GROQ_API_URL,
+            headers={"Authorization": f"Bearer {GROQ_API_KEY}"},
+            json=groq_payload,
+        )
+        response.raise_for_status()
+    except requests.RequestException as e:
+        error_message = f"Error calling Groq API: {str(e)}"
+        return jsonify({"error": {"message": error_message, "type": "api_error"}}), 500
 
-    groq_response = response.json()
+    try:
+        groq_response = response.json()
+    except ValueError:
+        return (
+            jsonify(
+                {
+                    "error": {
+                        "message": "Invalid JSON response from Groq API",
+                        "type": "api_error",
+                    }
+                }
+            ),
+            500,
+        )
 
     # Extract only the text content from the first choice
     text_content = groq_response["choices"][0]["message"]["content"].strip()
@@ -74,21 +92,24 @@ def create_completion():
         "total_tokens": groq_response["usage"]["total_tokens"],
     }
 
-    return jsonify(
-        {
-            "id": groq_response["id"],
-            "object": "text_completion",
-            "created": groq_response["created"],
-            "model": "llama3-8b-8192",
-            "choices": [
-                {
-                    "index": 0,
-                    "text": text_content,
-                    "finish_reason": groq_response["choices"][0]["finish_reason"],
-                }
-            ],
-            "usage": simplified_usage,
-        }
+    return (
+        jsonify(
+            {
+                "id": groq_response["id"],
+                "object": "text_completion",
+                "created": groq_response["created"],
+                "model": "llama3-8b-8192",
+                "choices": [
+                    {
+                        "index": 0,
+                        "text": text_content,
+                        "finish_reason": groq_response["choices"][0]["finish_reason"],
+                    }
+                ],
+                "usage": simplified_usage,
+            }
+        ),
+        200,
     )
 
 
@@ -99,7 +120,14 @@ def create_embedding():
         return error_response
 
     return (
-        jsonify({"error": "Embedding generation is not supported"}),
+        jsonify(
+            {
+                "error": {
+                    "message": "Embedding generation is not supported",
+                    "type": "unsupported_operation",
+                }
+            }
+        ),
         400,
     )
 
@@ -120,14 +148,33 @@ def create_chat_completion():
         "n": data.get("n", 1),
     }
 
-    response = requests.post(
-        GROQ_API_URL,
-        headers={"Authorization": f"Bearer {GROQ_API_KEY}"},
-        json=groq_payload,
-    )
+    try:
+        response = requests.post(
+            GROQ_API_URL,
+            headers={"Authorization": f"Bearer {GROQ_API_KEY}"},
+            json=groq_payload,
+        )
+        response.raise_for_status()
+    except requests.RequestException as e:
+        error_message = f"Error calling Groq API: {str(e)}"
+        return jsonify({"error": {"message": error_message, "type": "api_error"}}), 500
 
-    groq_response = response.json()
+    try:
+        groq_response = response.json()
+    except ValueError:
+        return (
+            jsonify(
+                {
+                    "error": {
+                        "message": "Invalid JSON response from Groq API",
+                        "type": "api_error",
+                    }
+                }
+            ),
+            500,
+        )
 
+    # Remove logprobs from choices
     choices = groq_response["choices"]
     for choice in choices:
         choice.pop("logprobs", None)
@@ -139,15 +186,18 @@ def create_chat_completion():
         "total_tokens": groq_response["usage"]["total_tokens"],
     }
 
-    return jsonify(
-        {
-            "id": groq_response["id"],
-            "object": "chat.completion",
-            "created": groq_response["created"],
-            "model": "llama3-8b-8192",
-            "choices": choices,
-            "usage": simplified_usage,
-        }
+    return (
+        jsonify(
+            {
+                "id": groq_response["id"],
+                "object": "chat.completion",
+                "created": groq_response["created"],
+                "model": "llama3-8b-8192",
+                "choices": choices,
+                "usage": simplified_usage,
+            }
+        ),
+        200,
     )
 
 
