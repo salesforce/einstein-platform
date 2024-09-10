@@ -9,15 +9,24 @@ app = Flask(__name__)
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
+APP_API_KEY = os.getenv("APP_API_KEY", "your-api-key-here")  # Set default if not in env
 
+def check_api_key():
+    api_key = request.headers.get('api-key')
+    if api_key != APP_API_KEY:
+        return jsonify({"error": "Invalid or missing API key"}), 401
+    return None
 
 @app.route("/")
 def home():
     return send_from_directory(".", "index.html")
 
-
 @app.route("/completions", methods=["POST"])
 def create_completion():
+    error_response = check_api_key()
+    if error_response:
+        return error_response
+
     data = request.json
     messages = [{"role": "user", "content": data["prompt"]}]
 
@@ -55,9 +64,12 @@ def create_completion():
         }
     )
 
-
 @app.route("/embeddings", methods=["POST"])
 def create_embedding():
+    error_response = check_api_key()
+    if error_response:
+        return error_response
+
     return (
         jsonify(
             {
@@ -67,9 +79,12 @@ def create_embedding():
         400,
     )
 
-
 @app.route("/chat/completions", methods=["POST"])
 def create_chat_completion():
+    error_response = check_api_key()
+    if error_response:
+        return error_response
+
     data = request.json
 
     groq_payload = {
@@ -87,7 +102,6 @@ def create_chat_completion():
     )
 
     return jsonify(response.json())
-
 
 if __name__ == "__main__":
     app.run(debug=True)
