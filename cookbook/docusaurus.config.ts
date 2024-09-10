@@ -1,6 +1,7 @@
 import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
+const path = require("path");
 
 const config: Config = {
   title: "Einstein Platform Cookbook",
@@ -55,6 +56,39 @@ const config: Config = {
         },
       } satisfies Preset.Options,
     ],
+    [
+      "redocusaurus",
+      {
+        config: path.join(__dirname, "redocly.yaml"),
+        // Plugin Options for loading OpenAPI files
+        specs: [
+          {
+            id: "llm-open-connector",
+            spec: "../api-specs/llm-open-connector/llm-open-connector.yml",
+            route: "/docs/apis/llm-open-connector",
+          },
+          {
+            id: "llm-gateway",
+            spec: "../api-specs/models/models.yaml",
+            route: "/docs/apis/models",
+          },
+        ],
+      },
+    ],
+  ],
+
+  themes: [
+    "@docusaurus/theme-mermaid",
+    // ... Your other themes.
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        // ... Your options.
+        ignoreFiles: [],
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        hashed: true,
+      },
+    ],
   ],
 
   themeConfig: {
@@ -74,6 +108,20 @@ const config: Config = {
           label: "Tutorial",
         },
         { to: "/blog", label: "Blog", position: "left" },
+        {
+          type: "dropdown",
+          label: "API Specs",
+          items: [
+            {
+              label: "LLM Open Connector",
+              to: "/docs/apis/llm-open-connector/",
+            },
+            {
+              label: "Models API",
+              to: "/docs/apis/models/",
+            },
+          ],
+        },
         {
           href: "https://github.com/salesforce/einstein-platform",
           label: "GitHub",
@@ -112,7 +160,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Salesforce, Inc. All rights reserved. Various trademarks held by their respective owners.  Salesforce, Inc. Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Salesforce, Inc. All rights reserved. Various trademarks held by their respective owners. Salesforce, Inc. Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States.`,
     },
     prism: {
       theme: prismThemes.github,
