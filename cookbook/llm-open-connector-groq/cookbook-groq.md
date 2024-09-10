@@ -183,4 +183,4 @@ You have successfully created and deployed an LLM Open Connector using the Groq 
 
 With this connector, you can bring new foundation models like Llama 3 into Einstein Studio that take advantage of Groq's fast inference platform.
 
-Remember to monitor your usage and costs associated with the Groq API, and consider implementing additional security measures, such as rate limiting and user authentication, before using this connector in a production environment.
+Remember to monitor your usage and costs associated with the Groq API, and consider implementing additional security measures, such as rate limiting, CORS restrictions, and user authentication, before using this connector in a production environment.
