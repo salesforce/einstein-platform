@@ -23,7 +23,7 @@ You can now use your LLM from anywhere that can access generative models from Ei
 We've created a series of cookbooks with step-by-step instructions on how to implement the LLM Open Connector on a variety of platforms.
 
 - [Implement LLM Open Connector with Groq and Heroku](./cookbook/llm-open-connector-groq/cookbook-groq.md)
-- [Implement LLM Open Connector with Amazon Web Services](./cookbook/llm-open-connector-aws/cookbook-aws.md)
+- Implement LLM Open Connector with Amazon Web Services (coming soon)
 
 ## Models API
 
