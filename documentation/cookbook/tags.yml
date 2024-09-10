@@ -1,0 +1,14 @@
+about:
+  label: about
+  permalink: /about
+  description: About tag
+
+recipes:
+  label: Hello
+  permalink: /hello
+  description: Hello tag
+
+welcome:
+  label: welcome
+  permalink: /welcome
+  description: Welcome tag
