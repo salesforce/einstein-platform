@@ -1,8 +1,7 @@
 ---
 slug: about
 title: About the Cookbook
-authors: [rsexton]
-tags: [about, recipes, welcome]
+tags: [welcome]
 date: 2024-09-10
 ---
 

@@ -1,14 +1,19 @@
-about:
-  label: about
-  permalink: /about
-  description: About tag
+groq:
+  label: groq
+  permalink: /groq
 
-recipes:
-  label: Hello
+hello:
+  label: hello
   permalink: /hello
-  description: Hello tag
+
+heroku:
+  label: heroku
+  permalink: /heroku
+
+llm-open-connector:
+  label: llm-open-connector
+  permalink: /llm-open-connector
 
 welcome:
-  label: welcome
+  label: 📌 welcome
   permalink: /welcome
-  description: Welcome tag
