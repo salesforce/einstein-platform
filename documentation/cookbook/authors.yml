@@ -1,8 +1,35 @@
 rsexton:
-  name: Richard Sexton
+  name: Richard
   title: Technical Writer @ Salesforce
   url: https://github.com/rsexton404
   image_url: https://github.com/rsexton404.png
   page: true
   socials:
     github: rsexton404
+
+dshadravan:
+  name: Darvish
+  title: Director, Product Management @ Salesforce
+  url: https://github.com/dshadravan
+  image_url: https://github.com/dshadravan.png
+  page: true
+  socials:
+    github: dshadravan
+
+tatedorman:
+  name: Tate
+  title: Technical Writer @ Salesforce
+  url: https://github.com/tatedorman
+  image_url: https://github.com/tatedorman.png
+  page: true
+  socials:
+    github: tatedorman
+
+sfyz:
+  name: Yuvi
+  title: Technical Writer @ Salesforce
+  url: https://github.com/sfyz
+  image_url: https://github.com/sfyz.png
+  page: true
+  socials:
+    github: sfyz
