@@ -11,12 +11,22 @@ The BYOLLM Open Connector is a commitment to community-driven growth and innovat
 ### Usage
 
 1. Clone this repository.
-2. Implement an HTTP REST service using the [LLM Open Connector OpenAPI specification](api-specs/llm-open-connector/llm-open-connector.yml).
+2. Implement an HTTP REST service using the [LLM Open Connector OpenAPI specification](api-specs/llm-open-connector/llm-open-connector.yml). This service can contain three endpoints: `/completions`, `/chat/completions`, and `/embeddings`.
+   - The `/completions` endpoint is used for simple text generation use cases. It is required for Einstein Studio.
+   - The `/chat/completions` endpoint is used for chat-based use cases. It is required for Prompt Builder and Agentforce.
+   - The `/embeddings` endpoint is used for embeddings use cases. It is optional.
 3. Test your service connection using Bring Your Own Large Language Model (BYOLLM) in Einstein 1 Studio.
    - Blog post: [Bring Your Own Large Language Model in Einstein 1 Studio](https://developer.salesforce.com/blogs/2024/03/bring-your-own-large-language-model-in-einstein-1-studio)
    - Help content: [Bring Your Own Large Language Model](https://help.salesforce.com/s/articleView?id=sf.c360_a_ai_foundation_models.htm)
 
 You can now use your LLM from anywhere that can access generative models from Einstein Studio.
+
+### Sample Implementations
+
+We've created a series of cookbooks with step-by-step instructions on how to implement the LLM Open Connector on a variety of platforms.
+
+- [Implement LLM Open Connector with Groq and Heroku](./cookbook/llm-open-connector-groq/cookbook-groq.md)
+- Implement LLM Open Connector with Amazon Web Services (coming soon)
 
 ## Models API
 
@@ -24,13 +34,15 @@ The Models API connects your application to large language models (LLMs) through
 
 To get started, see the [Models API Developer Guide](https://developer.salesforce.com/docs/einstein/genai/guide/models-api.html).
 
-## Contribute
+## Policies
+
+### Contribute
 
 Your contributions to this repository are welcome! Refer to the [Contributing Guide](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) to get started.
 
-If you like the projects that we've shared, consider adding a ⭐ on the GitHub Repo. It helps other people discover them!
+If you like the resources that you see here, consider adding a ⭐ on GitHub. It helps other people discover them!
 
-## Security
+### Security
 
 Please report any security issue to [security@salesforce.com](mailto:security@salesforce.com)
 as soon as it is discovered. This library limits its runtime dependencies in
@@ -38,7 +50,7 @@ order to reduce the total cost of ownership as much as can be, but all consumers
 should remain vigilant and have their security stakeholders review all third-party
 products (3PP) like this one and their dependencies.
 
-## License Info
+### License Info
 
 All code in this repository is licensed under an [Apache License v2](LICENSE) license.
 
@@ -65,6 +77,6 @@ The shorter version of license text must be added as a comment to all Salesforce
  */
 ```
 
-## Other Legal Disclaimers
+### Other Legal Disclaimers
 
 Rights of ALBERT EINSTEIN are used with permission of The Hebrew University of Jerusalem / [CMGWorldwide.com](http://cmgworldwide.com/).
