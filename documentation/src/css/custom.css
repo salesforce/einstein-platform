@@ -236,3 +236,12 @@ ol ol {
 ol ol ol {
   list-style-type: lower-roman;
 }
+
+h2 > a,
+h2 > a:hover {
+  color: var(--ifm-heading-color);
+}
+
+.sidebarItemTitle_node_modules-\@docusaurus-theme-classic-lib-theme-BlogSidebar-Desktop-styles-module {
+  color: var(--ifm-heading-color);
+}
