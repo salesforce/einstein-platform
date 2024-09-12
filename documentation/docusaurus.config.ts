@@ -122,7 +122,7 @@ const config: Config = {
         //   position: "left",
         //   label: "Tutorial",
         // },
-        // { to: "/blog", label: "Blog", position: "left" },
+        { to: "/cookbook", label: "Recipes", position: "left" },
         {
           type: "dropdown",
           label: "API Specs",
