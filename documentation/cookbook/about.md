@@ -6,9 +6,7 @@ tags: [welcome]
 
 The Einstein Platform Cookbook is where Salesforce shares example code for building with the Einstein Platform.
 
-Our first batch of recipes have arrived! Both recipes offer step-by-step instructions for implementing the LLM Open Connector with an API gateway, each with a different AI platform. More are in the works featuring new AI platforms and system architectures!
-
-### Contribute
+Our first batch of recipes have arrived! These recipes include step-by-step instructions for implementing the LLM Open Connector with an API gateway, each featuring a different AI platform. More recipes are in the works featuring new AI platforms and system architectures!
 
 Your contributions to the Cookbook and the [einstein-platform](https://github.com/salesforce/einstein-platform) repository are welcome! Refer to the [Contributing Guide](https://github.com/salesforce/einstein-platform/blob/init/CONTRIBUTING.md) and [Code of Conduct](https://github.com/salesforce/einstein-platform/blob/init/CODE_OF_CONDUCT.md) to get started.
 

@@ -16,6 +16,15 @@ dshadravan:
   socials:
     github: dshadravan
 
+oleksm:
+  name: Oleksandr
+  title: Software Engineer @ Salesforce
+  url: https://github.com/oleksm
+  image_url: https://github.com/oleksm.png
+  page: true
+  socials:
+    github: oleksm
+
 tatedorman:
   name: Tate
   title: Technical Writer @ Salesforce
