@@ -1,6 +1,6 @@
 ---
 slug: aws
-authors: [dshadravan, rsexton]
+authors: [rsexton]
 tags: [aws, bedrock, llm-open-connector]
 date: 2024-09-9
 ---

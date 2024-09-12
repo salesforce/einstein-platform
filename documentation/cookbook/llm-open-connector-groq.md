@@ -1,13 +1,13 @@
 ---
 slug: groq
-authors: [rsexton, sfyz]
+authors: [rsexton]
 tags: [groq, heroku, llm-open-connector]
 date: 2024-09-9
 ---
 
 # LLM Open Connector + Groq
 
-Learn how to implement Salesforce's [LLM Open Connector](https://github.com/salesforce/einstein-platform?tab=readme-ov-file#llm-open-connector) with the [Groq](https://groq.com/) platform for fast AI inference. We also cover how to deploy the connector as a Flask app on Heroku with a simple UI for testing.
+Learn how to implement Salesforce's [LLM Open Connector](https://github.com/salesforce/einstein-platform?tab=readme-ov-file#llm-open-connector) with the [Groq](https://groq.com/) platform for fast AI inference. We also cover how to deploy the connector as a Flask app on Heroku with a simple web UI for testing.
 
 <!-- truncate -->
 
