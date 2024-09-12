@@ -1,5 +1,5 @@
 ---
-authors: [dshadravan]
+authors: [dshadravan, oleksm]
 date: 2024-09-10
 slug: open-connector
 tags: [llm-open-connector]
