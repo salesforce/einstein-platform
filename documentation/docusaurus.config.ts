@@ -45,7 +45,6 @@ const config: Config = {
           path: "cookbook",
           routeBasePath: "cookbook",
           blogTitle: "Recipes",
-          blogDescription: "TKTK",
           blogSidebarCount: 5,
           blogSidebarTitle: "Recent Recipes",
           postsPerPage: "ALL",
