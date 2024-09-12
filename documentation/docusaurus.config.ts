@@ -45,7 +45,6 @@ const config: Config = {
           path: "cookbook",
           routeBasePath: "cookbook",
           blogTitle: "Recipes",
-          blogDescription: "TKTK",
           blogSidebarCount: 5,
           blogSidebarTitle: "Recent Recipes",
           postsPerPage: "ALL",
@@ -61,6 +60,9 @@ const config: Config = {
         },
         theme: {
           customCss: "./src/css/custom.css",
+        },
+        googleTagManager: {
+          containerId: "GTM-PBBJDJ9C",
         },
       } satisfies Preset.Options,
     ],
@@ -100,6 +102,11 @@ const config: Config = {
   ],
 
   themeConfig: {
+    blog: {
+      sidebar: {
+        groupByYear: false,
+      },
+    },
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     navbar: {
@@ -115,7 +122,7 @@ const config: Config = {
         //   position: "left",
         //   label: "Tutorial",
         // },
-        // { to: "/blog", label: "Blog", position: "left" },
+        { to: "/cookbook", label: "Recipes", position: "left" },
         {
           type: "dropdown",
           label: "API Specs",
