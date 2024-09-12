@@ -11,8 +11,6 @@ Learn how to implement Salesforce's [LLM Open Connector](https://github.com/sale
 
 <!-- truncate -->
 
-<img width="978" alt="UI for LLM Open Connector" src="https://github.com/user-attachments/assets/306bc3ec-ba57-470a-9ccb-b3054475a4dc" />
-
 ## Prerequisites
 
 Before you begin, make sure that your local environment meets these prerequisites.
@@ -39,14 +37,14 @@ Before you begin, make sure that your local environment meets these prerequisite
    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
    ```
 
-3. Download these files from this repository:
+3. Download these files from the einstein-platform repository:
 
-   - [.gitignore](.gitignore)
-   - [app.py](app.py)
-   - [index.html](index.html)
-   - [Procfile](Procfile)
-   - [requirements.txt](requirements.txt)
-   - [runtime.txt](runtime.txt)
+   - [.gitignore](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-groq/.gitignore)
+   - [app.py](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-groq/app.py)
+   - [index.html](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-groq/index.html)
+   - [Procfile](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-groq/Procfile)
+   - [requirements.txt](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-groq/requirements.txt)
+   - [runtime.txt](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-groq/runtime.txt)
 
 4. Copy the downloaded files into your project directory.
 
