@@ -99,6 +99,8 @@ const config: Config = {
         hashed: true,
         indexBlog: true,
         blogDir: "cookbook",
+        blogRouteBasePath: "/cookbook",
+        indexDocs: false,
       },
     ],
   ],
