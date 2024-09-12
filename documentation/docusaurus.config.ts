@@ -97,6 +97,8 @@ const config: Config = {
         ignoreFiles: [],
         // `hashed` is recommended as long-term-cache of index file is possible.
         hashed: true,
+        indexBlog: true,
+        blogDir: "cookbook",
       },
     ],
   ],
