@@ -1,3 +1,11 @@
+aws:
+  label: aws
+  permalink: /aws
+
+bedrock:
+  label: bedrock
+  permalink: /bedrock
+
 groq:
   label: groq
   permalink: /groq

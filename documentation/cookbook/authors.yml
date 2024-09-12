@@ -25,14 +25,14 @@ oleksm:
   socials:
     github: oleksm
 
-tatedorman:
-  name: Tate
-  title: Technical Writer @ Salesforce
-  url: https://github.com/tatedorman
-  image_url: https://github.com/tatedorman.png
-  page: true
-  socials:
-    github: tatedorman
+# tatedorman:
+#   name: Tate
+#   title: Technical Writer @ Salesforce
+#   url: https://github.com/tatedorman
+#   image_url: https://github.com/tatedorman.png
+#   page: true
+#   socials:
+#     github: tatedorman
 
 sfyz:
   name: Yuvi
