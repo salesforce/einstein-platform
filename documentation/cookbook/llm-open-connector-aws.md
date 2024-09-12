@@ -47,16 +47,18 @@ Before deploying and using the LLM Open Connector, you need to set up access to 
    cd aws-bedrock-llama-connector
    ```
 
-2. Copy these files in this repository to the new directory.
+2. Download from the einstein-platform repository:
 
-   - [lib/aws_bedrock_llama_connector_stack.py](lib/aws_bedrock_llama_connector_stack.py)
-   - [lambda/handler.py](lambda/handler.py)
-   - [app.py](app.py)
-   - [cdk.json](cdk.json)
-   - [index.html](index.html)
-   - [requirements.txt](requirements.txt)
+   - [lib/aws_bedrock_llama_connector_stack.py](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-aws/lib/aws_bedrock_llama_connector_stack.py)
+   - [lambda/handler.py](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-aws/lambda/handler.py)
+   - [app.py](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-aws/app.py)
+   - [cdk.json](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-aws/cdk.json)
+   - [index.html](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-aws/index.html)
+   - [requirements.txt](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-aws/requirements.txt)
 
-3. Create a virtual environment and install Python dependencies:
+3. Copy the downloaded files into your project directory.
+
+4. Create a virtual environment and install Python dependencies:
 
    ```
    python -m venv venv
@@ -142,7 +144,7 @@ This cUrl command sends a POST request to your API with the specified JSON paylo
 
 ## Testing with a Web UI
 
-Use the included [index.html](index.html) file to test your API gateway with a web UI.
+Use the included [index.html](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-aws/index.html) file to test your API gateway with a web UI.
 
 Before using the web UI, edit the file and replace `https://your-api-id.execute-api.your-region.amazonaws.com/prod` with the actual URL of your deployed API Gateway, which you can find in the AWS Console or in the output of the `cdk deploy` command.
 
