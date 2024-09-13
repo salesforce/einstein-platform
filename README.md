@@ -8,7 +8,7 @@ As a companion to this repo, the [Einstein Platform Cookbook](https://opensource
 
 Sample content:
 
-- [LLM Open Connector + Amazon Web Services](https://opensource.salesforce.com/einstein-platform/aws) (coming soon)
+- [LLM Open Connector + Amazon Web Services](https://opensource.salesforce.com/einstein-platform/aws)
 - [LLM Open Connector + Groq](https://opensource.salesforce.com/einstein-platform/groq)
 
 ## LLM Open Connector
