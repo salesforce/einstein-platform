@@ -1,6 +1,6 @@
 ---
 slug: about
-title: 📌 About the Cookbook
+title: About the Cookbook 📖
 tags: [welcome]
 ---
 
