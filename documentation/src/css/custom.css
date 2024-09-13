@@ -245,3 +245,7 @@ h2 > a:hover {
 .sidebarItemTitle_node_modules-\@docusaurus-theme-classic-lib-theme-BlogSidebar-Desktop-styles-module {
   color: var(--ifm-heading-color);
 }
+
+.cookieSettingsLink {
+  color: var(--ifm-footer-link-color);
+}
