@@ -246,6 +246,9 @@ h2 > a:hover {
   color: var(--ifm-heading-color);
 }
 
-.cookieSettingsLink {
+.cookieSettingsButton {
   color: var(--ifm-footer-link-color);
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0;
 }
