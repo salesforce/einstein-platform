@@ -38,12 +38,12 @@ const config: Config = {
     [
       "@docusaurus/preset-classic",
       {
-        docs: {
-          sidebarPath: "./sidebars.ts",
-        },
+        docs: false,
         blog: {
           path: "cookbook",
-          routeBasePath: "cookbook",
+          routeBasePath: "/",
+          blogDescription:
+            "Example code for building with the Einstein Platform",
           blogTitle: "Recipes",
           blogSidebarCount: 5,
           blogSidebarTitle: "Recent Recipes",
@@ -98,9 +98,9 @@ const config: Config = {
         // `hashed` is recommended as long-term-cache of index file is possible.
         hashed: true,
         indexBlog: true,
-        blogDir: "cookbook",
-        blogRouteBasePath: "/cookbook",
         indexDocs: false,
+        blogDir: "cookbook",
+        blogRouteBasePath: "/",
       },
     ],
   ],
@@ -120,13 +120,7 @@ const config: Config = {
         src: "img/logo.svg",
       },
       items: [
-        // {
-        //   type: "docSidebar",
-        //   sidebarId: "tutorialSidebar",
-        //   position: "left",
-        //   label: "Tutorial",
-        // },
-        { to: "/cookbook", label: "Recipes", position: "left" },
+        { to: "/", label: "Recipes", position: "left" },
         {
           type: "dropdown",
           label: "API Specs",
@@ -156,7 +150,7 @@ const config: Config = {
           items: [
             {
               label: "Recent Recipes",
-              to: "/cookbook",
+              to: "/",
             },
             {
               label: "LLM Open Connector API Spec",
