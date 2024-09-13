@@ -4,7 +4,7 @@ Artificial intelligence is becoming increasingly personalized and specialized. A
 
 ## Cookbook
 
-As a companion to this repo, the [Einstein Platform Cookbook](https://opensource.salesforce.com/einstein-platform/) features sample code, recipes, and formatted versions of the API specifications-by-step instructions on how to implement the LLM Open Connector on a variety of platforms.
+As a companion to this repo, the [Einstein Platform Cookbook](https://opensource.salesforce.com/einstein-platform/) features sample code, recipes, and formatted versions of the API specifications.
 
 Sample content:
 
