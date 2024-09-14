@@ -237,6 +237,11 @@ ol ol ol {
   list-style-type: lower-roman;
 }
 
+h1,
+.title_f1Hy {
+  font-size: var(--ifm-h1-font-size) !important;
+}
+
 h2 > a,
 h2 > a:hover {
   color: var(--ifm-heading-color);
