@@ -161,7 +161,8 @@ const config: Config = {
               to: "/docs/apis/models",
             },
             {
-              html: `<a href="#cookie-settings" data-cc="c-settings" class="cookieSettingsLink">Cookie Settings</a>`,
+              label: "Cookie Settings",
+              to: "#",
             },
           ],
         },
