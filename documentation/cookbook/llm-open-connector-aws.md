@@ -2,10 +2,10 @@
 slug: aws
 authors: [rsexton]
 tags: [aws, bedrock, llm-open-connector]
-date: 2024-09-9
+date: 2024-09-14
 ---
 
-# LLM Open Connector + Amazon Web Services
+# LLM Open Connector + AWS
 
 Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) using Amazon Web Services (AWS). We use Amazon Bedrock to host a Llama model from Meta, a Lambda for serverless compute, and an API Gateway to expose our API.
 
