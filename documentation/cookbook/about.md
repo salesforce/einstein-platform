@@ -11,9 +11,3 @@ Our first batch of recipes have arrived! These recipes include step-by-step inst
 Your contributions to the Cookbook and the open-source repository are welcome! Refer to the [Contributing Guide](https://github.com/salesforce/einstein-platform/blob/init/CONTRIBUTING.md) and [Code of Conduct](https://github.com/salesforce/einstein-platform/blob/init/CODE_OF_CONDUCT.md) to get started.
 
 If you like the resources that you see here, consider adding a ⭐ on GitHub. It helps other people discover them!
-
-## Common Evaluation Steps
-
-| Use Case                                         | Assert Param | Example                                                                                                                               |
-| ------------------------------------------------ | ------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
-| Check the latency of the request in milliseconds | `$.latency`  | ```{ "type": "EvaluationStep", "target": "assert", "parameters": { "actual": "$.latency", "operator": "less_than", "expected": 200 } }``` |
