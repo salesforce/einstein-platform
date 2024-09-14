@@ -26,6 +26,8 @@ paths:
       tags:
         - Completions
       summary: Creates a completion for the provided prompt and parameters.
+      security:
+        - ApiKeyAuth: []
       requestBody:
         required: true
         content:
@@ -46,6 +48,8 @@ paths:
       tags:
         - Embeddings
       summary: Creates an embedding vector representing the input text.
+      security:
+        - ApiKeyAuth: []
       requestBody:
         required: true
         content:
@@ -66,6 +70,8 @@ paths:
       tags:
         - Chat
       summary: Creates a model response for the given chat conversation.
+      security:
+        - ApiKeyAuth: []
       requestBody:
         required: true
         content:
@@ -338,7 +344,7 @@ components:
           items:
             $ref: "#/components/schemas/ChatCompletionRequestMessage"
         model:
-          description: ID of the model to use. See the [model endpoint compatibility](/docs/models/model-endpoint-compatibility) table for details on which models work with the Chat API.
+          description: ID of the model to use.
           example: "gpt-4-turbo"
           type: string
         max_tokens:
