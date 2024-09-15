@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LLM Open Connector Tester for AWS</title>
+    <title>LLM Open Connector Tester for SambaNova</title>
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>"
@@ -303,7 +303,7 @@
     <div class="header">
       <div class="logo">
         <i class="fas fa-robot"></i>
-        <h1>LLM Open Connector Tester for AWS</h1>
+        <h1>LLM Open Connector Tester for SambaNova</h1>
       </div>
 
       <button id="darkModeToggle" class="dark-mode-toggle">
@@ -350,108 +350,110 @@
     <div id="response"></div>
 
     <script>
-                  const darkModeToggle = document.getElementById('darkModeToggle')
-                  const body = document.body
-                  const promptTextarea = document.getElementById('prompt')
-                  const charCount = document.querySelector('.char-count')
-                  const clearButton = document.getElementById('clearButton')
-                  const form = document.getElementById('promptForm')
-                  const responseDiv = document.getElementById('response')
-                  const defaultMessage =
-                      '<div class="default-message">Your generated response will appear here. Enter a prompt above and click "Generate Response" to start.</div>'
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      const body = document.body;
+      const promptTextarea = document.getElementById("prompt");
+      const charCount = document.querySelector(".char-count");
+      const clearButton = document.getElementById("clearButton");
+      const form = document.getElementById("promptForm");
+      const responseDiv = document.getElementById("response");
+      const defaultMessage =
+        '<div class="default-message">Your generated response will appear here. Enter a prompt above and click "Generate Response" to start.</div>';
 
-                  // Set default message on page load
-                  responseDiv.innerHTML = defaultMessage
+      // Set default message on page load
+      responseDiv.innerHTML = defaultMessage;
 
-                  darkModeToggle.addEventListener('click', () => {
-                      body.classList.toggle('dark-mode')
-                      darkModeToggle.innerHTML = body.classList.contains('dark-mode')
-                          ? '<i class="fas fa-sun"></i>'
-                          : '<i class="fas fa-moon"></i>'
-                  })
+      darkModeToggle.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+        darkModeToggle.innerHTML = body.classList.contains("dark-mode")
+          ? '<i class="fas fa-sun"></i>'
+          : '<i class="fas fa-moon"></i>';
+      });
 
-                  promptTextarea.addEventListener('input', () => {
-                      const length = promptTextarea.value.length
-                      charCount.textContent = `${length} / 500`
-                  })
+      promptTextarea.addEventListener("input", () => {
+        const length = promptTextarea.value.length;
+        charCount.textContent = `${length} / 500`;
+      });
 
-                  // Add event listener for Enter key
-                  promptTextarea.addEventListener('keydown', (e) => {
-                      if (e.key === 'Enter' && !e.shiftKey) {
-                          e.preventDefault() // Prevent default behavior (newline)
-                          form.dispatchEvent(new Event('submit')) // Trigger form submission
-                      }
-                  })
+      // Add event listener for Enter key
+      promptTextarea.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+          e.preventDefault(); // Prevent default behavior (newline)
+          form.dispatchEvent(new Event("submit")); // Trigger form submission
+        }
+      });
 
-                  clearButton.addEventListener('click', () => {
-                      promptTextarea.value = ''
-                      responseDiv.innerHTML = defaultMessage
-                      charCount.textContent = '0 / 500'
-                  })
+      clearButton.addEventListener("click", () => {
+        promptTextarea.value = "";
+        responseDiv.innerHTML = defaultMessage;
+        charCount.textContent = "0 / 500";
+      });
 
-                  form.addEventListener('submit', async (e) => {
-                      e.preventDefault()
-                      const prompt = promptTextarea.value.trim()
-                      if (!prompt) return // Don't submit if the prompt is empty
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const prompt = promptTextarea.value.trim();
+        if (!prompt) return; // Don't submit if the prompt is empty
 
-                      responseDiv.innerHTML = '<div class="loading"><div class="spinner"></div></div>'
-                      const API_GATEWAY_URL = 'https://your-api-id.execute-api.your-region.amazonaws.com/prod';
-      '
+        responseDiv.innerHTML =
+          '<div class="loading"><div class="spinner"></div></div>';
+        const API_GATEWAY_URL = "";
 
-                      // Get the selected endpoint
-                      const endpoint = document.querySelector('input[name="endpoint"]:checked').value
+        // Get the selected endpoint
+        const endpoint = document.querySelector(
+          'input[name="endpoint"]:checked'
+        ).value;
 
-                      let url = ''
-                      let data = {}
+        let url = "";
+        let data = {};
 
-                      if (endpoint === 'chat') {
-                          url = `${API_GATEWAY_URL}/prod/chat/completions`
-                          data = {
-                              messages: [{role: 'user', content: prompt}],
-                              temperature: 0.5,
-                              max_tokens: 1000,
-                          }
-                      } else {
-                          url = `${API_GATEWAY_URL}/prod/completions`
-                          data = {
-                              prompt: prompt,
-                              temperature: 0.5,
-                              max_tokens: 1000,
-                          }
-                      }
+        if (endpoint === "chat") {
+          url = `${API_GATEWAY_URL}/prod/chat/completions`;
+          data = {
+            messages: [{ role: "user", content: prompt }],
+            temperature: 0.5,
+            max_tokens: 1000,
+          };
+        } else {
+          url = `${API_GATEWAY_URL}/prod/completions`;
+          data = {
+            prompt: prompt,
+            temperature: 0.5,
+            max_tokens: 1000,
+          };
+        }
 
-                      try {
-                          const response = await axios.post(url, data, {
-                              headers: {
-                                  'api-key': 'your-api-key-here',
-                              },
-                          })
+        try {
+          const response = await axios.post(url, data, {
+            headers: {
+              "api-key": "your-api-key-here",
+            },
+          });
 
-                          let content = ''
+          let content = "";
 
-                          if (endpoint === 'chat') {
-                              content = response.data.choices[0].message.content
-                          } else {
-                              content = response.data.choices[0].text
-                          }
+          if (endpoint === "chat") {
+            content = response.data.choices[0].message.content;
+          } else {
+            content = response.data.choices[0].text;
+          }
 
-                          // Parse the Markdown content
-                          const parsedContent = marked.parse(content)
+          // Parse the Markdown content
+          const parsedContent = marked.parse(content);
 
-                          // Set the parsed content to the response div
-                          responseDiv.innerHTML = parsedContent
+          // Set the parsed content to the response div
+          responseDiv.innerHTML = parsedContent;
 
-                          // Highlight code blocks
-                          document.querySelectorAll('pre code').forEach((block) => {
-                              hljs.highlightElement(block)
-                          })
-                      } catch (error) {
-                          responseDiv.textContent = 'Error: ' + error.message
-                      }
-                  })
+          // Highlight code blocks
+          document.querySelectorAll("pre code").forEach((block) => {
+            hljs.highlightElement(block);
+          });
+        } catch (error) {
+          responseDiv.textContent = "Error: " + error.message;
+        }
+      });
 
-                  // Initialize highlight.js
-                  hljs.highlightAll()
+      // Initialize highlight.js
+      hljs.highlightAll();
     </script>
   </body>
 </html>

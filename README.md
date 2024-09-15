@@ -2,6 +2,16 @@
 
 Artificial intelligence is becoming increasingly personalized and specialized. At Salesforce we recognize the growing need for businesses and developers to integrate their chosen large language models (LLMs) into the Einstein AI Platform. To address this need, we're sharing API specifications, sample code, and other developer tools with the open-source community.
 
+## Cookbook
+
+As a companion to this repo, the [Einstein Platform Cookbook](https://opensource.salesforce.com/einstein-platform/) features sample code, recipes, and formatted versions of the API specifications.
+
+Sample content:
+
+- [LLM Open Connector API Specification](https://opensource.salesforce.com/einstein-platform/docs/apis/llm-open-connector)
+- [LLM Open Connector + Amazon Web Services](https://opensource.salesforce.com/einstein-platform/aws)
+- [LLM Open Connector + Groq](https://opensource.salesforce.com/einstein-platform/groq)
+
 ## LLM Open Connector
 
 The Bring Your Own Large Language Model (BYOLLM) Open Connector is designed to provide powerful AI solutions to customers, independent software vendors (ISVs), and internal Salesforce teams. With this connector, you can connect the Einstein AI Platform to any language model, including custom-built models.
@@ -20,13 +30,6 @@ The BYOLLM Open Connector is a commitment to community-driven growth and innovat
    - Help content: [Bring Your Own Large Language Model](https://help.salesforce.com/s/articleView?id=sf.c360_a_ai_foundation_models.htm)
 
 You can now use your LLM from anywhere that can access generative models from Einstein Studio.
-
-### Sample Implementations
-
-We've created a series of cookbooks with step-by-step instructions on how to implement the LLM Open Connector on a variety of platforms.
-
-- [Implement LLM Open Connector with Groq and Heroku](./cookbook/llm-open-connector-groq/cookbook-groq.md)
-- Implement LLM Open Connector with Amazon Web Services (coming soon)
 
 ## Models API
 

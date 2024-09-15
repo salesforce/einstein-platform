@@ -38,12 +38,12 @@ const config: Config = {
     [
       "@docusaurus/preset-classic",
       {
-        docs: {
-          sidebarPath: "./sidebars.ts",
-        },
+        docs: false,
         blog: {
           path: "cookbook",
-          routeBasePath: "cookbook",
+          routeBasePath: "/",
+          blogDescription:
+            "Example code for building with the Einstein Platform",
           blogTitle: "Recipes",
           blogSidebarCount: 5,
           blogSidebarTitle: "Recent Recipes",
@@ -97,6 +97,10 @@ const config: Config = {
         ignoreFiles: [],
         // `hashed` is recommended as long-term-cache of index file is possible.
         hashed: true,
+        indexBlog: true,
+        indexDocs: false,
+        blogDir: "cookbook",
+        blogRouteBasePath: "/",
       },
     ],
   ],
@@ -116,13 +120,7 @@ const config: Config = {
         src: "img/logo.svg",
       },
       items: [
-        // {
-        //   type: "docSidebar",
-        //   sidebarId: "tutorialSidebar",
-        //   position: "left",
-        //   label: "Tutorial",
-        // },
-        { to: "/cookbook", label: "Recipes", position: "left" },
+        { to: "/", label: "Recipes", position: "left" },
         {
           type: "dropdown",
           label: "API Specs",
@@ -146,36 +144,69 @@ const config: Config = {
     },
     footer: {
       style: "dark",
-      // links: [
-      //   {
-      //     title: "Docs",
-      //     items: [
-      //       {
-      //         label: "Tutorial",
-      //         to: "/docs/intro",
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     title: "Community",
-      //     items: [
-      //       {
-      //         label: "GitHub",
-      //         href: "https://github.com/salesforce/einstein-platform",
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     title: "More",
-      //     items: [
-      //       {
-      //         label: "Blog",
-      //         to: "/blog",
-      //       },
-      //     ],
-      //   },
-      // ],
-      copyright: `<small>Copyright © ${new Date().getFullYear()} Salesforce, Inc. All rights reserved. Various trademarks held by their respective owners. <br />Salesforce, Inc. Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States.</small>`,
+      links: [
+        {
+          title: "Einstein Platform Cookbook",
+          items: [
+            {
+              label: "Recent Recipes",
+              to: "/",
+            },
+            {
+              label: "LLM Open Connector API Spec",
+              to: "/docs/apis/llm-open-connector",
+            },
+            {
+              label: "Models API Spec",
+              to: "/docs/apis/models",
+            },
+            {
+              label: "Cookie Settings",
+              to: "#",
+            },
+          ],
+        },
+        {
+          title: "Salesforce Developers",
+          items: [
+            {
+              label: "Models API Dev Guide",
+              href: "https://developer.salesforce.com/docs/einstein/genai/guide/models-api.html",
+            },
+          ],
+        },
+        {
+          title: "Salesforce Help",
+          items: [
+            {
+              label: "Einstein Generative AI",
+              href: "https://help.salesforce.com/s/articleView?id=sf.generative_ai_about.htm",
+            },
+            {
+              label: "Agentforce",
+              href: "https://help.salesforce.com/s/articleView?id=sf.copilot_intro.htm",
+            },
+            {
+              label: "Model Builder",
+              href: "https://help.salesforce.com/s/articleView?id=sf.c360_a_ai_use_ai_models.htm",
+            },
+            {
+              label: "Prompt Builder",
+              href: "https://help.salesforce.com/s/articleView?id=sf.prompt_builder_about.htm",
+            },
+          ],
+        },
+        {
+          title: "GitHub",
+          items: [
+            {
+              label: "Einstein Platform Repo",
+              href: "https://github.com/salesforce/einstein-platform",
+            },
+          ],
+        },
+      ],
+      copyright: `<div class="margin-top--xl"><small>Copyright © ${new Date().getFullYear()} Salesforce, Inc. All rights reserved. Various trademarks held by their respective owners. <br />Salesforce, Inc. Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States.</small></div>`,
     },
     prism: {
       theme: prismThemes.github,

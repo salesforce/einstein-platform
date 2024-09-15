@@ -1,13 +1,13 @@
 ---
-slug: groq
+slug: sambanova
 authors: [rsexton]
-tags: [groq, heroku, llm-open-connector]
-date: 2024-09-13
+tags: [heroku, llm-open-connector, sambanova]
+date: 2024-09-12
 ---
 
-# LLM Open Connector + Groq
+# LLM Open Connector + SambaNova
 
-Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) with the [Groq](https://groq.com/) platform for fast AI inference. We also cover how to deploy the connector as a Flask app on Heroku with a simple web UI for testing.
+Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) with the [SambaNova](https://sambanova.ai/) platform for fast AI inference. We also cover how to deploy the connector as a Flask app on Heroku with a simple web UI for testing.
 
 <!-- truncate -->
 
@@ -19,7 +19,7 @@ Before you begin, make sure that your local environment meets these prerequisite
 2. A Heroku account (sign up at https://signup.heroku.com/)
 3. Heroku CLI installed (https://devcenter.heroku.com/articles/heroku-cli)
 4. Git installed on your local machine
-5. A Groq API key (sign up at https://console.groq.com/)
+5. A SambaNova API key (sign up at https://sambanova.ai/)
 
 ## Set Up Your Local Environment
 
@@ -39,12 +39,12 @@ Before you begin, make sure that your local environment meets these prerequisite
 
 3. Download these files from the einstein-platform repository:
 
-   - [.gitignore](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-groq/.gitignore)
-   - [app.py](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-groq/app.py)
-   - [index.html](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-groq/index.html)
-   - [Procfile](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-groq/Procfile)
-   - [requirements.txt](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-groq/requirements.txt)
-   - [runtime.txt](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-groq/runtime.txt)
+   - [.gitignore](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-sambanova/.gitignore)
+   - [app.py](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-sambanova/app.py)
+   - [index.html](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-sambanova/index.html)
+   - [Procfile](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-sambanova/Procfile)
+   - [requirements.txt](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-sambanova/requirements.txt)
+   - [runtime.txt](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-sambanova/runtime.txt)
 
 4. Copy the downloaded files into your project directory.
 
@@ -55,13 +55,13 @@ Before you begin, make sure that your local environment meets these prerequisite
 
 ## Configure Your Local Environment
 
-1. For local testing, create a `.env` file in your project directory and add your Groq API key:
+1. For local testing, create a `.env` file in your project directory and add your API key:
 
    ```
-   GROQ_API_KEY=your_groq_api_key_here
+   API_KEY=your_api_key_here
    ```
 
-   Replace `your_groq_api_key_here` with your actual Groq API key.
+   Replace `your_api_key_here` with your actual API key.
 
 2. Make sure your `.gitignore` file includes the `.env` file to avoid accidentally committing sensitive information.
 
@@ -77,17 +77,15 @@ Before you begin, make sure that your local environment meets these prerequisite
 
 3. Test the endpoints using a tool like cURL or Postman to ensure they're working correctly.
 
-To test the `completions` endpoint, run this cURL command. We're using Meta's Llama 3 8B model for this example, but you can use any of Groq's [supported models](https://console.groq.com/docs/models).
+To test the `completions` endpoint, run this cURL command. We're using Meta's Llama 3 8B model for this example, but you can use any of SambaNova's [supported models](https://cloud.sambanova.ai/).
 
 ```bash
 curl -X POST http://127.0.0.1:5000/completions \
 -H "Content-Type: application/json" \
 -d '{
-  "model": "llama3-8b-8192",
+  "model": "Meta-Llama-3.1-8B-Instruct",
   "prompt": "Invent 31 fun names for ice cream flavours and prefix each name with an appropriate emoji.",
-  "max_tokens": 50,
   "temperature": 0.7,
-  "n": 1
 }'
 ```
 
@@ -97,14 +95,12 @@ To test the `chat/completions` endpoint, run this cURL command:
 curl -X POST http://127.0.0.1:5000/chat/completions \
 -H "Content-Type: application/json" \
 -d '{
-  "model": "llama3-8b-8192",
+  "model": "Meta-Llama-3.1-8B-Instruct",
   "messages": [
     {"role": "system", "content": "You are a helpful assistant."},
     {"role": "user", "content": "What is the capital of Canada?"}
   ],
-  "max_tokens": 50,
   "temperature": 0.7,
-  "n": 1
 }'
 ```
 
@@ -143,13 +139,13 @@ curl -X POST http://127.0.0.1:5000/chat/completions \
 
    Replace `your-app-name` with a unique name for your application.
 
-3. Set the GROQ_API_KEY config var on Heroku:
+3. Set the API_KEY config var on Heroku:
 
    ```
-   heroku config:set GROQ_API_KEY=your_groq_api_key_here
+   heroku config:set API_KEY=your_api_key_here
    ```
 
-   Replace `your_groq_api_key_here` with your actual Groq API key.
+   Replace `your_api_key_here` with your actual API key.
 
 4. Deploy your app to Heroku:
 
@@ -180,12 +176,12 @@ You can test your deployed application in two ways:
    - Completions: `POST https://your-app-name.herokuapp.com/completions`
    - Chat Completions: `POST https://your-app-name.herokuapp.com/chat/completions`
 
-   Note that the Embeddings endpoint (`POST /embeddings`) returns an error because embeddings are not supported by the Groq API with the specified model.
+   Note that the embeddings endpoint (`POST /embeddings`) returns an error because embeddings are not supported by the SambaNova API with the specified model.
 
 ## Conclusion
 
-You have successfully created and deployed an LLM Open Connector using the Groq API and deployed it to Heroku! This connector adheres to the Salesforce LLM Open Connector API specification, allowing for seamless integration with the Einstein AI Platform using the BYOLLM feature.
+You have successfully created and deployed an LLM Open Connector using the SambaNova API and deployed it to Heroku! This connector adheres to the Salesforce LLM Open Connector API specification, allowing for seamless integration with the Einstein AI Platform using the BYOLLM feature.
 
-With this connector, you can bring new foundation models like Llama 3 into Einstein Studio that take advantage of Groq's fast inference platform.
+With this connector, you can bring new foundation models like Llama 3 into Einstein Studio that take advantage of SambaNova's fast inference platform.
 
-Remember to monitor your usage and costs associated with the Groq API, and consider implementing additional security measures, such as rate limiting, CORS restrictions, and user authentication, before using this connector in a production environment.
+Remember to monitor your usage and costs associated with the SambaNova API, and consider implementing additional security measures, such as rate limiting, CORS restrictions, and user authentication, before using this connector in a production environment.
