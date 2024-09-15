@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LLM Open Connector with Amazon Bedrock and Llama 3.1</title>
+    <title>LLM Open Connector Tester for AWS</title>
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>"
@@ -272,13 +272,38 @@
           padding: 10px;
         }
       }
+
+      /* Styles for the endpoint selection radio buttons */
+      .endpoint-selection {
+        margin-bottom: 20px;
+      }
+
+      .endpoint-selection label {
+        margin: 0 15px;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        color: var(--text-color);
+        cursor: pointer;
+      }
+
+      .endpoint-selection input[type="radio"] {
+        margin-right: 8px;
+        accent-color: var(--primary-color);
+      }
+
+      /* Additional styles for better appearance in dark mode */
+      body.dark-mode .endpoint-selection input[type="radio"] {
+        background-color: var(--secondary-color);
+        border-color: var(--text-color);
+      }
     </style>
   </head>
   <body>
     <div class="header">
       <div class="logo">
         <i class="fas fa-robot"></i>
-        <h1>LLM Open Connector</h1>
+        <h1>LLM Open Connector Tester for AWS</h1>
       </div>
 
       <button id="darkModeToggle" class="dark-mode-toggle">
@@ -287,13 +312,11 @@
     </div>
 
     <p>
-      Example implementation of Salesforce’s
+      Test your implementation of Salesforce’s
       <a
         href="https://github.com/salesforce/einstein-platform?tab=readme-ov-file#llm-open-connector"
         >LLM Open Connector</a
-      >
-      using <a href="https://aws.amazon.com/bedrock/">Amazon Bedrock</a> and
-      Llama 3.1.
+      >.
     </p>
 
     <form id="promptForm">
@@ -304,6 +327,21 @@
         ></textarea>
         <div class="char-count">0 / 500</div>
       </div>
+
+      <!-- Endpoint Selection Radio Buttons -->
+      <p>Endpoint to test:</p>
+
+      <div class="endpoint-selection">
+        <label>
+          <input type="radio" name="endpoint" value="chat" checked />
+          <code>/chat/completions</code>
+        </label>
+        <label>
+          <input type="radio" name="endpoint" value="completion" />
+          <code>/completions</code>
+        </label>
+      </div>
+
       <div class="button-container">
         <button type="submit">Generate Response</button>
         <button type="button" id="clearButton">Clear</button>
@@ -312,88 +350,108 @@
     <div id="response"></div>
 
     <script>
-      const darkModeToggle = document.getElementById("darkModeToggle");
-      const body = document.body;
-      const promptTextarea = document.getElementById("prompt");
-      const charCount = document.querySelector(".char-count");
-      const clearButton = document.getElementById("clearButton");
-      const form = document.getElementById("promptForm");
-      const responseDiv = document.getElementById("response");
-      const defaultMessage =
-        '<div class="default-message">Your generated response will appear here. Enter a prompt above and click "Generate Response" to start.</div>';
+                  const darkModeToggle = document.getElementById('darkModeToggle')
+                  const body = document.body
+                  const promptTextarea = document.getElementById('prompt')
+                  const charCount = document.querySelector('.char-count')
+                  const clearButton = document.getElementById('clearButton')
+                  const form = document.getElementById('promptForm')
+                  const responseDiv = document.getElementById('response')
+                  const defaultMessage =
+                      '<div class="default-message">Your generated response will appear here. Enter a prompt above and click "Generate Response" to start.</div>'
 
-      // Set default message on page load
-      responseDiv.innerHTML = defaultMessage;
+                  // Set default message on page load
+                  responseDiv.innerHTML = defaultMessage
 
-      darkModeToggle.addEventListener("click", () => {
-        body.classList.toggle("dark-mode");
-        darkModeToggle.innerHTML = body.classList.contains("dark-mode")
-          ? '<i class="fas fa-sun"></i>'
-          : '<i class="fas fa-moon"></i>';
-      });
+                  darkModeToggle.addEventListener('click', () => {
+                      body.classList.toggle('dark-mode')
+                      darkModeToggle.innerHTML = body.classList.contains('dark-mode')
+                          ? '<i class="fas fa-sun"></i>'
+                          : '<i class="fas fa-moon"></i>'
+                  })
 
-      promptTextarea.addEventListener("input", () => {
-        const length = promptTextarea.value.length;
-        charCount.textContent = `${length} / 500`;
-      });
+                  promptTextarea.addEventListener('input', () => {
+                      const length = promptTextarea.value.length
+                      charCount.textContent = `${length} / 500`
+                  })
 
-      // Add event listener for Enter key
-      promptTextarea.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" && !e.shiftKey) {
-          e.preventDefault(); // Prevent default behavior (newline)
-          form.dispatchEvent(new Event("submit")); // Trigger form submission
-        }
-      });
+                  // Add event listener for Enter key
+                  promptTextarea.addEventListener('keydown', (e) => {
+                      if (e.key === 'Enter' && !e.shiftKey) {
+                          e.preventDefault() // Prevent default behavior (newline)
+                          form.dispatchEvent(new Event('submit')) // Trigger form submission
+                      }
+                  })
 
-      clearButton.addEventListener("click", () => {
-        promptTextarea.value = "";
-        responseDiv.innerHTML = defaultMessage;
-        charCount.textContent = "0 / 500";
-      });
+                  clearButton.addEventListener('click', () => {
+                      promptTextarea.value = ''
+                      responseDiv.innerHTML = defaultMessage
+                      charCount.textContent = '0 / 500'
+                  })
 
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const prompt = promptTextarea.value.trim();
-        if (!prompt) return; // Don't submit if the prompt is empty
+                  form.addEventListener('submit', async (e) => {
+                      e.preventDefault()
+                      const prompt = promptTextarea.value.trim()
+                      if (!prompt) return // Don't submit if the prompt is empty
 
-        responseDiv.innerHTML =
-          '<div class="loading"><div class="spinner"></div></div>';
-        API_GATEWAY_URL =
-          "https://your-api-id.execute-api.your-region.amazonaws.com/prod";
+                      responseDiv.innerHTML = '<div class="loading"><div class="spinner"></div></div>'
+                      const API_GATEWAY_URL = 'https://your-api-id.execute-api.your-region.amazonaws.com/prod';
+      '
 
-        try {
-          const response = await axios.post(
-            `${API_GATEWAY_URL}/chat/completions`,
-            {
-              messages: [{ role: "user", content: prompt }],
-              temperature: 0.5,
-              max_tokens: 1000,
-            },
-            {
-              headers: {
-                "api-key": "your-api-key-here",
-              },
-            }
-          );
-          const content = response.data.choices[0].message.content;
+                      // Get the selected endpoint
+                      const endpoint = document.querySelector('input[name="endpoint"]:checked').value
 
-          // Parse the Markdown content
-          const parsedContent = marked.parse(content);
+                      let url = ''
+                      let data = {}
 
-          // Set the parsed content to the response div
-          responseDiv.innerHTML = parsedContent;
+                      if (endpoint === 'chat') {
+                          url = `${API_GATEWAY_URL}/prod/chat/completions`
+                          data = {
+                              messages: [{role: 'user', content: prompt}],
+                              temperature: 0.5,
+                              max_tokens: 1000,
+                          }
+                      } else {
+                          url = `${API_GATEWAY_URL}/prod/completions`
+                          data = {
+                              prompt: prompt,
+                              temperature: 0.5,
+                              max_tokens: 1000,
+                          }
+                      }
 
-          // Highlight code blocks
-          document.querySelectorAll("pre code").forEach((block) => {
-            hljs.highlightElement(block);
-          });
-        } catch (error) {
-          responseDiv.textContent = "Error: " + error.message;
-        }
-      });
+                      try {
+                          const response = await axios.post(url, data, {
+                              headers: {
+                                  'api-key': 'your-api-key-here',
+                              },
+                          })
 
-      // Initialize highlight.js
-      hljs.highlightAll();
+                          let content = ''
+
+                          if (endpoint === 'chat') {
+                              content = response.data.choices[0].message.content
+                          } else {
+                              content = response.data.choices[0].text
+                          }
+
+                          // Parse the Markdown content
+                          const parsedContent = marked.parse(content)
+
+                          // Set the parsed content to the response div
+                          responseDiv.innerHTML = parsedContent
+
+                          // Highlight code blocks
+                          document.querySelectorAll('pre code').forEach((block) => {
+                              hljs.highlightElement(block)
+                          })
+                      } catch (error) {
+                          responseDiv.textContent = 'Error: ' + error.message
+                      }
+                  })
+
+                  // Initialize highlight.js
+                  hljs.highlightAll()
     </script>
   </body>
 </html>

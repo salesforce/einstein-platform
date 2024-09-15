@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LLM Open Connector with Groq and Llama 3</title>
+    <title>LLM Open Connector Tester for Groq</title>
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>"
@@ -272,13 +272,38 @@
           padding: 10px;
         }
       }
+
+      /* Styles for the endpoint selection radio buttons */
+      .endpoint-selection {
+        margin-bottom: 20px;
+      }
+
+      .endpoint-selection label {
+        margin: 0 15px;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        color: var(--text-color);
+        cursor: pointer;
+      }
+
+      .endpoint-selection input[type="radio"] {
+        margin-right: 8px;
+        accent-color: var(--primary-color);
+      }
+
+      /* Additional styles for better appearance in dark mode */
+      body.dark-mode .endpoint-selection input[type="radio"] {
+        background-color: var(--secondary-color);
+        border-color: var(--text-color);
+      }
     </style>
   </head>
   <body>
     <div class="header">
       <div class="logo">
         <i class="fas fa-robot"></i>
-        <h1>LLM Open Connector</h1>
+        <h1>LLM Open Connector Tester for Groq</h1>
       </div>
 
       <button id="darkModeToggle" class="dark-mode-toggle">
@@ -287,12 +312,11 @@
     </div>
 
     <p>
-      Example implementation of Salesforce’s
+      Test your implementation of Salesforce’s
       <a
         href="https://github.com/salesforce/einstein-platform?tab=readme-ov-file#llm-open-connector"
         >LLM Open Connector</a
-      >
-      using <a href="https://groq.com/">Groq</a> and Llama 3.
+      >.
     </p>
 
     <form id="promptForm">
@@ -303,6 +327,21 @@
         ></textarea>
         <div class="char-count">0 / 500</div>
       </div>
+
+      <!-- Endpoint Selection Radio Buttons -->
+      <p>Endpoint to test:</p>
+
+      <div class="endpoint-selection">
+        <label>
+          <input type="radio" name="endpoint" value="chat" checked />
+          <code>/chat/completions</code>
+        </label>
+        <label>
+          <input type="radio" name="endpoint" value="completion" />
+          <code>/completions</code>
+        </label>
+      </div>
+
       <div class="button-container">
         <button type="submit">Generate Response</button>
         <button type="button" id="clearButton">Clear</button>
@@ -357,22 +396,46 @@
 
         responseDiv.innerHTML =
           '<div class="loading"><div class="spinner"></div></div>';
+        const API_GATEWAY_URL = "";
+
+        // Get the selected endpoint
+        const endpoint = document.querySelector(
+          'input[name="endpoint"]:checked'
+        ).value;
+
+        let url = "";
+        let data = {};
+
+        if (endpoint === "chat") {
+          url = `${API_GATEWAY_URL}/prod/chat/completions`;
+          data = {
+            messages: [{ role: "user", content: prompt }],
+            temperature: 0.5,
+            max_tokens: 1000,
+          };
+        } else {
+          url = `${API_GATEWAY_URL}/prod/completions`;
+          data = {
+            prompt: prompt,
+            temperature: 0.5,
+            max_tokens: 1000,
+          };
+        }
 
         try {
-          const response = await axios.post(
-            "/chat/completions",
-            {
-              messages: [{ role: "user", content: prompt }],
-              temperature: 0.5,
-              max_tokens: 1000,
+          const response = await axios.post(url, data, {
+            headers: {
+              "api-key": "your-api-key-here",
             },
-            {
-              headers: {
-                "api-key": "your-api-key-here",
-              },
-            }
-          );
-          const content = response.data.choices[0].message.content;
+          });
+
+          let content = "";
+
+          if (endpoint === "chat") {
+            content = response.data.choices[0].message.content;
+          } else {
+            content = response.data.choices[0].text;
+          }
 
           // Parse the Markdown content
           const parsedContent = marked.parse(content);
