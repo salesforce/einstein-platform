@@ -22,6 +22,10 @@ llm-open-connector:
   label: llm-open-connector
   permalink: /llm-open-connector
 
+sambanova:
+  label: sambanova
+  permalink: /sambanova
+
 welcome:
-  label: 📌 welcome
+  label: welcome
   permalink: /welcome
