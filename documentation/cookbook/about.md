@@ -2,7 +2,7 @@
 slug: about
 title: About the Cookbook 📖
 tags: [welcome]
-date: 2024-09-15
+date: 2024-09-09
 ---
 
 The Einstein Platform Cookbook is where Salesforce shares example code and recipes for building with the Einstein Platform. This website is generated based on the contents of the open-source [einstein-platform](https://github.com/salesforce/einstein-platform) repository on GitHub.

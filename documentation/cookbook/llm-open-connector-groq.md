@@ -2,7 +2,7 @@
 slug: groq
 authors: [rsexton]
 tags: [groq, heroku, llm-open-connector]
-date: 2024-09-13
+date: 2024-09-14
 ---
 
 # LLM Open Connector + Groq
