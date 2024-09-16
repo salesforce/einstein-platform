@@ -2,7 +2,7 @@
 slug: sambanova
 authors: [rsexton]
 tags: [heroku, llm-open-connector, sambanova]
-date: 2024-09-12
+date: 2024-09-15
 ---
 
 # LLM Open Connector + SambaNova

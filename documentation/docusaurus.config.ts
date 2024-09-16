@@ -57,6 +57,7 @@ const config: Config = {
           onInlineTags: "warn",
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "ignore",
+          sortPosts: "ascending",
         },
         theme: {
           customCss: "./src/css/custom.css",
