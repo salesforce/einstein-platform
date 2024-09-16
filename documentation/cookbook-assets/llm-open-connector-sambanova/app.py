@@ -57,8 +57,11 @@ def create_completion():
 
     try:
         response = requests.post(
-            f"{API_URL}/completions",
-            headers={"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"},
+            f"{API_URL}/chat/completions",
+            headers={
+                "Authorization": f"Bearer {API_KEY}",
+                "Content-Type": "application/json",
+            },
             json=payload,
         )
         response.raise_for_status()
@@ -150,7 +153,10 @@ def create_chat_completion():
     try:
         response = requests.post(
             f"{API_URL}/chat/completions",
-            headers={"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"},
+            headers={
+                "Authorization": f"Bearer {API_KEY}",
+                "Content-Type": "application/json",
+            },
             json=payload,
         )
         response.raise_for_status()
