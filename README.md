@@ -8,9 +8,10 @@ As a companion to this repo, the [Einstein Platform Cookbook](https://opensource
 
 Sample content:
 
-- [LLM Open Connector API Specification](https://opensource.salesforce.com/einstein-platform/docs/apis/llm-open-connector)
-- [LLM Open Connector + Amazon Web Services](https://opensource.salesforce.com/einstein-platform/aws)
-- [LLM Open Connector + Groq](https://opensource.salesforce.com/einstein-platform/groq)
+- Specification: [LLM Open Connector API](https://opensource.salesforce.com/einstein-platform/docs/apis/llm-open-connector)
+- Recipe: [LLM Open Connector + Amazon Web Services](https://opensource.salesforce.com/einstein-platform/aws)
+- Recipe: [LLM Open Connector + Groq](https://opensource.salesforce.com/einstein-platform/groq)
+- Recipe: [LLM Open Connector + SambaNova](https://opensource.salesforce.com/einstein-platform/sambanova)
 
 ## LLM Open Connector
 
