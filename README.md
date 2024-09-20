@@ -39,7 +39,7 @@ The Models API is designed with flexibility and extensibility in mind, and it co
 
 The Models API is currently available via Apex methods and REST endpoints. 
 
-To get started, see the [Models API Developer Guide](https://developer.salesforce.com/docs/einstein/genai/guide/models-api.html). To get hands-on quickly, you can build your own Lightning web component on Trailhead with [Get Started with the Models API](https://trailhead.salesforce.com/content/learn/modules/get-started-with-einstein-models-api).
+To get started, see the [Models API Developer Guide](https://developer.salesforce.com/docs/einstein/genai/guide/models-api.html). To get hands-on in Trailhead, try building your own Lightning web component with [Get Started with the Models API](https://trailhead.salesforce.com/content/learn/modules/get-started-with-einstein-models-api).
 
 ## Policies
 
