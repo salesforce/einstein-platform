@@ -3,6 +3,20 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 const path = require("path");
 
+function tailwindPlugin(context, options) {
+  return {
+    name: "tailwind-plugin",
+    configurePostCss(postcssOptions) {
+      postcssOptions.plugins = [
+        require("postcss-import"),
+        require("tailwindcss"),
+        require("autoprefixer"),
+      ];
+      return postcssOptions;
+    },
+  };
+}
+
 const config: Config = {
   title: "Einstein Platform Cookbook",
   tagline:
@@ -34,6 +48,8 @@ const config: Config = {
     locales: ["en"],
   },
 
+  plugins: [tailwindPlugin],
+
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -45,7 +61,7 @@ const config: Config = {
           blogDescription:
             "Example code for building with the Einstein Platform",
           blogTitle: "Recipes",
-          blogSidebarCount: 5,
+          blogSidebarCount: 12,
           blogSidebarTitle: "Recent Recipes",
           postsPerPage: "ALL",
           showReadingTime: true,

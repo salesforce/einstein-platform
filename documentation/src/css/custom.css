@@ -6,6 +6,10 @@
 
 /* Web fonts (use sparingly!) */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: "ITC Avant Garde";
   src: url("https://a.sfdcstatic.com/shared/fonts/avant-garde/AvantGardeForSalesforceW05-Dm.woff2")

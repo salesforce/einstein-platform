@@ -22,16 +22,22 @@
     "@docusaurus/theme-mermaid": "3.5.2",
     "@easyops-cn/docusaurus-search-local": "^0.44.5",
     "@mdx-js/react": "^3.0.0",
+    "autoprefixer": "^10.4.20",
     "clsx": "^2.0.0",
+    "compromise": "^14.13.0",
+    "js-tiktoken": "^1.0.12",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "redocusaurus": "^2.1.1"
+    "redocusaurus": "^2.1.1",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.5.2",
     "@docusaurus/tsconfig": "3.5.2",
     "@docusaurus/types": "3.5.2",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.11",
     "typescript": "~5.5.2"
   },
   "browserslist": {
