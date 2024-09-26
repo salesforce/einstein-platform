@@ -123,6 +123,39 @@ curl -X POST http://127.0.0.1:5000/chat/completions \
    git commit -m "Initial commit"
    ```
 
+## Update Your Default Branch
+
+To switch the default branch used to deploy apps from `master` to `main`, follow these steps:
+
+1. Create a new branch locally:
+
+   ```bash
+   git checkout -b main
+   ```
+
+2. Delete the old default branch locally:
+
+   ```bash
+   git branch -D master
+   ```
+
+   Now, the local environment only knows about the `main` branch.
+
+3. Reset the GIT repository on the Heroku Platform:
+
+   - Use the `heroku-reset` command from the `heroku-repo` CLI plugin.
+   - This will not impact the running application.
+
+   > **Note:** Communicate this change with your team. If other developers are unaware of the reset, they might push to `master`, overwriting the reset.
+
+4. Re-deploy the application using the new default branch:
+
+   ```bash
+   git push heroku main
+   ```
+
+5. To switch the default branch in GitHub, refer to this article: [Setting the Default Branch](https://docs.github.com/en/github/administering-a-repository/setting-the-default-branch).
+
 ## Deploy to Heroku
 
 1. Make sure you're logged in to the Heroku CLI:
@@ -142,7 +175,7 @@ curl -X POST http://127.0.0.1:5000/chat/completions \
 3. Set the API_KEY config var on Heroku:
 
    ```
-   heroku config:set API_KEY=your_api_key_here
+   heroku config:set API_KEY=your_api_key_here -a your-app-name
    ```
 
    Replace `your_api_key_here` with your actual API key.
