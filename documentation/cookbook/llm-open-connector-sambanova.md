@@ -148,13 +148,7 @@ To switch the default branch used to deploy apps from `master` to `main`, follow
 
    **Note:** Communicate this change with your team. If other developers are unaware of the reset, they might push to `master`, overwriting the reset.
 
-4. Re-deploy the application using the new default branch:
-
-   ```bash
-   git push heroku main
-   ```
-
-5. To switch the default branch in GitHub, refer to this article: [Setting the Default Branch](https://docs.github.com/en/github/administering-a-repository/setting-the-default-branch).
+4. To switch the default branch in GitHub, refer to this article: [Setting the Default Branch](https://docs.github.com/en/github/administering-a-repository/setting-the-default-branch).
 
 ## Deploy to Heroku
 
