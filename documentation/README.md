@@ -5,7 +5,8 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 ### Installation
 
 ```bash
-yarn
+npm install
+yarn install
 ```
 
 ### Local Development
