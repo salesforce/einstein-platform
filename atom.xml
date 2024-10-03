@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="atom.xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://opensource.salesforce.com/einstein-platform</id>
+    <title>Einstein Platform Cookbook Blog</title>
+    <updated>2024-09-09T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://opensource.salesforce.com/einstein-platform"/>
+    <subtitle>Einstein Platform Cookbook Blog</subtitle>
+    <icon>https://opensource.salesforce.com/einstein-platform/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[About the Cookbook 📖]]></title>
+        <id>https://opensource.salesforce.com/einstein-platform/about</id>
+        <link href="https://opensource.salesforce.com/einstein-platform/about"/>
+        <updated>2024-09-09T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[The Einstein Platform Cookbook is where Salesforce shares example code and recipes for building with the Einstein Platform. This website is generated based on the contents of the open source einstein-platform repository on GitHub.]]></summary>
+        <content type="html"><![CDATA[<p>The <a href="https://opensource.salesforce.com/einstein-platform/" target="_blank" rel="noopener noreferrer">Einstein Platform Cookbook</a> is where Salesforce shares example code and recipes for building with the Einstein Platform. This website is generated based on the contents of the open source <a href="https://github.com/salesforce/einstein-platform" target="_blank" rel="noopener noreferrer">einstein-platform</a> repository on GitHub.</p>
+<p>Our first batch of recipes have arrived! These recipes include step-by-step instructions for implementing the LLM Open Connector (<a href="https://github.com/salesforce/einstein-platform?tab=readme-ov-file#llm-open-connector" target="_blank" rel="noopener noreferrer">readme</a>, <a href="https://opensource.salesforce.com/einstein-platform/docs/apis/llm-open-connector">spec</a>) with an API gateway, and each recipe features a different AI platform. More recipes are in the works featuring new AI platforms and system architectures!</p>
+<p>Your contributions to the Cookbook and the open-source repository are welcome! Refer to the <a href="https://github.com/salesforce/einstein-platform/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contributing Guide</a> and <a href="https://github.com/salesforce/einstein-platform/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener noreferrer">Code of Conduct</a> to get started.</p>
+<p>If you like the resources that you see here, consider adding a ⭐ on GitHub. It helps other people discover them!</p>
+<p>See Also:</p>
+<ul>
+<li><a href="https://developer.salesforce.com/docs/einstein/genai/overview" target="_blank" rel="noopener noreferrer">Generative AI Developer Guide</a></li>
+<li><a href="https://github.com/salesforce/einstein-platform" target="_blank" rel="noopener noreferrer">Einstein Platform GitHub Repo</a></li>
+</ul>]]></content>
+        <category label="welcome" term="welcome"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Introducing the LLM Open Connector]]></title>
+        <id>https://opensource.salesforce.com/einstein-platform/open-connector</id>
+        <link href="https://opensource.salesforce.com/einstein-platform/open-connector"/>
+        <updated>2024-09-10T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[The LLM Open Connector is an API specification, closely based on the OpenAI API, that lets you create API gateways and proxy servers that connect any language model to the Einstein AI Platform. Any service that implements the API specification can be connected to Einstein Studio using the Bring Your Own LLM (BYOLLM) feature.]]></summary>
+        <content type="html"><![CDATA[<p>The LLM Open Connector is an <a href="https://opensource.salesforce.com/einstein-platform/docs/apis/llm-open-connector">API specification</a>, closely based on the OpenAI API, that lets you create API gateways and proxy servers that connect any language model to the Einstein AI Platform. Any service that implements the API specification can be connected to Einstein Studio using the Bring Your Own LLM (BYOLLM) feature.</p>
+<p>The LLM Open Connector opens up a world of possibilities for bespoke AI applications for Salesforce customers and independent software vendors (ISVs). Check out our recipes to learn how to bring new models to Einstein Studio!</p>]]></content>
+        <author>
+            <name>Darvish</name>
+            <uri>https://github.com/dshadravan</uri>
+        </author>
+        <author>
+            <name>Oleksandr</name>
+            <uri>https://github.com/oleksm</uri>
+        </author>
+        <category label="llm-open-connector" term="llm-open-connector"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[LLM Open Connector + AWS]]></title>
+        <id>https://opensource.salesforce.com/einstein-platform/aws</id>
+        <link href="https://opensource.salesforce.com/einstein-platform/aws"/>
+        <updated>2024-09-13T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Learn how to implement Salesforce's LLM Open Connector using Amazon Web Services (AWS). We use Amazon Bedrock to host a Llama model from Meta, a Lambda for serverless compute, and an API Gateway to expose our API.]]></summary>
+        <content type="html"><![CDATA[<p>Learn how to implement Salesforce's <a href="https://opensource.salesforce.com/einstein-platform/docs/apis/llm-open-connector">LLM Open Connector</a> using Amazon Web Services (AWS). We use Amazon Bedrock to host a Llama model from Meta, a Lambda for serverless compute, and an API Gateway to expose our API.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="prerequisites">Prerequisites<a href="https://opensource.salesforce.com/einstein-platform/aws#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites">​</a></h2>
+<ol>
+<li>AWS Account with appropriate permissions</li>
+<li>AWS CLI. For installation instructions, see <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html" target="_blank" rel="noopener noreferrer">Install or update to the latest version of the AWS CLI</a> and <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html" target="_blank" rel="noopener noreferrer">Set up the AWS CLI</a>.</li>
+<li>Python 3.9 or later</li>
+<li>AWS CDK installed (<code>npm install -g aws-cdk</code>)</li>
+<li>Access to AWS Bedrock (you may need to request access if it's not enabled in your account)</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="set-up-aws-bedrock-and-model-access">Set Up AWS Bedrock and Model Access<a href="https://opensource.salesforce.com/einstein-platform/aws#set-up-aws-bedrock-and-model-access" class="hash-link" aria-label="Direct link to Set Up AWS Bedrock and Model Access" title="Direct link to Set Up AWS Bedrock and Model Access">​</a></h2>
+<p>Before deploying and using the LLM Open Connector, you need to set up access to AWS Bedrock and enable the specific model you want to use. Follow these steps:</p>
+<p><strong>Enable AWS Bedrock:</strong></p>
+<ul>
+<li>Go to the <a href="https://console.aws.amazon.com/bedrock" target="_blank" rel="noopener noreferrer">AWS Bedrock console</a>.</li>
+<li>If you see a "Get started" button, click it to enable Bedrock for your account.</li>
+<li>If Bedrock is already enabled, you'll see the Bedrock dashboard.</li>
+</ul>
+<p><strong>Request access to models:</strong></p>
+<ul>
+<li>In the Bedrock console, go to "Model access" in the left navigation pane.</li>
+<li>Find the model you want to use (for example, Llama 3.1 70B Instruct).</li>
+<li>Click the menu (three dots) and select "Request model access".</li>
+<li>Verify that the model is selected and click <strong>Next</strong>.</li>
+<li>Read and accept the terms and conditions, then click <strong>Submit</strong>.</li>
+<li>Wait for your request to be approved. This is usually instant for most models.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="installation">Installation<a href="https://opensource.salesforce.com/einstein-platform/aws#installation" class="hash-link" aria-label="Direct link to Installation" title="Direct link to Installation">​</a></h2>
+<ol>
+<li>
+<p>Create a new local directory for your project and navigate to it:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">mkdir aws-bedrock-llama-connector</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">cd aws-bedrock-llama-connector</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Download from the einstein-platform repository:</p>
+<ul>
+<li><a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-aws/lib/aws_bedrock_llama_connector_stack.py" target="_blank" rel="noopener noreferrer">lib/aws_bedrock_llama_connector_stack.py</a></li>
+<li><a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-aws/lambda/handler.py" target="_blank" rel="noopener noreferrer">lambda/handler.py</a></li>
+<li><a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-aws/app.py" target="_blank" rel="noopener noreferrer">app.py</a></li>
+<li><a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-aws/cdk.json" target="_blank" rel="noopener noreferrer">cdk.json</a></li>
+<li><a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-aws/index.html" target="_blank" rel="noopener noreferrer">index.html</a></li>
+<li><a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-aws/requirements.txt" target="_blank" rel="noopener noreferrer">requirements.txt</a></li>
+</ul>
+</li>
+<li>
+<p>Copy the downloaded files into your project directory.</p>
+</li>
+<li>
+<p>Create a virtual environment and install Python dependencies:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">python -m venv venv</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">source venv/bin/activate  # On Windows, use `venv\Scripts\activate`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pip install -r requirements.txt</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="project-structure">Project Structure<a href="https://opensource.salesforce.com/einstein-platform/aws#project-structure" class="hash-link" aria-label="Direct link to Project Structure" title="Direct link to Project Structure">​</a></h2>
+<p>Your project structure should now look like this:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">aws-bedrock-llama-connector/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├── lib/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   └── aws_bedrock_llama_connector_stack.py</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├── lambda/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   └── handler.py</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├── app.py</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├── cdk.json</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├── index.html</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">└── requirements.txt</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="deployment">Deployment<a href="https://opensource.salesforce.com/einstein-platform/aws#deployment" class="hash-link" aria-label="Direct link to Deployment" title="Direct link to Deployment">​</a></h2>
+<ol>
+<li>
+<p>Configure AWS CLI with your credentials:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">aws configure</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Bootstrap your AWS environment (if you haven't already):</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">cdk bootstrap</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Deploy the stack:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">cdk deploy</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>After deployment, CDK will output the API Gateway URL. You can use this URL to make requests to your Llama model.</p>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="usage">Usage<a href="https://opensource.salesforce.com/einstein-platform/aws#usage" class="hash-link" aria-label="Direct link to Usage" title="Direct link to Usage">​</a></h2>
+<p>To use the deployed API, send a POST request to the <code>/chat/completions</code> endpoint with the following JSON structure:</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"messages"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">"role"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"system"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">"content"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"You are a helpful assistant."</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">"role"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"user"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">"content"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"Tell me a joke about programming."</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"temperature"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0.7</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>You can use tools like cUrl, Postman, or any programming language to make HTTP requests to your API.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="example-using-curl">Example using cUrl<a href="https://opensource.salesforce.com/einstein-platform/aws#example-using-curl" class="hash-link" aria-label="Direct link to Example using cUrl" title="Direct link to Example using cUrl">​</a></h3>
+<p>Here's an example cUrl command to test your API:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">curl -X POST https://your-api-id.execute-api.your-region.amazonaws.com/prod/chat/completions \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-H "Content-Type: application/json" \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-d '{</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "messages": [</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    {"role": "system", "content": "You are a helpful assistant."},</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    {"role": "user", "content": "Tell me a joke about programming."}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  ],</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "temperature": 0.7</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}'</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Replace <code>https://your-api-id.execute-api.your-region.amazonaws.com/prod</code> with the actual URL of your deployed API Gateway, which you can find in the AWS Console or in the output of the <code>cdk deploy</code> command.</p>
+<p>This cUrl command sends a POST request to your API with the specified JSON payload. The API should respond with a JSON object containing the generated text from the Llama model.</p>
+<p><strong>Note</strong>: If you're using Windows Command Prompt, you may need to escape the double quotes in the JSON payload differently. For PowerShell or bash on Windows (e.g., Git Bash), the command should work as written above.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="testing-with-a-web-ui">Testing with a Web UI<a href="https://opensource.salesforce.com/einstein-platform/aws#testing-with-a-web-ui" class="hash-link" aria-label="Direct link to Testing with a Web UI" title="Direct link to Testing with a Web UI">​</a></h2>
+<p>Use the included <a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-aws/index.html" target="_blank" rel="noopener noreferrer">index.html</a> file to test your API gateway with a web UI.</p>
+<p>Before using the web UI, edit the file and replace <code>https://your-api-id.execute-api.your-region.amazonaws.com/prod</code> with the actual URL of your deployed API Gateway, which you can find in the AWS Console or in the output of the <code>cdk deploy</code> command.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="notes">Notes<a href="https://opensource.salesforce.com/einstein-platform/aws#notes" class="hash-link" aria-label="Direct link to Notes" title="Direct link to Notes">​</a></h2>
+<ol>
+<li>This cookbook uses the <code>meta.llama3-1-70b-instruct-v1:0</code> model as a placeholder. You can replace it with any supported model that you have been granted access to in Amazon Bedrock. For a list of supported model IDs, see <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html" target="_blank" rel="noopener noreferrer">Amazon Bedrock model IDs</a>.</li>
+<li>The token count in the response is set to -1 as AWS Bedrock doesn't provide token usage information. You may need to implement your own token counting logic if required.</li>
+<li>Error handling and input validation should be improved for production use.</li>
+<li>Consider disabling CORS.</li>
+<li>Consider implementing authentication and rate limiting for your API Gateway.</li>
+<li>Monitor your AWS usage to manage costs, especially if you expect high traffic.</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="conclusion">Conclusion<a href="https://opensource.salesforce.com/einstein-platform/aws#conclusion" class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion">​</a></h2>
+<p>This cookbook demonstrates how to set up an LLM Open Connector using AWS Bedrock, Lambda, and API Gateway. It provides a serverless, scalable solution for integrating Llama models into your applications. Remember to optimize your implementation based on your specific requirements and expected usage patterns.</p>]]></content>
+        <author>
+            <name>Richard</name>
+            <uri>https://github.com/rsexton404</uri>
+        </author>
+        <category label="aws" term="aws"/>
+        <category label="bedrock" term="bedrock"/>
+        <category label="llm-open-connector" term="llm-open-connector"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[LLM Open Connector + Groq]]></title>
+        <id>https://opensource.salesforce.com/einstein-platform/groq</id>
+        <link href="https://opensource.salesforce.com/einstein-platform/groq"/>
+        <updated>2024-09-14T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Learn how to implement Salesforce's LLM Open Connector with the Groq platform for fast AI inference. We also cover how to deploy the connector as a Flask app on Heroku with a simple web UI for testing.]]></summary>
+        <content type="html"><![CDATA[<p>Learn how to implement Salesforce's <a href="https://opensource.salesforce.com/einstein-platform/docs/apis/llm-open-connector">LLM Open Connector</a> with the <a href="https://groq.com/" target="_blank" rel="noopener noreferrer">Groq</a> platform for fast AI inference. We also cover how to deploy the connector as a Flask app on Heroku with a simple web UI for testing.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="prerequisites">Prerequisites<a href="https://opensource.salesforce.com/einstein-platform/groq#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites">​</a></h2>
+<p>Before you begin, make sure that your local environment meets these prerequisites.</p>
+<ol>
+<li>Python 3.9 or later installed on your local machine</li>
+<li>A Heroku account (sign up at <a href="https://signup.heroku.com/" target="_blank" rel="noopener noreferrer">https://signup.heroku.com/</a>)</li>
+<li>Heroku CLI installed (<a href="https://devcenter.heroku.com/articles/heroku-cli" target="_blank" rel="noopener noreferrer">https://devcenter.heroku.com/articles/heroku-cli</a>)</li>
+<li>Git installed on your local machine</li>
+<li>A Groq API key (sign up at <a href="https://console.groq.com/" target="_blank" rel="noopener noreferrer">https://console.groq.com/</a>)</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="set-up-your-local-environment">Set Up Your Local Environment<a href="https://opensource.salesforce.com/einstein-platform/groq#set-up-your-local-environment" class="hash-link" aria-label="Direct link to Set Up Your Local Environment" title="Direct link to Set Up Your Local Environment">​</a></h2>
+<ol>
+<li>
+<p>Create a new directory for your project:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">mkdir llm-open-connector</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">cd llm-open-connector</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Create a virtual environment and activate it:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">python -m venv venv</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">source venv/bin/activate  # On Windows, use `venv\Scripts\activate`</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Download these files from the einstein-platform repository:</p>
+<ul>
+<li><a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-groq/.gitignore" target="_blank" rel="noopener noreferrer">.gitignore</a></li>
+<li><a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-groq/app.py" target="_blank" rel="noopener noreferrer">app.py</a></li>
+<li><a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-groq/index.html" target="_blank" rel="noopener noreferrer">index.html</a></li>
+<li><a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-groq/Procfile" target="_blank" rel="noopener noreferrer">Procfile</a></li>
+<li><a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-groq/requirements.txt" target="_blank" rel="noopener noreferrer">requirements.txt</a></li>
+<li><a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-groq/runtime.txt" target="_blank" rel="noopener noreferrer">runtime.txt</a></li>
+</ul>
+</li>
+<li>
+<p>Copy the downloaded files into your project directory.</p>
+</li>
+<li>
+<p>Install the required packages:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">pip install -r requirements.txt</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="configure-your-local-environment">Configure Your Local Environment<a href="https://opensource.salesforce.com/einstein-platform/groq#configure-your-local-environment" class="hash-link" aria-label="Direct link to Configure Your Local Environment" title="Direct link to Configure Your Local Environment">​</a></h2>
+<ol>
+<li>
+<p>For local testing, create a <code>.env</code> file in your project directory and add your Groq API key:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">GROQ_API_KEY=your_groq_api_key_here</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Replace <code>your_groq_api_key_here</code> with your actual Groq API key.</p>
+</li>
+<li>
+<p>Make sure your <code>.gitignore</code> file includes the <code>.env</code> file to avoid accidentally committing sensitive information.</p>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="test-your-application-locally">Test Your Application Locally<a href="https://opensource.salesforce.com/einstein-platform/groq#test-your-application-locally" class="hash-link" aria-label="Direct link to Test Your Application Locally" title="Direct link to Test Your Application Locally">​</a></h2>
+<ol>
+<li>
+<p>Run your Flask application:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">python app.py</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Your app should now be running on <code>http://127.0.0.1:5000/</code>.</p>
+</li>
+<li>
+<p>Test the endpoints using a tool like cURL or Postman to ensure they're working correctly.</p>
+</li>
+</ol>
+<p>To test the <code>completions</code> endpoint, run this cURL command. We're using Meta's Llama 3 8B model for this example, but you can use any of Groq's <a href="https://console.groq.com/docs/models" target="_blank" rel="noopener noreferrer">supported models</a>.</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">curl -X POST http://127.0.0.1:5000/completions \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-H "Content-Type: application/json" \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-d '{</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "model": "llama3-8b-8192",</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "prompt": "Invent 31 fun names for ice cream flavours and prefix each name with an appropriate emoji.",</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "max_tokens": 50,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "temperature": 0.7,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "n": 1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}'</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>To test the <code>chat/completions</code> endpoint, run this cURL command:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">curl -X POST http://127.0.0.1:5000/chat/completions \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-H "Content-Type: application/json" \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-d '{</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "model": "llama3-8b-8192",</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "messages": [</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    {"role": "system", "content": "You are a helpful assistant."},</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    {"role": "user", "content": "What is the capital of Canada?"}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  ],</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "max_tokens": 50,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "temperature": 0.7,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "n": 1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}'</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="prepare-for-heroku-deployment">Prepare for Heroku Deployment<a href="https://opensource.salesforce.com/einstein-platform/groq#prepare-for-heroku-deployment" class="hash-link" aria-label="Direct link to Prepare for Heroku Deployment" title="Direct link to Prepare for Heroku Deployment">​</a></h2>
+<ol>
+<li>
+<p>Initialize a Git repository in your project directory:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">git init</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Add your files to the repository:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">git add .</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Commit your changes:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">git commit -m "Initial commit"</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="update-your-default-branch">Update Your Default Branch<a href="https://opensource.salesforce.com/einstein-platform/groq#update-your-default-branch" class="hash-link" aria-label="Direct link to Update Your Default Branch" title="Direct link to Update Your Default Branch">​</a></h2>
+<p>To switch the default branch used to deploy apps from <code>master</code> to <code>main</code>, follow these steps:</p>
+<ol>
+<li>
+<p>Create a new branch locally:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">git checkout -b main</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Delete the old default branch locally:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">git branch -D master</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Now, the local environment only knows about the <code>main</code> branch.</p>
+</li>
+<li>
+<p>Reset the git repository on the Heroku Platform:</p>
+<ul>
+<li>Use the <code>heroku-reset</code> command from the <code>heroku-repo</code> CLI plugin.</li>
+<li>This will not impact the running application.</li>
+</ul>
+<p><strong>Note:</strong> Communicate this change with your team. If other developers are unaware of the reset, they might push to <code>master</code>, overwriting the reset.</p>
+</li>
+<li>
+<p>To switch the default branch in GitHub, refer to this article: <a href="https://docs.github.com/en/github/administering-a-repository/setting-the-default-branch" target="_blank" rel="noopener noreferrer">Setting the Default Branch</a>.</p>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="deploy-to-heroku">Deploy to Heroku<a href="https://opensource.salesforce.com/einstein-platform/groq#deploy-to-heroku" class="hash-link" aria-label="Direct link to Deploy to Heroku" title="Direct link to Deploy to Heroku">​</a></h2>
+<ol>
+<li>
+<p>Make sure you're logged in to the Heroku CLI:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">heroku login</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Create a new Heroku app:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">heroku create your-app-name</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Replace <code>your-app-name</code> with a unique name for your application.</p>
+</li>
+<li>
+<p>Set the GROQ_API_KEY config var on Heroku:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">heroku config:set GROQ_API_KEY=your_groq_api_key_here -a your-app-name</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Replace <code>your_groq_api_key_here</code> with your actual Groq API key.</p>
+</li>
+<li>
+<p>Deploy your app to Heroku:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">git push heroku main</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Open your deployed app:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">heroku open</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+</ol>
+<p>Your LLM Open Connector should now be deployed and accessible via the Heroku URL.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="test-your-deployed-application">Test Your Deployed Application<a href="https://opensource.salesforce.com/einstein-platform/groq#test-your-deployed-application" class="hash-link" aria-label="Direct link to Test Your Deployed Application" title="Direct link to Test Your Deployed Application">​</a></h2>
+<p>You can test your deployed application in two ways:</p>
+<ol>
+<li>
+<p>Using the example UI:</p>
+<ul>
+<li>Open your browser and navigate to <code>https://your-app-name.herokuapp.com</code></li>
+<li>You'll see a simple interface where you can input prompts and get responses from the LLM</li>
+<li>Try different prompts and get super fast responses!</li>
+</ul>
+</li>
+<li>
+<p>Using API endpoints:
+Use a tool like cURL or Postman to test the endpoints of your Flask app:</p>
+<ul>
+<li>Completions: <code>POST https://your-app-name.herokuapp.com/completions</code></li>
+<li>Chat Completions: <code>POST https://your-app-name.herokuapp.com/chat/completions</code></li>
+</ul>
+<p>Note that the Embeddings endpoint (<code>POST /embeddings</code>) returns an error because embeddings are not supported by the Groq API with the specified model.</p>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="conclusion">Conclusion<a href="https://opensource.salesforce.com/einstein-platform/groq#conclusion" class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion">​</a></h2>
+<p>You have successfully created and deployed an LLM Open Connector using the Groq API and deployed it to Heroku! This connector adheres to the Salesforce LLM Open Connector API specification, allowing for seamless integration with the Einstein AI Platform using the BYOLLM feature.</p>
+<p>With this connector, you can bring new foundation models like Llama 3 into Einstein Studio that take advantage of Groq's fast inference platform.</p>
+<p>Remember to monitor your usage and costs associated with the Groq API, and consider implementing additional security measures, such as rate limiting, CORS restrictions, and user authentication, before using this connector in a production environment.</p>]]></content>
+        <author>
+            <name>Richard</name>
+            <uri>https://github.com/rsexton404</uri>
+        </author>
+        <category label="groq" term="groq"/>
+        <category label="heroku" term="heroku"/>
+        <category label="llm-open-connector" term="llm-open-connector"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[LLM Open Connector + SambaNova]]></title>
+        <id>https://opensource.salesforce.com/einstein-platform/sambanova</id>
+        <link href="https://opensource.salesforce.com/einstein-platform/sambanova"/>
+        <updated>2024-09-15T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Learn how to implement Salesforce's LLM Open Connector with the SambaNova platform for fast AI inference. We also cover how to deploy the connector as a Flask app on Heroku with a simple web UI for testing.]]></summary>
+        <content type="html"><![CDATA[<p>Learn how to implement Salesforce's <a href="https://opensource.salesforce.com/einstein-platform/docs/apis/llm-open-connector">LLM Open Connector</a> with the <a href="https://sambanova.ai/" target="_blank" rel="noopener noreferrer">SambaNova</a> platform for fast AI inference. We also cover how to deploy the connector as a Flask app on Heroku with a simple web UI for testing.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="prerequisites">Prerequisites<a href="https://opensource.salesforce.com/einstein-platform/sambanova#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites">​</a></h2>
+<p>Before you begin, make sure that your local environment meets these prerequisites.</p>
+<ol>
+<li>Python 3.9 or later installed on your local machine</li>
+<li>A Heroku account (sign up at <a href="https://signup.heroku.com/" target="_blank" rel="noopener noreferrer">https://signup.heroku.com/</a>)</li>
+<li>Heroku CLI installed (<a href="https://devcenter.heroku.com/articles/heroku-cli" target="_blank" rel="noopener noreferrer">https://devcenter.heroku.com/articles/heroku-cli</a>)</li>
+<li>Git installed on your local machine</li>
+<li>A SambaNova API key (sign up at <a href="https://sambanova.ai/" target="_blank" rel="noopener noreferrer">https://sambanova.ai/</a>)</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="set-up-your-local-environment">Set Up Your Local Environment<a href="https://opensource.salesforce.com/einstein-platform/sambanova#set-up-your-local-environment" class="hash-link" aria-label="Direct link to Set Up Your Local Environment" title="Direct link to Set Up Your Local Environment">​</a></h2>
+<ol>
+<li>
+<p>Create a new directory for your project:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">mkdir llm-open-connector</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">cd llm-open-connector</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Create a virtual environment and activate it:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">python -m venv venv</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">source venv/bin/activate  # On Windows, use `venv\Scripts\activate`</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Download these files from the einstein-platform repository:</p>
+<ul>
+<li><a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-sambanova/.gitignore" target="_blank" rel="noopener noreferrer">.gitignore</a></li>
+<li><a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-sambanova/app.py" target="_blank" rel="noopener noreferrer">app.py</a></li>
+<li><a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-sambanova/index.html" target="_blank" rel="noopener noreferrer">index.html</a></li>
+<li><a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-sambanova/Procfile" target="_blank" rel="noopener noreferrer">Procfile</a></li>
+<li><a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-sambanova/requirements.txt" target="_blank" rel="noopener noreferrer">requirements.txt</a></li>
+<li><a href="https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-sambanova/runtime.txt" target="_blank" rel="noopener noreferrer">runtime.txt</a></li>
+</ul>
+</li>
+<li>
+<p>Copy the downloaded files into your project directory.</p>
+</li>
+<li>
+<p>Install the required packages:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">pip install -r requirements.txt</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="configure-your-local-environment">Configure Your Local Environment<a href="https://opensource.salesforce.com/einstein-platform/sambanova#configure-your-local-environment" class="hash-link" aria-label="Direct link to Configure Your Local Environment" title="Direct link to Configure Your Local Environment">​</a></h2>
+<ol>
+<li>
+<p>For local testing, create a <code>.env</code> file in your project directory and add your API key:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">API_KEY=your_api_key_here</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Replace <code>your_api_key_here</code> with your actual API key.</p>
+</li>
+<li>
+<p>Make sure your <code>.gitignore</code> file includes the <code>.env</code> file to avoid accidentally committing sensitive information.</p>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="test-your-application-locally">Test Your Application Locally<a href="https://opensource.salesforce.com/einstein-platform/sambanova#test-your-application-locally" class="hash-link" aria-label="Direct link to Test Your Application Locally" title="Direct link to Test Your Application Locally">​</a></h2>
+<ol>
+<li>
+<p>Run your Flask application:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">python app.py</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Your app should now be running on <code>http://127.0.0.1:5000/</code>.</p>
+</li>
+<li>
+<p>Test the endpoints using a tool like cURL or Postman to ensure they're working correctly.</p>
+</li>
+</ol>
+<p>To test the <code>completions</code> endpoint, run this cURL command. We're using Meta's Llama 3 8B model for this example, but you can use any of SambaNova's <a href="https://cloud.sambanova.ai/" target="_blank" rel="noopener noreferrer">supported models</a>.</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">curl -X POST http://127.0.0.1:5000/completions \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-H "Content-Type: application/json" \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-d '{</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "model": "Meta-Llama-3.1-8B-Instruct",</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "prompt": "Invent 31 fun names for ice cream flavours and prefix each name with an appropriate emoji.",</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "temperature": 0.7,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}'</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>To test the <code>chat/completions</code> endpoint, run this cURL command:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">curl -X POST http://127.0.0.1:5000/chat/completions \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-H "Content-Type: application/json" \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-d '{</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "model": "Meta-Llama-3.1-8B-Instruct",</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "messages": [</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    {"role": "system", "content": "You are a helpful assistant."},</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    {"role": "user", "content": "What is the capital of Canada?"}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  ],</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "temperature": 0.7,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}'</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="prepare-for-heroku-deployment">Prepare for Heroku Deployment<a href="https://opensource.salesforce.com/einstein-platform/sambanova#prepare-for-heroku-deployment" class="hash-link" aria-label="Direct link to Prepare for Heroku Deployment" title="Direct link to Prepare for Heroku Deployment">​</a></h2>
+<ol>
+<li>
+<p>Initialize a Git repository in your project directory:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">git init</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Add your files to the repository:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">git add .</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Commit your changes:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">git commit -m "Initial commit"</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="update-your-default-branch">Update Your Default Branch<a href="https://opensource.salesforce.com/einstein-platform/sambanova#update-your-default-branch" class="hash-link" aria-label="Direct link to Update Your Default Branch" title="Direct link to Update Your Default Branch">​</a></h2>
+<p>To switch the default branch used to deploy apps from <code>master</code> to <code>main</code>, follow these steps:</p>
+<ol>
+<li>
+<p>Create a new branch locally:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">git checkout -b main</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Delete the old default branch locally:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">git branch -D master</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Now, the local environment only knows about the <code>main</code> branch.</p>
+</li>
+<li>
+<p>Reset the git repository on the Heroku Platform:</p>
+<ul>
+<li>Use the <code>heroku-reset</code> command from the <code>heroku-repo</code> CLI plugin.</li>
+<li>This will not impact the running application.</li>
+</ul>
+<p><strong>Note:</strong> Communicate this change with your team. If other developers are unaware of the reset, they might push to <code>master</code>, overwriting the reset.</p>
+</li>
+<li>
+<p>To switch the default branch in GitHub, refer to this article: <a href="https://docs.github.com/en/github/administering-a-repository/setting-the-default-branch" target="_blank" rel="noopener noreferrer">Setting the Default Branch</a>.</p>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="deploy-to-heroku">Deploy to Heroku<a href="https://opensource.salesforce.com/einstein-platform/sambanova#deploy-to-heroku" class="hash-link" aria-label="Direct link to Deploy to Heroku" title="Direct link to Deploy to Heroku">​</a></h2>
+<ol>
+<li>
+<p>Make sure you're logged in to the Heroku CLI:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">heroku login</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Create a new Heroku app:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">heroku create your-app-name</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Replace <code>your-app-name</code> with a unique name for your application.</p>
+</li>
+<li>
+<p>Set the API_KEY config var on Heroku:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">heroku config:set API_KEY=your_api_key_here -a your-app-name</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Replace <code>your_api_key_here</code> with your actual API key.</p>
+</li>
+<li>
+<p>Deploy your app to Heroku:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">git push heroku main</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>Open your deployed app:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">heroku open</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+</ol>
+<p>Your LLM Open Connector should now be deployed and accessible via the Heroku URL.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="test-your-deployed-application">Test Your Deployed Application<a href="https://opensource.salesforce.com/einstein-platform/sambanova#test-your-deployed-application" class="hash-link" aria-label="Direct link to Test Your Deployed Application" title="Direct link to Test Your Deployed Application">​</a></h2>
+<p>You can test your deployed application in two ways:</p>
+<ol>
+<li>
+<p>Using the example UI:</p>
+<ul>
+<li>Open your browser and navigate to <code>https://your-app-name.herokuapp.com</code></li>
+<li>You'll see a simple interface where you can input prompts and get responses from the LLM</li>
+<li>Try different prompts and get super fast responses!</li>
+</ul>
+</li>
+<li>
+<p>Using API endpoints:
+Use a tool like cURL or Postman to test the endpoints of your Flask app:</p>
+<ul>
+<li>Completions: <code>POST https://your-app-name.herokuapp.com/completions</code></li>
+<li>Chat Completions: <code>POST https://your-app-name.herokuapp.com/chat/completions</code></li>
+</ul>
+<p>Note that the embeddings endpoint (<code>POST /embeddings</code>) returns an error because embeddings are not supported by the SambaNova API with the specified model.</p>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="conclusion">Conclusion<a href="https://opensource.salesforce.com/einstein-platform/sambanova#conclusion" class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion">​</a></h2>
+<p>You have successfully created and deployed an LLM Open Connector using the SambaNova API and deployed it to Heroku! This connector adheres to the Salesforce LLM Open Connector API specification, allowing for seamless integration with the Einstein AI Platform using the BYOLLM feature.</p>
+<p>With this connector, you can bring new foundation models like Llama 3 into Einstein Studio that take advantage of SambaNova's fast inference platform.</p>
+<p>Remember to monitor your usage and costs associated with the SambaNova API, and consider implementing additional security measures, such as rate limiting, CORS restrictions, and user authentication, before using this connector in a production environment.</p>]]></content>
+        <author>
+            <name>Richard</name>
+            <uri>https://github.com/rsexton404</uri>
+        </author>
+        <category label="heroku" term="heroku"/>
+        <category label="llm-open-connector" term="llm-open-connector"/>
+        <category label="sambanova" term="sambanova"/>
+    </entry>
+</feed>
