@@ -34,7 +34,7 @@ You can now use your LLM from anywhere that can access generative models from Ei
 
 ## Models API
 
-The Models API connects your application to large language models (LLMs) through the Einstein Trust Layer. It supports the BYOLLM feature of Einstein Studio, including models created with the [LLM Open Connector](#llm-open-connector).
+The Models API connects your application to large language models (LLMs) through the Einstein Trust Layer. It supports the BYOLLM feature of Einstein Studio, including models enabled through the [LLM Open Connector](#llm-open-connector).
 
 The Models API is designed with flexibility and extensibility in mind, and it complements existing Salesforce AI offerings for developers. Prompt Builder and the Prompt Template Connect API are effective for fast prompt management and Agentforce provides a customizable and interactive chat experience. The Models API provides additional features like embeddings and chat generations with history which enable developers to architect custom AI applications and deploy them via Lightning web components.
 
