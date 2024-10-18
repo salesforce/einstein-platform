@@ -494,4 +494,110 @@ Use a tool like cURL or Postman to test the endpoints of your Flask app:</p>
         <category label="llm-open-connector" term="llm-open-connector"/>
         <category label="sambanova" term="sambanova"/>
     </entry>
+    <entry>
+        <title type="html"><![CDATA[LLM Open Connector + watsonx]]></title>
+        <id>https://opensource.salesforce.com/einstein-platform/ibm</id>
+        <link href="https://opensource.salesforce.com/einstein-platform/ibm"/>
+        <updated>2024-10-18T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Learn how to implement Salesforce's LLM Open Connector with the IBM watsonx platform.]]></summary>
+        <content type="html"><![CDATA[<p>Learn how to implement Salesforce's <a href="https://opensource.salesforce.com/einstein-platform/docs/apis/llm-open-connector">LLM Open Connector</a> with the IBM watsonx platform.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="prerequisites">Prerequisites<a href="https://opensource.salesforce.com/einstein-platform/ibm#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites">​</a></h2>
+<ul>
+<li>A Salesforce org with Einstein Generative AI and Data Cloud enabled.</li>
+<li>A Salesforce Einstein Studio Environment.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="step-1-create-your-watsonx-instance">Step 1. Create Your watsonx Instance<a href="https://opensource.salesforce.com/einstein-platform/ibm#step-1-create-your-watsonx-instance" class="hash-link" aria-label="Direct link to Step 1. Create Your watsonx Instance" title="Direct link to Step 1. Create Your watsonx Instance">​</a></h2>
+<p><strong>Create an account.</strong></p>
+<ol>
+<li>
+<p>If you don’t already have one, <a href="https://dataplatform.cloud.ibm.com/registration/stepone?context=wx" target="_blank" rel="noopener noreferrer">create a watsonx trial account</a>.</p>
+<p>If you have an existing, non-trial watsonx account, you’ll need to follow these additional steps:</p>
+<ol>
+<li>In IBM Cloud, <a href="https://dataplatform.cloud.ibm.com/docs/content/wsj/console/wdp_admin_cos.html?context=wx&amp;audience=wdp" target="_blank" rel="noopener noreferrer">set up IBM Cloud Object Storage for use with IBM watsonx</a>.</li>
+<li><a href="https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/set-up-ws.html?context=wx&amp;audience=wdp" target="_blank" rel="noopener noreferrer">Set up the Watson Studio and Watson Machine Learning</a> services.</li>
+<li>Create a new project from the <a href="https://dataplatform.cloud.ibm.com/projects/?context=wx" target="_blank" rel="noopener noreferrer">IBM watsonx console</a>.</li>
+</ol>
+</li>
+</ol>
+<p><strong>Find your Project ID value.</strong></p>
+<ol>
+<li>In your sandbox, click on the <strong>Manage</strong> tab and copy your Project ID value.</li>
+<li>Store the project-id value. You’ll need this value along with an API key and a region-id in step three.</li>
+</ol>
+<p><strong>Create an IBM Cloud API Key.</strong></p>
+<ol>
+<li>In the IBM Cloud console, go to <strong>Manage</strong> &gt; <strong>Access (IAM)</strong>.</li>
+<li>In the sidebar, select <strong>API Keys</strong>.</li>
+<li>Click <strong>Create</strong>.</li>
+<li>Enter a name and description for your API key.</li>
+<li>Then, click <strong>Create</strong>.</li>
+<li>Store your API key in a safe location.</li>
+</ol>
+<p><strong>Get the region value for the watsonx instance.</strong></p>
+<ol>
+<li>From the watsonx home page, check the region in the header bar.</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="IBM region id value" src="https://opensource.salesforce.com/einstein-platform/assets/images/ibm-region-id-6b80d5fa2f1395bb5e57dfc4822b0ea9.png" width="460" height="312" class="img_ev3q"></p>
+<ol start="2">
+<li>Store the region-id value.</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="step-2-verify-your-open-connector-implementation-optional">Step 2. Verify Your Open Connector Implementation (Optional)<a href="https://opensource.salesforce.com/einstein-platform/ibm#step-2-verify-your-open-connector-implementation-optional" class="hash-link" aria-label="Direct link to Step 2. Verify Your Open Connector Implementation (Optional)" title="Direct link to Step 2. Verify Your Open Connector Implementation (Optional)">​</a></h2>
+<p>IBM automatically provides a working implementation of the Open Connector for watsonx that you can use to test this workflow. If you want to create your own implementation for production use cases, follow these steps. Otherwise, skip to step three.</p>
+<ol>
+<li>Create your own connector implementation for watsonx. For directions and code, see <a href="https://github.com/IBM/dsce-sample-apps/tree/main/use-watsonx-ai-models-from-salesforce/salesforce-watsonx-apic-connector" target="_blank" rel="noopener noreferrer">IBM's watsonx connector repo</a>.</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="step-3-create-a-byollm-connection-to-the-watsonx-model-in-einstein-studio">Step 3. Create a BYOLLM Connection to the watsonx Model in Einstein Studio<a href="https://opensource.salesforce.com/einstein-platform/ibm#step-3-create-a-byollm-connection-to-the-watsonx-model-in-einstein-studio" class="hash-link" aria-label="Direct link to Step 3. Create a BYOLLM Connection to the watsonx Model in Einstein Studio" title="Direct link to Step 3. Create a BYOLLM Connection to the watsonx Model in Einstein Studio">​</a></h2>
+<p>Before you connect your Open Connector implementation to Einstein Studio, you’ll need three pieces of information from Step 1: project-id, API key, and region-id.</p>
+<ol>
+<li>Log into your Salesforce org as an admin user and open Einstein Studio.</li>
+<li>Click <strong>Model Library</strong>.</li>
+<li>Click <strong>Add Foundation Model</strong>.</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="Add a Foundation Model" src="https://opensource.salesforce.com/einstein-platform/assets/images/ibm-model-library-a9a45f9ecaf52c556a5a6cf306babd50.png" width="2402" height="304" class="img_ev3q"></p>
+<ol start="4">
+<li>In Model Builder, click <strong>Connect to your LLM</strong>.</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="Connect to your LLM" src="https://opensource.salesforce.com/einstein-platform/assets/images/ibm-model-builder-492fa909aeb06bc34857d32bbe1edc80.png" width="1776" height="1478" class="img_ev3q"></p>
+<ol start="5">
+<li>Click <strong>Next</strong>.</li>
+<li>Enter the details of your watsonx instance.<!-- -->
+<ul>
+<li>Name: IBM Granite (or your own preferred name)</li>
+<li>URL:  if you are using the connector hosted by IBM, get the URL from <a href="https://github.com/IBM/dsce-sample-apps/tree/main/use-watsonx-ai-models-from-salesforce/salesforce-watsonx-apic-connector" target="_blank" rel="noopener noreferrer">IBM's watsonx connector repo</a>. Otherwise, use the URL from the connector instance that you have created from the code and documentation in <a href="https://github.com/IBM/dsce-sample-apps/tree/main/use-watsonx-ai-models-from-salesforce/salesforce-watsonx-apic-connector" target="_blank" rel="noopener noreferrer">the watsonx repo</a>. When filling out the URL value, be sure to use the project-id and region-id that you copied from step 1.</li>
+<li>Authentication: Key Based</li>
+<li>Auth Header: X-IBM-API-KEY</li>
+<li>Key: [your IBM API key]</li>
+<li>Model Name/ID:  ibm/granite-13b-chat-v2 (Or the specific model ID you want to connect to, refer to watsonx model IDs from your IBM watsonx console.)</li>
+<li>Token Limit: 8,192</li>
+</ul>
+</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="Example IBM Granite connection" src="https://opensource.salesforce.com/einstein-platform/assets/images/ibm-granite-connection-a564f3aa6202dc1dfe88855ac53a6c0c.png" width="2350" height="1384" class="img_ev3q"></p>
+<ol start="7">
+<li>Click <strong>Connect</strong>.</li>
+<li>Click <strong>Name and Connect</strong>.</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="step-4-create-a-configured-model">Step 4. Create a Configured Model<a href="https://opensource.salesforce.com/einstein-platform/ibm#step-4-create-a-configured-model" class="hash-link" aria-label="Direct link to Step 4. Create a Configured Model" title="Direct link to Step 4. Create a Configured Model">​</a></h2>
+<p>Before you can use your connected LLM, you need to create a configured model.</p>
+<ol>
+<li>In the Model Library in Einstein Studio, select <strong>Configure Foundation Model</strong>.</li>
+<li>Select <strong>Create Model</strong>.</li>
+<li>Choose your connected LLM from the “Foundation Model” dropdown.</li>
+<li>Configure the model parameters.</li>
+<li>Test the model performance in the model playground.</li>
+</ol>
+<p>You can now use your LLM wherever you can use Einstein Studio generative models. For instance, you can build prompt templates using <a href="https://www.google.com/url?q=https://help.salesforce.com/s/articleView?id%3Dsf.prompt_builder_about.htm&amp;sa=D&amp;source=docs&amp;ust=1729008016102516&amp;usg=AOvVaw29nKsztGMWSoa59DEIFXZJ" target="_blank" rel="noopener noreferrer">Prompt Builder</a>.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="see-also">See Also<a href="https://opensource.salesforce.com/einstein-platform/ibm#see-also" class="hash-link" aria-label="Direct link to See Also" title="Direct link to See Also">​</a></h2>
+<ul>
+<li><a href="https://github.com/IBM/dsce-sample-apps/tree/main/use-watsonx-ai-models-from-salesforce/salesforce-watsonx-apic-connector" target="_blank" rel="noopener noreferrer"><em>External:</em> IBM watsonx Repo</a></li>
+<li><a href="https://dsce.ibm.com/wizard/watsonx/results/watsonx-use-watsonx-ai-models-from-salesforce#" target="_blank" rel="noopener noreferrer"><em>Interactive Demo:</em> Use watsonx AI models from Salesforce</a></li>
+<li><a href="https://help.salesforce.com/s/articleView?id=sf.c360_a_ai_foundation_models_create.htm&amp;type=5" target="_blank" rel="noopener noreferrer"><em>Salesforce Help:</em> Add a Foundation Model</a></li>
+</ul>]]></content>
+        <author>
+            <name>Tate</name>
+            <uri>https://github.com/tatedorman</uri>
+        </author>
+        <category label="ibm" term="ibm"/>
+        <category label="llm-open-connector" term="llm-open-connector"/>
+    </entry>
 </feed>
