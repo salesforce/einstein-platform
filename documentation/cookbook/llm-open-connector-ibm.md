@@ -1,7 +1,7 @@
 ---
 slug: ibm
 authors: [tatedorman]
-tags: [ibm, watsonx, llm-open-connector]
+tags: [ibm, llm-open-connector]
 date: 2024-10-18
 ---
 

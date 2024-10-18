@@ -29,3 +29,7 @@ sambanova:
 welcome:
   label: welcome
   permalink: /welcome
+
+ibm:
+  label: ibm
+  permalink: /ibm
