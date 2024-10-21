@@ -54,7 +54,7 @@ Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-con
 
 IBM automatically provides a working implementation of the Open Connector for watsonx that you can use to test this workflow. If you want to create your own implementation for production use cases, follow these steps. Otherwise, skip to step three.
 
-1. Create your own connector implementation for watsonx. For directions and code, see [IBM's watsonx connector repo](https://github.com/IBM/dsce-sample-apps/tree/main/use-watsonx-ai-models-from-salesforce/salesforce-watsonx-apic-connector).
+1. Create your own connector implementation for watsonx. For directions and code, see [IBM's watsonx connector repo](https://ibm.biz/eebl-salesforce-watsonx-apic-connector-code).
 
 ## Step 3\. Create a BYOLLM Connection to the watsonx Model in Einstein Studio
 
@@ -73,12 +73,12 @@ Before you connect your Open Connector implementation to Einstein Studio, you’
 5. Click **Next**.  
 6. Enter the details of your watsonx instance.   
    * Name: IBM Granite (or your own preferred name)  
-   * URL:  if you are using the connector hosted by IBM, get the URL from [IBM's watsonx connector repo](https://github.com/IBM/dsce-sample-apps/tree/main/use-watsonx-ai-models-from-salesforce/salesforce-watsonx-apic-connector). Otherwise, use the URL from the connector instance that you have created from the code and documentation in [the watsonx repo](https://github.com/IBM/dsce-sample-apps/tree/main/use-watsonx-ai-models-from-salesforce/salesforce-watsonx-apic-connector). When filling out the URL value, be sure to use the project-id and region-id that you copied from step 1\.  
+   * URL:  if you are using the connector hosted by IBM, get the URL from [IBM's watsonx connector repo](https://ibm.biz/eebl-salesforce-watsonx-apic-connector-code). Otherwise, use the URL from the connector instance that you have created from the code and documentation in [the watsonx repo](https://ibm.biz/eebl-salesforce-watsonx-apic-connector-code). When filling out the URL value, be sure to use the project-id and region-id that you copied from step 1\.  
    * Authentication: Key Based  
    * Auth Header: X-IBM-API-KEY  
    * Key: \[your IBM API key\]  
    * Model Name/ID:  ibm/granite-13b-chat-v2 (Or the specific model ID you want to connect to, refer to watsonx model IDs from your IBM watsonx console.)  
-   * Token Limit: 8,192
+   * Token Limit: 8,192 (Or the specified model's maximum context length. Refer to the watsonx model IDs from you IBM watsonx console.)
 
 ![Example IBM Granite connection](/img/ibm-granite-connection.png)
 
@@ -99,6 +99,6 @@ You can now use your LLM wherever you can use Einstein Studio generative models.
 
 ## See Also
 
-* [*External:* IBM watsonx Repo](https://github.com/IBM/dsce-sample-apps/tree/main/use-watsonx-ai-models-from-salesforce/salesforce-watsonx-apic-connector)   
+* [*External:* IBM watsonx Repo](https://ibm.biz/eebl-salesforce-watsonx-apic-connector-code)   
 * [*Interactive Demo:* Use watsonx AI models from Salesforce](https://dsce.ibm.com/wizard/watsonx/results/watsonx-use-watsonx-ai-models-from-salesforce#)  
 * [*Salesforce Help:* Add a Foundation Model](https://help.salesforce.com/s/articleView?id=sf.c360_a_ai_foundation_models_create.htm&type=5)
