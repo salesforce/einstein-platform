@@ -7,7 +7,9 @@ date: 2024-10-18
 
 # LLM Open Connector + watsonx
 
-Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) with the IBM watsonx platform. 
+Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) with the IBM watsonx platform.
+
+<!-- truncate -->
 
 ## Prerequisites
 
