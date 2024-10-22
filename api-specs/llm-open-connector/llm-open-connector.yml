@@ -130,7 +130,7 @@ components:
           default: 1
           example: 1
           nullable: true
-          description: *completions_temperature_description
+          description: What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
         parameters:
           description: "Dictionary of any other parameters that are required by the provider. Values are passed as is to the provider so that the request can include parameters that are unique to a provider."
           type: object
