@@ -77,18 +77,6 @@ Before you begin, make sure that your local environment meets these prerequisite
 
 3. Test the endpoints using a tool like cURL or Postman to ensure they're working correctly.
 
-To test the `completions` endpoint, run this cURL command. We're using Meta's Llama 3 8B model for this example, but you can use any of SambaNova's [supported models](https://cloud.sambanova.ai/).
-
-```bash
-curl -X POST http://127.0.0.1:5000/completions \
--H "Content-Type: application/json" \
--d '{
-  "model": "Meta-Llama-3.1-8B-Instruct",
-  "prompt": "Invent 31 fun names for ice cream flavours and prefix each name with an appropriate emoji.",
-  "temperature": 0.7,
-}'
-```
-
 To test the `chat/completions` endpoint, run this cURL command:
 
 ```bash
@@ -200,10 +188,7 @@ You can test your deployed application in two ways:
 2. Using API endpoints:
    Use a tool like cURL or Postman to test the endpoints of your Flask app:
 
-   - Completions: `POST https://your-app-name.herokuapp.com/completions`
    - Chat Completions: `POST https://your-app-name.herokuapp.com/chat/completions`
-
-   Note that the embeddings endpoint (`POST /embeddings`) returns an error because embeddings are not supported by the SambaNova API with the specified model.
 
 ## Conclusion
 
