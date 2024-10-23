@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Models REST API (Beta)
+  title: Models REST API
   version: v1
   description: >
 
