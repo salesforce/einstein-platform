@@ -32,6 +32,7 @@ Sample content:
 - Recipe: [LLM Open Connector + Amazon Web Services](https://opensource.salesforce.com/einstein-platform/aws)
 - Recipe: [LLM Open Connector + Groq](https://opensource.salesforce.com/einstein-platform/groq)
 - Recipe: [LLM Open Connector + SambaNova](https://opensource.salesforce.com/einstein-platform/sambanova)
+- Recipe: [LLM Open Connector + IBM](https://opensource.salesforce.com/einstein-platform/ibm)
 
 ## Models API
 
