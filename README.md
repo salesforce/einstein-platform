@@ -16,9 +16,11 @@ This capability not only caters to the needs of large enterprises looking to lev
 
 1. Clone this repository.
 2. Implement an HTTP REST service using the [LLM Open Connector OpenAPI specification](api-specs/llm-open-connector/llm-open-connector.yml). This service can contain the `chat/completions` endpoint. The `/chat/completions` endpoint is used for chat-based use cases. It is required for Prompt Builder and Agentforce.
+> **Note**: To connect to a remote model endpoint, a standard HTTPS 443 port is required.
 3. Test your service connection using Bring Your Own Large Language Model (BYOLLM) in Einstein 1 Studio.
    - Blog post: [Bring Your Own Large Language Model in Einstein 1 Studio](https://developer.salesforce.com/blogs/2024/03/bring-your-own-large-language-model-in-einstein-1-studio)
    - Help content: [Bring Your Own Large Language Model](https://help.salesforce.com/s/articleView?id=sf.c360_a_ai_foundation_models.htm)
+
 
 You can now use your LLM from anywhere that can access generative models from Einstein Studio.
 
