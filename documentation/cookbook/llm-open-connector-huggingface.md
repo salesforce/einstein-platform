@@ -320,4 +320,4 @@ Follow the instructions in this [developer blog](https://developer.salesforce.co
 4. Error handling and input validation should be improved for production use.
 
 ## Conclusion
-This cookbook demonstrates how to set up an LLM Open Connector using Hugging Face Serverless API for Chat Completion endpoints for various models. Remember to optimize your implementation based on your specific requirements and expected usage patterns.
+This cookbook demonstrates how to set up an LLM Open Connector using Hugging Face Serverless API for Chat Completion endpoints for various models. For Production purposes remember to use Hugging Face dedicated [Interference Endpoints](https://ui.endpoints.huggingface.co/) feature. Remember to optimize your implementation based on your specific requirements and expected usage patterns.
