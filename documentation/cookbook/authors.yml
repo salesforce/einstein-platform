@@ -34,6 +34,15 @@ tatedorman:
   socials:
     github: tatedorman
 
+msrivastav13:
+  name: Mohith
+  title: Developer Advocate @ Salesforce
+  url: https://github.com/msrivastav13
+  image_url: https://github.com/msrivastav13.png
+  page: true
+  socials:
+    github: msrivastav13
+
 # sfyz:
 #   name: Yuvi
 #   title: Technical Writer @ Salesforce
