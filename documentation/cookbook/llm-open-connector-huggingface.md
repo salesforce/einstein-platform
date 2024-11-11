@@ -1,5 +1,5 @@
 ---
-slug: Hugging Face
+slug: huggingface
 authors: [msrivastav13]
 tags: [huggingface, heroku, llm-open-connector]
 date: 2024-09-12
