@@ -45,7 +45,7 @@ const config: Config = {
           blogDescription:
             "Example code for building with the Einstein Platform",
           blogTitle: "Recipes",
-          blogSidebarCount: 6,
+          blogSidebarCount: 15,
           blogSidebarTitle: "Recent Recipes",
           postsPerPage: "ALL",
           showReadingTime: true,

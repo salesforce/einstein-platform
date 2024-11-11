@@ -33,3 +33,7 @@ welcome:
 ibm:
   label: ibm
   permalink: /ibm
+
+huggingface:
+  label: huggingface
+  permalink: /huggingface

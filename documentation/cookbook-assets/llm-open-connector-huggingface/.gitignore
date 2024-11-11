@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# Optional: OS generated files
+.DS_Store
+Thumbs.db
+
+# Optional: Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
