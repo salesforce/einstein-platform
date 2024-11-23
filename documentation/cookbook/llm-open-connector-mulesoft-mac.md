@@ -84,7 +84,7 @@ This cookbook uses Anypoint Studio to implement the API Specification. As you pr
 
 2. Create a new Mule Project.
 
-3. Provider the following informations:
+3. Provide the following informations:
   - Project Name: `cerebras-llm-provider`, 
   - Import a published API: Select the `Cerebras-LLM-Provider` API Specification from previous step.
 
@@ -115,18 +115,18 @@ This cookbook uses Anypoint Studio to implement the API Specification. As you pr
 
 1. Go to the scaffolded flow `post:\chat\completions:application\json:llm-open-connector-config`
 
-2. Drag and drop `Chat completions` operations from the Inference Connector into the Flow.
+2. Drag and drop `Chat completions` operation from the Inference Connector into the Flow.
 
 3. Provide the Inference connector configuration for Cerebras.
 
 4. Parametrise all properties needed by the LLM Open Connector API Spec.
 ![Configuraton Params](/documentation/static/img/mule-mac-configuration-params.png).
 
-5. In the `Chat completions` operations, enter the following expressing `payload.messages`. 
+5. In the `Chat completions` operation, enter the following expression `payload.messages`. 
 
-6. Before the `Chat completions` operations, add the `Set Variable` operation with the name `model` and enter in the value `payload.model`.
+6. Before the `Chat completions` operation, add the `Set Variable` operation with the name `model` and enter in the expression value `payload.model`.
 
-7. After the `Chat completions` operations, add the `Transform Message` operation and provide the following mapping:
+7. After the `Chat completions` operation, add the `Transform Message` operation and provide the following mapping:
 
 ```json
 %dw 2.0
