@@ -37,3 +37,7 @@ ibm:
 huggingface:
   label: huggingface
   permalink: /huggingface
+
+mulesoft:
+  label: mulesoft
+  permalink: /mulesoft
