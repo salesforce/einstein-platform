@@ -33,7 +33,7 @@ As a companion to this repo, the [Einstein Platform Cookbook](https://opensource
 Sample content:
 
 - Specification: [LLM Open Connector API](https://opensource.salesforce.com/einstein-platform/docs/apis/llm-open-connector)
-- Recipe: [LLM Open Connector + MuleSoft for Cerebras](https://opensource.salesforce.com/einstein-platform/mulesoft-mac)
+- Recipe: [LLM Open Connector + MuleSoft for Cerebras](https://opensource.salesforce.com/einstein-platform/mulesoft)
 - Recipe: [LLM Open Connector + Hugging Face](https://opensource.salesforce.com/einstein-platform/huggingface)
 - Recipe: [LLM Open Connector + Amazon Web Services](https://opensource.salesforce.com/einstein-platform/aws)
 - Recipe: [LLM Open Connector + Groq](https://opensource.salesforce.com/einstein-platform/groq)
