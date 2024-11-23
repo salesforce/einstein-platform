@@ -21,6 +21,8 @@ Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-con
 
 The cookbook will implement the example of **Cerebras Inference**, however, the approach is the same for all other Providers and offerings.
 
+[Step-by-step tutorial video](https://youtu.be/x4gMffK0Dek?si=Q9_3L__wno3Ca9uZ)
+
 ![High Level Process](/documentation/static/img/mule-mac-process.png)
 
 <!-- truncate -->
