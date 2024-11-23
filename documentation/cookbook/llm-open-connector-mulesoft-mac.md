@@ -157,7 +157,8 @@ output application/json
 
 8. Save the project.
 
-### Test locally
+
+### Test Locally
 
 1. Start the Mule Application.
 
