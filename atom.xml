@@ -755,7 +755,7 @@ Use a tool like cURL or Postman to test the endpoints of your Flask app:</p>
 <ol>
 <li>
 <p>If you don’t already have one, <a href="https://dataplatform.cloud.ibm.com/registration/stepone?context=wx" target="_blank" rel="noopener noreferrer">create a watsonx trial account</a>.</p>
-<p>If you have an existing, non-trial watsonx account, you’ll need to follow these additional steps:</p>
+<p>If you have an existing, non-trial watsonx account, you need to follow these additional steps:</p>
 <ol>
 <li>In IBM Cloud, <a href="https://dataplatform.cloud.ibm.com/docs/content/wsj/console/wdp_admin_cos.html?context=wx&amp;audience=wdp" target="_blank" rel="noopener noreferrer">set up IBM Cloud Object Storage for use with IBM watsonx</a>.</li>
 <li><a href="https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/set-up-ws.html?context=wx&amp;audience=wdp" target="_blank" rel="noopener noreferrer">Set up the Watson Studio and Watson Machine Learning</a> services.</li>
@@ -765,7 +765,7 @@ Use a tool like cURL or Postman to test the endpoints of your Flask app:</p>
 </ol>
 <p><strong>Find your Project ID value.</strong></p>
 <ol>
-<li>In your sandbox, click on the <strong>Manage</strong> tab and copy your Project ID value.</li>
+<li>In your sandbox, click the <strong>Manage</strong> tab and copy your Project ID value.</li>
 <li>Store the project-id value. You’ll need this value along with an API key and a region-id in step three.</li>
 </ol>
 <p><strong>Create an IBM Cloud API Key.</strong></p>
@@ -791,9 +791,9 @@ Use a tool like cURL or Postman to test the endpoints of your Flask app:</p>
 <li>Create your own connector implementation for watsonx. For directions and code, see <a href="https://ibm.biz/eebl-salesforce-watsonx-apic-connector-code" target="_blank" rel="noopener noreferrer">IBM's watsonx connector repo</a>.</li>
 </ol>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="step-3-create-a-byollm-connection-to-the-watsonx-model-in-einstein-studio">Step 3. Create a BYOLLM Connection to the watsonx Model in Einstein Studio<a href="https://opensource.salesforce.com/einstein-platform/ibm#step-3-create-a-byollm-connection-to-the-watsonx-model-in-einstein-studio" class="hash-link" aria-label="Direct link to Step 3. Create a BYOLLM Connection to the watsonx Model in Einstein Studio" title="Direct link to Step 3. Create a BYOLLM Connection to the watsonx Model in Einstein Studio">​</a></h2>
-<p>Before you connect your Open Connector implementation to Einstein Studio, you’ll need three pieces of information from Step 1: project-id, API key, and region-id.</p>
+<p>Before you connect your Open Connector implementation to Einstein Studio, you need three pieces of information from Step 1: project-id, API key, and region-id.</p>
 <ol>
-<li>Log into your Salesforce org as an admin user and open Einstein Studio.</li>
+<li>Log in to your Salesforce org as an admin user and open Einstein Studio.</li>
 <li>Click <strong>Model Library</strong>.</li>
 <li>Click <strong>Add Foundation Model</strong>.</li>
 </ol>
@@ -812,7 +812,7 @@ Use a tool like cURL or Postman to test the endpoints of your Flask app:</p>
 <li>Auth Header: X-IBM-API-KEY</li>
 <li>Key: [your IBM API key]</li>
 <li>Model Name/ID:  ibm/granite-13b-chat-v2 (Or the specific model ID you want to connect to, refer to watsonx model IDs from your IBM watsonx console.)</li>
-<li>Token Limit: 8,192 (Or the specified model's maximum context length. Refer to the watsonx model IDs from you IBM watsonx console.)</li>
+<li>Token Limit: 8,192 (Or the specified model's maximum context length. Refer to the watsonx model IDs from your IBM watsonx console.)</li>
 </ul>
 </li>
 </ol>
@@ -829,6 +829,9 @@ Use a tool like cURL or Postman to test the endpoints of your Flask app:</p>
 <li>Choose your connected LLM from the “Foundation Model” dropdown.</li>
 <li>Configure the model parameters.</li>
 <li>Test the model performance in the model playground.</li>
+<li>After testing, click <strong>Save</strong> in the bottom right.</li>
+<li>Navigate to the "Generative" tab of the Einstein Studio Models page and verify that your watsonx configured model appears.</li>
+<li>Select your watsonx model to view the configuration details or create a prompt template.</li>
 </ol>
 <p>You can now use your LLM wherever you can use Einstein Studio generative models. For instance, you can build prompt templates using <a href="https://www.google.com/url?q=https://help.salesforce.com/s/articleView?id%3Dsf.prompt_builder_about.htm&amp;sa=D&amp;source=docs&amp;ust=1729008016102516&amp;usg=AOvVaw29nKsztGMWSoa59DEIFXZJ" target="_blank" rel="noopener noreferrer">Prompt Builder</a>.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="see-also">See Also<a href="https://opensource.salesforce.com/einstein-platform/ibm#see-also" class="hash-link" aria-label="Direct link to See Also" title="Direct link to See Also">​</a></h2>
