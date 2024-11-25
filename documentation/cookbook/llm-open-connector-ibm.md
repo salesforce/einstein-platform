@@ -22,7 +22,7 @@ Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-con
 
 1. If you don’t already have one, [create a watsonx trial account](https://dataplatform.cloud.ibm.com/registration/stepone?context=wx). 
 
-   If you have an existing, non-trial watsonx account, you’ll need to follow these additional steps: 
+   If you have an existing, non-trial watsonx account, you need to follow these additional steps: 
 
     1. In IBM Cloud, [set up IBM Cloud Object Storage for use with IBM watsonx](https://dataplatform.cloud.ibm.com/docs/content/wsj/console/wdp_admin_cos.html?context=wx&audience=wdp).   
     2. [Set up the Watson Studio and Watson Machine Learning](https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/set-up-ws.html?context=wx&audience=wdp) services.   
@@ -30,7 +30,7 @@ Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-con
 
 **Find your Project ID value.**
 
-1. In your sandbox, click on the **Manage** tab and copy your Project ID value.   
+1. In your sandbox, click the **Manage** tab and copy your Project ID value.   
 2. Store the project-id value. You’ll need this value along with an API key and a region-id in step three.
 
 **Create an IBM Cloud API Key.**
@@ -58,9 +58,9 @@ IBM automatically provides a working implementation of the Open Connector for wa
 
 ## Step 3\. Create a BYOLLM Connection to the watsonx Model in Einstein Studio
 
-Before you connect your Open Connector implementation to Einstein Studio, you’ll need three pieces of information from Step 1: project-id, API key, and region-id.
+Before you connect your Open Connector implementation to Einstein Studio, you need three pieces of information from Step 1: project-id, API key, and region-id.
 
-1. Log into your Salesforce org as an admin user and open Einstein Studio.  
+1. Log in to your Salesforce org as an admin user and open Einstein Studio.  
 2. Click **Model Library**.  
 3. Click **Add Foundation Model**. 
 
@@ -78,7 +78,7 @@ Before you connect your Open Connector implementation to Einstein Studio, you’
    * Auth Header: X-IBM-API-KEY  
    * Key: \[your IBM API key\]  
    * Model Name/ID:  ibm/granite-13b-chat-v2 (Or the specific model ID you want to connect to, refer to watsonx model IDs from your IBM watsonx console.)  
-   * Token Limit: 8,192 (Or the specified model's maximum context length. Refer to the watsonx model IDs from you IBM watsonx console.)
+   * Token Limit: 8,192 (Or the specified model's maximum context length. Refer to the watsonx model IDs from your IBM watsonx console.)
 
 ![Example IBM Granite connection](/img/ibm-granite-connection.png)
 
