@@ -16,8 +16,13 @@ Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-con
 - [GITHUB MODELS](https://docs.github.com/en/github-models)
 - [PORTKEY](https://portkey.ai/)
 - [CEREBRAS](https://cerebras.ai/inference)
+- [NVIDIA NIM](https://docs.api.nvidia.com/nim/reference/models-1)
 - [MISTRAL AI](https://mistral.ai/)
 - [ANTHROPIC](https://www.anthropic.com/)
+- [Amazon Bedrock](https://aws.amazon.com/bedrock/)
+- [OPENAI](https://openai.com/)
+- [AZURE OPENAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/overview)
+
 
 The cookbook will implement the example of **Cerebras Inference**, however, the approach is the same for all other Providers and offerings.
 
