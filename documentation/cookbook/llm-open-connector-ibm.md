@@ -95,7 +95,7 @@ Before you can use your connected LLM, you need to create a configured model.
 4. Configure the model parameters.  
 5. Test the model performance in the model playground.
 6. After testing, click **Save** in the bottom right.
-7. Your watsonx model now appears under the "Generative" tab of the Einstein Studio Models page.
+7. Navigate to the "Generative" tab of the Einstein Studio Models page and verify that your watsonx configured model appears.
 8. Select your watsonx model to view the configuration details or create a prompt template.
 
 You can now use your LLM wherever you can use Einstein Studio generative models. For instance, you can build prompt templates using [Prompt Builder](https://www.google.com/url?q=https://help.salesforce.com/s/articleView?id%3Dsf.prompt_builder_about.htm&sa=D&source=docs&ust=1729008016102516&usg=AOvVaw29nKsztGMWSoa59DEIFXZJ). 
