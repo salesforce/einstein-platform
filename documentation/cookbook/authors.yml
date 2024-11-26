@@ -51,3 +51,14 @@ msrivastav13:
 #   page: true
 #   socials:
 #     github: sfyz
+
+alexandramartinez:
+  name: Alex Martinez
+  title: Developer Advocate @ Salesforce
+  url: https://github.com/alexandramartinez
+  image_url: https://github.com/alexandramartinez.png
+  page: true
+  socials:
+    github: alexandramartinez
+    bluesky: alexmartinez.ca
+    linkedin: alexandra-n-martinez
