@@ -146,8 +146,12 @@ Additionally, you can compare your Mule app with [this GitHub repo](https://gith
 1. Add the following code under the `apikit:config` and before the `<flow name="llm-open-connector-main">` (should be line 7)
 
     ```xml
-    <ms-aichain:config configType="Configuration Json" filePath='#[(mule.home default "") ++ "/apps/" ++ (app.name default "") ++ "/llm-config.json"]' llmType="OLLAMA" modelName="#[vars.inputPayload.model]" name="MAC_Config" temperature="#[vars.inputPayload.temperature]" maxTokens="#[vars.inputPayload.max_tokens]"></ms-aichain:config>
+    <ms-aichain:config configType="Configuration Json" filePath='#[(mule.home default "") ++ "/apps/" ++ (app.name default "") ++ "/llm-config.json"]' llmType="OLLAMA" modelName="#[vars.inputPayload.model default 'llama3']" name="MAC_Config" temperature="#[vars.inputPayload.temperature default 1]" maxTokens="#[vars.inputPayload.max_tokens default 500]"></ms-aichain:config>
     ```
+
+    :::note
+    If your model is not `llama3`, make sure you upload the `default` value in the previous line (i.e., `modelName="#[vars.inputPayload.model default 'llama3']"`).
+    :::
 
 1. Locate the last flow in the file (should be `post:\chat\completions:application\json:llm-open-connector-config`).
 
@@ -178,13 +182,13 @@ Additionally, you can compare your Mule app with [this GitHub repo](https://gith
                 finish_reason: "stop",
                 index: 0,
                 message: {
-                    content: payload.response,
-                    role: vars.inputPayload.messages[0].role
+                    content: payload.response default "",
+                    role: "assistant"
                 }
             }
         ],
         created: now() as Number,
-        model: vars.inputPayload.model,
+        model: vars.inputPayload.model default "",
         object: "chat.completion",
         usage: {
             completion_tokens: (attributes.tokenUsage.outputCount default 0) as Number,
