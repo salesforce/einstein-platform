@@ -161,7 +161,7 @@ Additionally, you can compare your Mule app with [this GitHub repo](https://gith
     <logger doc:name="Logger" doc:id="ezzhif" message="#[payload]" />
     <ee:transform doc:name="Transform" doc:id="dstcls">
         <ee:message>
-            <ee:set-payload><![CDATA[payload.messages[0].content]]></ee:set-payload>
+            <ee:set-payload><![CDATA[(payload.messages filter ($.role == "user"))[0].content default payload.messages[0].content]]></ee:set-payload>
         </ee:message>
         <ee:variables>
             <ee:set-variable variableName="inputPayload">
