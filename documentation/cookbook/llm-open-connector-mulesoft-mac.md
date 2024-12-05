@@ -6,27 +6,27 @@ date: 2024-11-25
 ---
 # LLM Open Connector + MuleSoft + Cerebras
 
-Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) with MuleSoft Anypoint Platform using its [AI Chain Connector](https://mac-project.ai/docs/mulechain-ai/getting-started) and [Inference Connector](https://mac-project.ai/docs/mac-inference/getting-started). The steps in this recipe use AnyPoint Studio.
+Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) with MuleSoft Anypoint Platform using its [AI Chain Connector](https://mac-project.ai/docs/mulechain-ai/getting-started) and [Inference Connector](https://mac-project.ai/docs/mac-inference/getting-started). The steps in this recipe use Anypoint Studio.
 
 <!-- truncate -->
 
-This recipe implements an example of a Cerebras Inference; however, the high-level process is the same for all models and providers.
+This recipe implements an example of Cerebras Inference; however, the high-level process is the same for all models and providers.
 
 ## Tutorial Video + High-level Process
 
-View a [step-by-step tutorial video](https://youtu.be/x4gMffK0Dek?si=Q9_3L__wno3Ca9uZ) that covers a similar implementation to the one covered in this recipe.
+View a [step-by-step tutorial video](https://youtu.be/x4gMffK0Dek?si=Q9_3L__wno3Ca9uZ) that covers an implementation similar to the one covered in this recipe.
 
-There are four steps that represent the high-level process of connecting your model endpoint in Mulesoft to the LLM Open Connector.
+There are four high-level steps for connecting your MuleSoft model endpoint to the LLM Open Connector.
 
-![Mulesoft high-level process](../static/img/mule-mac-process.png)
+![MuleSoft high-level process](../static/img/mule-mac-process.png)
 
 ## Prerequisites
 
-Before you begin, review these prerequisites:
+Before you begin, review the prerequisites:
 
-1. You have a MuleSoft Account (Sign up at [anypoint.mulesoft.com/login/signup](https://anypoint.mulesoft.com/login/signup)).
-2. You have [Anypoint Code Builder (ACB)](https://docs.mulesoft.com/anypoint-code-builder/start-acb-desktop) or [Anypoint Studio installed](https://www.mulesoft.com/lp/dl/anypoint-mule-studio). The instructions in this recipe are based on Anypoint Studio.
-3. You have [Inference Connector](https://mac-project.ai/docs/mac-inference/getting-started) installed before you start.
+1. You have a MuleSoft Account ([Sign up here](https://anypoint.mulesoft.com/login/signup)).
+2. You have [Anypoint Code Builder (ACB)](https://docs.mulesoft.com/anypoint-code-builder/start-acb-desktop) or [Anypoint Studio](https://www.mulesoft.com/lp/dl/anypoint-mule-studio) installed. The instructions in this recipe are based on Anypoint Studio.
+3. You have [Inference Connector](https://mac-project.ai/docs/mac-inference/getting-started) installed.
 4. You have a [Cerebras account](https://inference.cerebras.ai/) with an API key.
 
 ## Step 1: Download the API Specification for the LLM Open Connector
@@ -41,10 +41,10 @@ Before you begin, review these prerequisites:
 
 2. Go to [Anypoint Design Center](https://anypoint.mulesoft.com/designcenter/#/projects). 
 
-3. Import a new API Specification from file using these values:
+3. Import a new API specification from a file using these values:
   - Project Name: `Cerebras-LLM-Provider`,
   - API Specification: Select `REST API`,
-  - File upload: `llm-open-connector.yaml`, make sure to use the renamed file,
+  - File upload: `llm-open-connector.yaml`. Be sure to use the renamed file.
   - Click **Import**.
 
 4. Verify that the API specification successfully imported. 
@@ -62,34 +62,32 @@ servers:
 
 7. Click **Publish.** 
 
-8. Provide versioning information and click **Publish to Exchange**:
+8. Provide versioning information:
   - Asset version: `1.0.0`
   - API version: `v1`
   - Lifecycle State: `Stable`
 
 ![Publish to Exchange](../static/img/mule-mac-publish-to-exchange.png)
 
+9. Click **Publish to Exchange**.
+
 ## Step 3: Implement the API Specification
 
-This cookbook uses Anypoint Studio to implement the API Specification. If you prefer, you also can implement the spec with Anypoint Code Builder.
+This cookbook uses Anypoint Studio to implement the API Specification. If you prefer, you can also implement the spec with Anypoint Code Builder.
 
 ### Import API Specification into Studio
 
-1. Open Anypoint Studio.
+1. Open Anypoint Studio and create a Mule Project.
 
-2. Create a Mule Project.
-
-3. Name the project and import an API spec:
+2. Name the project and import an API spec:
   - Project Name: `cerebras-llm-provider`, 
   - Import a published API: Select the `Cerebras-LLM-Provider` API spec from the previous step.
 
 ![Add API to Mule Project](../static/img/mule-mac-scaffold.png)
 
-  - Click **Finish**.
+3.  Click **Finish**.
 
-4. The Mule Project is created. 
-
-### Add Inference Connector to your project
+### Add the Inference Connector to your project
 
 1. If you have not installed the Inference Connector, [install it](https://mac-project.ai/docs/mac-inference/getting-started) before you start. 
 2. Add the Inference Connector dependency to the Mule Project.
@@ -106,7 +104,7 @@ This cookbook uses Anypoint Studio to implement the API Specification. If you pr
 ![Mule Palette](../static/img/mule-mac-mule-palette-inference.png)
 
 
-### Implement the API
+### Implement the Chat Completions Endpoint
 
 1. Go to the scaffolded flow `post:\chat\completions:application\json:llm-open-connector-config`.
 
@@ -235,9 +233,11 @@ If you receive the error `[The asset is invalid, Error while trying to set type:
 
 
 
-## Configuration in Einstein Model Builder
+## Create a Configuration in Model Builder
 
-1. After your API is deployed to CloudHub, go to Salesforce Einstein Model Builder in Data Cloud. 
+After your API is running on CloudHub, you need to add the model endpoint to Model Builder. 
+
+1. In Salesforce, open Data Cloud. 
 
 2. Navigate to Einstein Studio.
 
@@ -248,15 +248,13 @@ If you receive the error `[The asset is invalid, Error while trying to set type:
 5. Enter the required values:
   - Name: `Cerebras-LLM-Provider`
   - URL: `<cloudhub_url>/api`
-  - Model: For this recipe, model name is required. Choose between `llama3.1-70b` or `llama3.1-8b`.
+  - Model: A model name is required. For this recipe, choose between `llama3.1-70b` or `llama3.1-8b`.
 
 ![Model Builder](../static/img/mule-mac-add-model-einstein-studio.png)
 
 6. Click **Connect**.
 
-7. The Model Provider is added. 
-
-8. Create two configurations for the supported models:
+7. Create two configurations for the each supported models:
   - `llama3.1-70b`
   - `llama3.1-8b`
 
@@ -264,13 +262,11 @@ If you receive the error `[The asset is invalid, Error while trying to set type:
 
 ## Important Considerations
 
-1. This cookbook uses Cerebras models:
-  - `llama3.1-70b`
-  - `llama3.1-8b`
-2. When configuring through the Einstein Model Builder, you need to provide a default value for model. As in this recipe the model name is parametrized, a value is required. 
-3. The API is fully under governance in the MuleSoft Anypoint Platform, which means: 
+1. This cookbook uses Cerebras models `llama3.1-70b` and `llama3.1-8b`.
+2. When configuring in Model Builder, you need to provide a default value for the model. In this recipe the model name is parametrized, so a value is required. 
+3. The API is deployed under the governance of the MuleSoft Anypoint Platform. As a result: 
   - You can monitor the application by viewing logs and errors.
-  - You can apply additional security using the API management capabilities of the Anypoint Platform.
+  - You can apply additional security through Anypoint's API management capabilities.
   - You can deploy multiple replicas to scale horizontally and vertically.
 
 ## Conclusion
