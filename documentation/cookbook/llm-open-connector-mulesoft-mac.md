@@ -4,19 +4,21 @@ authors: [amirkhan-ak-sf]
 tags: [mulesoft, mac, llm-open-connector]
 date: 2024-11-25
 ---
-# LLM Open Connector + MuleSoft
+# LLM Open Connector + MuleSoft + Cerebras
 
-Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) with MuleSoft Anypoint Platform using its [AI Chain Connector](https://mac-project.ai/docs/mulechain-ai/getting-started) and [Inference Connector](https://mac-project.ai/docs/mac-inference/getting-started) for various LLM Providers.
+Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) with MuleSoft Anypoint Platform using its [AI Chain Connector](https://mac-project.ai/docs/mulechain-ai/getting-started) and [Inference Connector](https://mac-project.ai/docs/mac-inference/getting-started). The steps in this recipe use AnyPoint Studio.
 
 <!-- truncate -->
 
-This recipe implements an example of a Cerebras Inference; however, the broad process is the same for all other providers and offerings.
+This recipe implements an example of a Cerebras Inference; however, the high-level process is the same for all models and providers.
 
-## High-level Process + Tutorial Video
+## Tutorial Video + High-level Process
 
 View a [step-by-step tutorial video](https://youtu.be/x4gMffK0Dek?si=Q9_3L__wno3Ca9uZ) that covers a similar implementation to the one covered in this recipe.
 
-![High-level Process](../static/img/mule-mac-process.png)
+There are four steps that represent the high-level process of connecting your model endpoint in Mulesoft to the LLM Open Connector.
+
+![Mulesoft high-level process](../static/img/mule-mac-process.png)
 
 ## Prerequisites
 
@@ -69,7 +71,7 @@ servers:
 
 ## Step 3: Implement the API Specification
 
-This cookbook uses Anypoint Studio to implement the API Specification. As you prefer, you can implement the same steps using Anypoint Code Builder.
+This cookbook uses Anypoint Studio to implement the API Specification. If you prefer, you also can implement the spec with Anypoint Code Builder.
 
 ### Import API Specification into Studio
 
@@ -205,7 +207,7 @@ output application/json
 }
 ```
 
-### Deploy to Anypoint CloudHub
+## Step 4. Deploy to Anypoint CloudHub
 
 1. After the application is tested successfully, deploy it to Anypoint CloudHub.
 
