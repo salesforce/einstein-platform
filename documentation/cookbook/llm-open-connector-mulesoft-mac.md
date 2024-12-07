@@ -42,18 +42,19 @@ Before you begin, review the prerequisites:
 2. Go to [Anypoint Design Center](https://anypoint.mulesoft.com/designcenter/#/projects). 
 
 3. Import a new API specification from a file using these values:
-  - Project Name: `Cerebras-LLM-Provider`,
-  - API Specification: Select `REST API`,
-  - File upload: `llm-open-connector.yaml`. Be sure to use the renamed file.
-  - Click **Import**.
+    - Project Name: `Cerebras-LLM-Provider`,
+    - API Specification: Select `REST API`,
+    - File upload: `llm-open-connector.yaml`. Be sure to use the renamed file.
 
-4. Verify that the API specification successfully imported. 
+4. Click **Import**.
+
+5. Verify that the API specification successfully imported. 
 
 ![Import API Specification](../static/img/mule-mac-publish-provider-asset.png)
 
-5. Change `termsOfService: ""` to `termsOfService: "-"`. 
+6. Change `termsOfService: ""` to `termsOfService: "-"`. 
 
-6. Remove `servers:` and the example `url`. 
+7. Remove `servers:` and the example `url`. 
 
 ```
 servers:
@@ -63,9 +64,9 @@ servers:
 7. Click **Publish.** 
 
 8. Provide versioning information:
-  - Asset version: `1.0.0`
-  - API version: `v1`
-  - Lifecycle State: `Stable`
+    - Asset version: `1.0.0`
+    - API version: `v1`
+    - Lifecycle State: `Stable`
 
 ![Publish to Exchange](../static/img/mule-mac-publish-to-exchange.png)
 
@@ -80,8 +81,8 @@ This cookbook uses Anypoint Studio to implement the API Specification. If you pr
 1. Open Anypoint Studio and create a Mule Project.
 
 2. Name the project and import an API spec:
-  - Project Name: `cerebras-llm-provider`, 
-  - Import a published API: Select the `Cerebras-LLM-Provider` API spec from the previous step.
+    - Project Name: `cerebras-llm-provider`, 
+    - Import a published API: Select the `Cerebras-LLM-Provider` API spec from the previous step.
 
 ![Add API to Mule Project](../static/img/mule-mac-scaffold.png)
 
@@ -214,10 +215,10 @@ output application/json
 3. Choose the environment you want to deploy to.
 
 4. Enter the required values:
-  - App name: `cerebras-llm-provider`
-  - Deployment target: `Shared Space (Cloudhub 2.0)`
-  - Replica Count: `1`
-  - Replica Size: `Micro (0.1 vCore)`
+    - App name: `cerebras-llm-provider`
+    - Deployment target: `Shared Space (Cloudhub 2.0)`
+    - Replica Count: `1`
+    - Replica Size: `Micro (0.1 vCore)`
 
 5. Click **Deploy Application**.
 
@@ -246,17 +247,17 @@ After your API is running on CloudHub, you need to add the model endpoint to Mod
 4. Click **Next**.
 
 5. Enter the required values:
-  - Name: `Cerebras-LLM-Provider`
-  - URL: `<cloudhub_url>/api`
-  - Model: A model name is required. For this recipe, choose between `llama3.1-70b` or `llama3.1-8b`.
+    - Name: `Cerebras-LLM-Provider`
+    - URL: `<cloudhub_url>/api`
+    - Model: A model name is required. For this recipe, choose between `llama3.1-70b` or `llama3.1-8b`.
 
 ![Model Builder](../static/img/mule-mac-add-model-einstein-studio.png)
 
 6. Click **Connect**.
 
-7. Create two configurations for each supported models:
-  - `llama3.1-70b`
-  - `llama3.1-8b`
+7. Create two configurations for each supported model:
+    - `llama3.1-70b`
+    - `llama3.1-8b`
 
 ![Model Builder Playground](../static/img/mule-mac-einstein-playground.png)
 
@@ -265,9 +266,9 @@ After your API is running on CloudHub, you need to add the model endpoint to Mod
 1. This cookbook uses Cerebras models `llama3.1-70b` and `llama3.1-8b`.
 2. When configuring in Model Builder, you need to provide a default value for the model. In this recipe the model name is parametrized, so a value is required. 
 3. The API is deployed under the governance of the MuleSoft Anypoint Platform. As a result: 
-  - You can monitor the application by viewing logs and errors.
-  - You can apply additional security through Anypoint's API management capabilities.
-  - You can deploy multiple replicas to scale horizontally and vertically.
+    - You can monitor the application by viewing logs and errors.
+    - You can apply additional security through Anypoint's API management capabilities.
+    - You can deploy multiple replicas to scale horizontally and vertically.
 
 ## Conclusion
 This cookbook demonstrates how to set up an LLM Open Connector using MuleSoft for the Chat Completion endpoints of Cerebras. This recipe is a sandbox implementation, and it's not production ready. For production use, please optimize your implementation based on your specific requirements and expected usage patterns.
