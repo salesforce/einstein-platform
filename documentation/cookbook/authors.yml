@@ -43,6 +43,15 @@ msrivastav13:
   socials:
     github: msrivastav13
 
+amirkhan-ak-sf:
+  name: Amir
+  title: Developer Advocate @ Salesforce
+  url: https://github.com/amirkhan-ak-sf
+  image_url: https://github.com/amirkhan-ak-sf.png
+  page: true
+  socials:
+    github: amirkhan-ak-sf
+
 # sfyz:
 #   name: Yuvi
 #   title: Technical Writer @ Salesforce
