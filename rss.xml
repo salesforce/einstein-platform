@@ -820,5 +820,245 @@ Use a tool like cURL or Postman to test the endpoints of your Flask app:</p>
             <category>ibm</category>
             <category>llm-open-connector</category>
         </item>
+        <item>
+            <title><![CDATA[LLM Open Connector + MuleSoft + Cerebras]]></title>
+            <link>https://opensource.salesforce.com/einstein-platform/mulesoft</link>
+            <guid>https://opensource.salesforce.com/einstein-platform/mulesoft</guid>
+            <pubDate>Mon, 25 Nov 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Learn how to implement Salesforce's LLM Open Connector with MuleSoft Anypoint Platform using its AI Chain Connector and Inference Connector. The steps in this recipe use Anypoint Studio.]]></description>
+            <content:encoded><![CDATA[<p>Learn how to implement Salesforce's <a href="https://opensource.salesforce.com/einstein-platform/docs/apis/llm-open-connector">LLM Open Connector</a> with MuleSoft Anypoint Platform using its <a href="https://mac-project.ai/docs/mulechain-ai/getting-started" target="_blank" rel="noopener noreferrer">AI Chain Connector</a> and <a href="https://mac-project.ai/docs/mac-inference/getting-started" target="_blank" rel="noopener noreferrer">Inference Connector</a>. The steps in this recipe use Anypoint Studio.</p>
+<p>This recipe implements an example of Cerebras Inference; however, the high-level process is the same for all models and providers.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="tutorial-video--high-level-process">Tutorial Video + High-level Process<a href="https://opensource.salesforce.com/einstein-platform/mulesoft#tutorial-video--high-level-process" class="hash-link" aria-label="Direct link to Tutorial Video + High-level Process" title="Direct link to Tutorial Video + High-level Process">​</a></h2>
+<p>View a <a href="https://youtu.be/x4gMffK0Dek?si=Q9_3L__wno3Ca9uZ" target="_blank" rel="noopener noreferrer">step-by-step tutorial video</a> that covers an implementation similar to the one covered in this recipe.</p>
+<p>There are four high-level steps for connecting your MuleSoft model endpoint to the LLM Open Connector.</p>
+<p><img decoding="async" loading="lazy" alt="MuleSoft high-level process" src="https://opensource.salesforce.com/einstein-platform/assets/images/mule-mac-process-1f818868c9d627edee9bd28d6edf4137.png" width="2678" height="546" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="prerequisites">Prerequisites<a href="https://opensource.salesforce.com/einstein-platform/mulesoft#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites">​</a></h2>
+<p>Before you begin, review the prerequisites:</p>
+<ol>
+<li>You have a MuleSoft Account (<a href="https://anypoint.mulesoft.com/login/signup" target="_blank" rel="noopener noreferrer">Sign up here</a>).</li>
+<li>You have <a href="https://docs.mulesoft.com/anypoint-code-builder/start-acb-desktop" target="_blank" rel="noopener noreferrer">Anypoint Code Builder (ACB)</a> or <a href="https://www.mulesoft.com/lp/dl/anypoint-mule-studio" target="_blank" rel="noopener noreferrer">Anypoint Studio</a> installed. The instructions in this recipe are based on Anypoint Studio.</li>
+<li>You have <a href="https://mac-project.ai/docs/mac-inference/getting-started" target="_blank" rel="noopener noreferrer">Inference Connector</a> installed.</li>
+<li>You have a <a href="https://inference.cerebras.ai/" target="_blank" rel="noopener noreferrer">Cerebras account</a> with an API key.</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="step-1-download-the-api-specification-for-the-llm-open-connector">Step 1: Download the API Specification for the LLM Open Connector<a href="https://opensource.salesforce.com/einstein-platform/mulesoft#step-1-download-the-api-specification-for-the-llm-open-connector" class="hash-link" aria-label="Direct link to Step 1: Download the API Specification for the LLM Open Connector" title="Direct link to Step 1: Download the API Specification for the LLM Open Connector">​</a></h2>
+<ol>
+<li>
+<p>Download LLM Open Connector <a href="https://github.com/salesforce/einstein-platform/blob/main/api-specs/llm-open-connector/llm-open-connector.yml" target="_blank" rel="noopener noreferrer">API Spec</a>.</p>
+</li>
+<li>
+<p>Rename the file from <code>llm-open-connector.yml</code> to <code>llm-open-connector.yaml</code>.</p>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="step-2-import-the-api-specification-into-anypoint-design-center">Step 2: Import the API Specification into Anypoint Design Center<a href="https://opensource.salesforce.com/einstein-platform/mulesoft#step-2-import-the-api-specification-into-anypoint-design-center" class="hash-link" aria-label="Direct link to Step 2: Import the API Specification into Anypoint Design Center" title="Direct link to Step 2: Import the API Specification into Anypoint Design Center">​</a></h2>
+<ol>
+<li>
+<p>Log in to your MuleSoft account.</p>
+</li>
+<li>
+<p>Go to <a href="https://anypoint.mulesoft.com/designcenter/#/projects" target="_blank" rel="noopener noreferrer">Anypoint Design Center</a>.</p>
+</li>
+<li>
+<p>Import a new API specification from a file using these values:</p>
+<ul>
+<li>Project Name: <code>Cerebras-LLM-Provider</code>,</li>
+<li>API Specification: Select <code>REST API</code>,</li>
+<li>File upload: <code>llm-open-connector.yaml</code>. Be sure to use the renamed file.</li>
+</ul>
+</li>
+<li>
+<p>Click <strong>Import</strong>.</p>
+</li>
+<li>
+<p>Verify that the API specification successfully imported.</p>
+</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="Import API Specification" src="https://opensource.salesforce.com/einstein-platform/assets/images/mule-mac-publish-provider-asset-f322ef300d69906f1f42290c3e29eb12.png" width="1924" height="1244" class="img_ev3q"></p>
+<ol start="6">
+<li>
+<p>Change <code>termsOfService: ""</code> to <code>termsOfService: "-"</code>.</p>
+</li>
+<li>
+<p>Remove <code>servers:</code> and the example <code>url</code>.</p>
+</li>
+</ol>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">servers:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  - url: https://bring-your-own-llm.example.com</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<ol start="7">
+<li>
+<p>Click <strong>Publish.</strong></p>
+</li>
+<li>
+<p>Provide versioning information:</p>
+<ul>
+<li>Asset version: <code>1.0.0</code></li>
+<li>API version: <code>v1</code></li>
+<li>Lifecycle State: <code>Stable</code></li>
+</ul>
+</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="Publish to Exchange" src="https://opensource.salesforce.com/einstein-platform/assets/images/mule-mac-publish-to-exchange-5f2371e21ff7627d719821991c146112.png" width="1360" height="1164" class="img_ev3q"></p>
+<ol start="9">
+<li>Click <strong>Publish to Exchange</strong>.</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="step-3-implement-the-api-specification">Step 3: Implement the API Specification<a href="https://opensource.salesforce.com/einstein-platform/mulesoft#step-3-implement-the-api-specification" class="hash-link" aria-label="Direct link to Step 3: Implement the API Specification" title="Direct link to Step 3: Implement the API Specification">​</a></h2>
+<p>This cookbook uses Anypoint Studio to implement the API Specification. If you prefer, you can also implement the spec with Anypoint Code Builder.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="import-api-specification-into-studio">Import API Specification into Studio<a href="https://opensource.salesforce.com/einstein-platform/mulesoft#import-api-specification-into-studio" class="hash-link" aria-label="Direct link to Import API Specification into Studio" title="Direct link to Import API Specification into Studio">​</a></h3>
+<ol>
+<li>
+<p>Open Anypoint Studio and create a Mule Project.</p>
+</li>
+<li>
+<p>Name the project and import an API spec:</p>
+<ul>
+<li>Project Name: <code>cerebras-llm-provider</code>,</li>
+<li>Import a published API: Select the <code>Cerebras-LLM-Provider</code> API spec from the previous step.</li>
+</ul>
+</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="Add API to Mule Project" src="https://opensource.salesforce.com/einstein-platform/assets/images/mule-mac-scaffold-7519e545c56ada1d03f6beac23bd177f.png" width="1808" height="1208" class="img_ev3q"></p>
+<ol start="3">
+<li>Click <strong>Finish</strong>.</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="add-the-inference-connector-to-your-project">Add the Inference Connector to your project<a href="https://opensource.salesforce.com/einstein-platform/mulesoft#add-the-inference-connector-to-your-project" class="hash-link" aria-label="Direct link to Add the Inference Connector to your project" title="Direct link to Add the Inference Connector to your project">​</a></h3>
+<ol>
+<li>If you have not installed the Inference Connector, <a href="https://mac-project.ai/docs/mac-inference/getting-started" target="_blank" rel="noopener noreferrer">install it</a> before you start.</li>
+<li>Add the Inference Connector dependency to the Mule Project.</li>
+</ol>
+<div class="language-xml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-xml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">dependency</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">groupId</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token plain">com.mulesoft.connectors</span><span class="token tag punctuation" style="color:#393A34">&lt;/</span><span class="token tag" style="color:#00009f">groupId</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">artifactId</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token plain">mac-inference-chain</span><span class="token tag punctuation" style="color:#393A34">&lt;/</span><span class="token tag" style="color:#00009f">artifactId</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">version</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token plain">0.1.0</span><span class="token tag punctuation" style="color:#393A34">&lt;/</span><span class="token tag" style="color:#00009f">version</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">classifier</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token plain">mule-plugin</span><span class="token tag punctuation" style="color:#393A34">&lt;/</span><span class="token tag" style="color:#00009f">classifier</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token tag punctuation" style="color:#393A34">&lt;/</span><span class="token tag" style="color:#00009f">dependency</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<ol start="3">
+<li>Make sure the Inference Connector is present in the Mule Palette.
+<img decoding="async" loading="lazy" alt="Mule Palette" src="https://opensource.salesforce.com/einstein-platform/assets/images/mule-mac-mule-palette-inference-886e3601bcb50893d59153ec3aa41f26.png" width="1646" height="488" class="img_ev3q"></li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="implement-the-chat-completions-endpoint">Implement the Chat Completions Endpoint<a href="https://opensource.salesforce.com/einstein-platform/mulesoft#implement-the-chat-completions-endpoint" class="hash-link" aria-label="Direct link to Implement the Chat Completions Endpoint" title="Direct link to Implement the Chat Completions Endpoint">​</a></h3>
+<ol>
+<li>
+<p>Go to the scaffolded flow <code>post:\chat\completions:application\json:llm-open-connector-config</code>.</p>
+</li>
+<li>
+<p>Drag and drop <code>Chat completions</code> operation from the Inference Connector into the Flow.</p>
+</li>
+<li>
+<p>Provide the Inference connector configuration for Cerebras.</p>
+</li>
+<li>
+<p>Parametrize all properties needed by the LLM Open Connector API Spec.
+<img decoding="async" loading="lazy" alt="Configuration Params" src="https://opensource.salesforce.com/einstein-platform/assets/images/mule-mac-configuration-params-9f210cb3b6f7d130b0f7e50f976c669d.png" width="1258" height="726" class="img_ev3q">.</p>
+</li>
+<li>
+<p>In the <code>Chat completions</code> operation, enter: <code>payload.messages</code>.</p>
+</li>
+<li>
+<p>Before the <code>Chat completions</code> operation, add the <code>Set Variable</code> operation with the name <code>model</code> and enter in the expression value <code>payload.model</code>.</p>
+</li>
+<li>
+<p>After the <code>Chat completions</code> operation, add the <code>Transform Message</code> operation and provide the mapping in this code block:</p>
+</li>
+</ol>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">%dw </span><span class="token number" style="color:#36acaa">2.0</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">output application/json</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">---</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	id</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"chatcmpl-"</span><span class="token plain"> ++ now() as Number as String</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	created</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> now() as Number</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	usage</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">		completion_tokens</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> attributes.tokenUsage.outputCount</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">		prompt_tokens</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> attributes.tokenUsage.inputCount</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">		total_tokens</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> attributes.tokenUsage.totalCount</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	model</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> vars.model</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	choices</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    	</span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      finish_reason</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"stop"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      index</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      message</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        content</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> payload.response default </span><span class="token string" style="color:#e3116c">""</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        role</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"assistant"</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	object</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"chat.completion"</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<ol start="8">
+<li>Save the project.</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="test-locally">Test Locally<a href="https://opensource.salesforce.com/einstein-platform/mulesoft#test-locally" class="hash-link" aria-label="Direct link to Test Locally" title="Direct link to Test Locally">​</a></h3>
+<ol>
+<li>
+<p>Start the Mule Application.</p>
+</li>
+<li>
+<p>Go to the API Console.
+<img decoding="async" loading="lazy" alt="Configuration Params" src="https://opensource.salesforce.com/einstein-platform/assets/images/mule-mac-test-locally-c3f2131055d7d4f5fbff7f11f7813a16.png" width="3078" height="1514" class="img_ev3q"></p>
+</li>
+<li>
+<p>Enter the API Key and following payload:</p>
+</li>
+</ol>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"messages"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">"content"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"What is the capital of Switzerland?"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">"role"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"user"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">"name"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">""</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"model"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"llama3.1-8b"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"max_tokens"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">500</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"n"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"temperature"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0.7</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"parameters"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"top_p"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0.5</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<ol start="4">
+<li>Validate the result. Make sure the values are mapped correctly for token usage.</li>
+</ol>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"id"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"chatcmpl-1732373228"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"created"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1732373228</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"usage"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"completion_tokens"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">8</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"prompt_tokens"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">42</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"total_tokens"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">50</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"model"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"llama3.1-8b"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"choices"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">"finish_reason"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"stop"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">"index"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">"message"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">"content"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"The capital of Switzerland is Bern."</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">"role"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"assistant"</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"object"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"chat.completion"</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="step-4-deploy-to-anypoint-cloudhub">Step 4. Deploy to Anypoint CloudHub<a href="https://opensource.salesforce.com/einstein-platform/mulesoft#step-4-deploy-to-anypoint-cloudhub" class="hash-link" aria-label="Direct link to Step 4. Deploy to Anypoint CloudHub" title="Direct link to Step 4. Deploy to Anypoint CloudHub">​</a></h2>
+<ol>
+<li>
+<p>After the application is tested successfully, deploy it to Anypoint CloudHub.</p>
+</li>
+<li>
+<p>Right-click your Mule Project and navigate to <code>Anypoint Platform</code> &gt; <code>Deploy to CloudHub</code>.</p>
+</li>
+<li>
+<p>Choose the environment you want to deploy to.</p>
+</li>
+<li>
+<p>Enter the required values:</p>
+<ul>
+<li>App name: <code>cerebras-llm-provider</code></li>
+<li>Deployment target: <code>Shared Space (Cloudhub 2.0)</code></li>
+<li>Replica Count: <code>1</code></li>
+<li>Replica Size: <code>Micro (0.1 vCore)</code></li>
+</ul>
+</li>
+<li>
+<p>Click <strong>Deploy Application</strong>.</p>
+</li>
+<li>
+<p>Wait until the application is deployed.</p>
+</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="Deployed App" src="https://opensource.salesforce.com/einstein-platform/assets/images/mule-mac-deployed-app-97551247b0b0376e116cf1c7d79bad6f.png" width="2472" height="450" class="img_ev3q"></p>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>If you receive the error <code>[The asset is invalid, Error while trying to set type: app. Expected type is: rest-api.]</code>, go to Exchange and delete or rename the asset. <a href="https://help.salesforce.com/s/articleView?id=001119384&amp;type=1" target="_blank" rel="noopener noreferrer">This error is a known issue</a>.</p></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="create-a-configuration-in-model-builder">Create a Configuration in Model Builder<a href="https://opensource.salesforce.com/einstein-platform/mulesoft#create-a-configuration-in-model-builder" class="hash-link" aria-label="Direct link to Create a Configuration in Model Builder" title="Direct link to Create a Configuration in Model Builder">​</a></h2>
+<p>After your API is running on CloudHub, you need to add the model endpoint to Model Builder.</p>
+<ol>
+<li>
+<p>In Salesforce, open Data Cloud.</p>
+</li>
+<li>
+<p>Navigate to Einstein Studio.</p>
+</li>
+<li>
+<p>Click <strong>Add Foundation Model</strong>, and click <strong>Connect to your LLM</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Enter the required values:</p>
+<ul>
+<li>Name: <code>Cerebras-LLM-Provider</code></li>
+<li>URL: <code>&lt;cloudhub_url&gt;/api</code></li>
+<li>Model: A model name is required. For this recipe, choose between <code>llama3.1-70b</code> or <code>llama3.1-8b</code>.</li>
+</ul>
+</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="Model Builder" src="https://opensource.salesforce.com/einstein-platform/assets/images/mule-mac-add-model-einstein-studio-0e18449420dc98913e5dd770624941a0.png" width="1934" height="1368" class="img_ev3q"></p>
+<ol start="6">
+<li>
+<p>Click <strong>Connect</strong>.</p>
+</li>
+<li>
+<p>Create two configurations for each supported model:</p>
+<ul>
+<li><code>llama3.1-70b</code></li>
+<li><code>llama3.1-8b</code></li>
+</ul>
+</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="Model Builder Playground" src="https://opensource.salesforce.com/einstein-platform/assets/images/mule-mac-einstein-playground-1d93a24bf794f7eff3e36defedc68e59.png" width="2526" height="712" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="important-considerations">Important Considerations<a href="https://opensource.salesforce.com/einstein-platform/mulesoft#important-considerations" class="hash-link" aria-label="Direct link to Important Considerations" title="Direct link to Important Considerations">​</a></h2>
+<ol>
+<li>This cookbook uses Cerebras models <code>llama3.1-70b</code> and <code>llama3.1-8b</code>.</li>
+<li>When configuring in Model Builder, you need to provide a default value for the model. In this recipe the model name is parametrized, so a value is required.</li>
+<li>The API is deployed under the governance of the MuleSoft Anypoint Platform. As a result:<!-- -->
+<ul>
+<li>You can monitor the application by viewing logs and errors.</li>
+<li>You can apply additional security through Anypoint's API management capabilities.</li>
+<li>You can deploy multiple replicas to scale horizontally and vertically.</li>
+</ul>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="conclusion">Conclusion<a href="https://opensource.salesforce.com/einstein-platform/mulesoft#conclusion" class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion">​</a></h2>
+<p>This cookbook demonstrates how to set up an LLM Open Connector using MuleSoft for the Chat Completion endpoints of Cerebras. This recipe is a sandbox implementation, and it's not production ready. For production use, please optimize your implementation based on your specific requirements and expected usage patterns.</p>]]></content:encoded>
+            <category>mulesoft</category>
+            <category>mac</category>
+            <category>llm-open-connector</category>
+        </item>
     </channel>
 </rss>
