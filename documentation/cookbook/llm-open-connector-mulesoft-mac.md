@@ -254,7 +254,7 @@ After your API is running on CloudHub, you need to add the model endpoint to Mod
 
 6. Click **Connect**.
 
-7. Create two configurations for the each supported models:
+7. Create two configurations for each supported models:
   - `llama3.1-70b`
   - `llama3.1-8b`
 
