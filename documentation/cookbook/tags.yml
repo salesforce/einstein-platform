@@ -38,6 +38,14 @@ huggingface:
   label: huggingface
   permalink: /huggingface
 
+mulesoft:
+  label: mulesoft
+  permalink: /mulesoft
+
+mac:
+  label: mac
+  permalink: /mac
+
 ollama:
   label: ollama
   permalink: /ollama
