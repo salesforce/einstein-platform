@@ -33,7 +33,7 @@ For troubleshooting, you can compare your Mule app with [this GitHub repo](https
 
 3. Copy the address from the **Forwarding** field. This address is the URL you need to connect to Ollama from the Mule app.
 
-## Create and publish the API specification
+## Create and Publish the API Specification
 
 1. Download the `llm-open-connector.yml` file from the [einstein-platform](https://github.com/salesforce/einstein-platform/blob/main/api-specs/llm-open-connector/llm-open-connector.yml) GitHub repository.
 
@@ -76,7 +76,7 @@ For troubleshooting, you can compare your Mule app with [this GitHub repo](https
 
 14. Exit Design Center.
 
-## Implement the Mule app
+## Implement the Mule App
 
 1. Head to the IDE of your choice. In this recipe, we are using Anypoint Code Builder, the MuleSoft IDE powered by Visual Studio Code.
 
@@ -202,11 +202,7 @@ For troubleshooting, you can compare your Mule app with [this GitHub repo](https
     <logger doc:name="Logger" doc:id="rzhuiw" message="#[payload]" />
     ```
 
-5. The image represents the graphical view for the flow. If you can't see this flow, make sure you click the **Flow List** button inside the canvas.
-
-    ![Mule MAC Ollama Flow](../static/img/mule-mac-ollama-flow.png)
-
-6. Save all the files.
+5. Save all the files.
 
 ## Deploy to CloudHub 2.0
 
