@@ -7,86 +7,86 @@ date: 2024-11-29
 
 # LLM Open Connector + MuleSoft + Ollama
 
-Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) using MuleSoft and the [MAC](https://mac-project.ai/) (MuleSoft AI Chain) project. We have our [Ollama](https://ollama.com/) host running locally for quick testing and our Mule application using the MAC project running in CloudHub to expose the API.
+Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) using MuleSoft and the [MuleSoft AI Chain (MAC)](https://mac-project.ai/) project. This recipe relies on locally hosted [Ollama](https://ollama.com/) for quick testing. The Mule application and MAC project run in CloudHub to expose the API. The instructions in this recipe are based on Anypoint Code Builder (ACB).
 
 <!-- truncate -->
 
 ## Prerequisites
 
 1. Anypoint Platform account (create a free trial [here](https://anypoint.mulesoft.com/login/signup)).
-1. MuleSoft's IDE: either [Anypoint Code Builder](https://docs.mulesoft.com/anypoint-code-builder/start-acb-desktop) or [Anypoint Studio](https://www.mulesoft.com/lp/dl/anypoint-mule-studio) (instructions are based on ACB).
-1. [Ollama](https://ollama.com/) running locally + the model of your choice (i.e., `llama3`).
-1. [ngrok](https://download.ngrok.com/) to expose your local Ollama instance to the public cloud.
-1. Any REST client application to test the API calls. For example, cURL or Postman.
+2. MuleSoft's IDE: either [Anypoint Code Builder (ACB)](https://docs.mulesoft.com/anypoint-code-builder/start-acb-desktop) or [Anypoint Studio](https://www.mulesoft.com/lp/dl/anypoint-mule-studio). This recipe is based on ACB.
+3. [Ollama](https://ollama.com/) locally running the model of your choice (for example, `llama3`).
+4. [Ngrok](https://download.ngrok.com/) to expose your local Ollama instance to the public cloud.
+5. A REST client application to test the API calls. For example, cURL or Postman.
 
-Additionally, you can compare your Mule app with [this GitHub repo](https://github.com/alexandramartinez/ollama-llm-provider) to avoid confusion.
+For troubleshooting, you can compare your Mule app with [this GitHub repo](https://github.com/alexandramartinez/ollama-llm-provider).
 
-## Expose Ollama's URL
+## Expose the Ollama URL
 
 1. Verify your model is up and running (locally) in Ollama using `ollama list` or `ollama ps`.
 
-1. Run the following command to start ngrok:
+2. Run this command to start ngrok:
 
     ```shell
     ngrok http 11434 --host-header="localhost:11434"
     ```
 
-1. Copy the address from the **Forwarding** field. This is the URL you will use to connect to Ollama from the Mule app.
+3. Copy the address from the **Forwarding** field. This address is the URL you need to connect to Ollama from the Mule app.
 
 ## Create and publish the API specification
 
 1. Download the `llm-open-connector.yml` file from the [einstein-platform](https://github.com/salesforce/einstein-platform/blob/main/api-specs/llm-open-connector/llm-open-connector.yml) GitHub repository.
 
-1. Rename the extension of the file from `yml` to `yaml`.
+2. Rename the extension of the file from `yml` to `yaml`.
 
-1. Head to your [Anypoint Platform](https://anypoint.mulesoft.com) account.
+3. Log in to your [Anypoint Platform](https://anypoint.mulesoft.com) account.
 
-1. Navigate to **Design Center**.
+4. Navigate to **Design Center**.
 
-1. Click on **Create +** > **Import from File**.
+5. Click **Create +** > **Import from File**.
 
-1. Fill out the following details:
+6. Fill out the spec details:
 
     - Project name: `LLM Open Connector`
     - Import type: API specification `REST API`
-    - Import file: the file you downloaded on step 1
+    - Import file: The `llm-open-connector.yaml` file from steps 1 and 2. (Ensure that the file extension is `.yaml`.)
 
-1. Click on **Import**
+7. Click **Import**.
 
-1. Add a character inside `termsOfService` (i.e., `termsOfService: "-"`)
+8. Add a character inside `termsOfService` (for example, `termsOfService: "-"`).
 
-1. Remove the `servers` section:
+9. Remove the `servers` section, including the example `url`:
 
     ```yaml
     servers:
         - url: https://bring-your-own-llm.example.com
     ```
 
-1. Click on **Publish** at the top-right side of the screen.
+10. Click **Publish** in the top right of the screen.
 
-1. Make sure the following details are selected:
+11. Provide versioning information:
 
     - Asset version: `1.0.0`
     - API version: `v1`
     - LifeCycle State: Stable
 
-1. Click on **Publish to Exchange**.
+12. Click **Publish to Exchange**.
 
-1. Once published, you can click on the **Exchange** link to see the preview of the published asset, or click on **Close**.
+13. After it is published, you can click the **Exchange** link to see the preview of the published asset, or click **Close**.
 
-1. Exit Design Center
+14. Exit Design Center.
 
 ## Implement the Mule app
 
-1. Head to the IDE of your choice. In this case, we will be using Anypoint Code Builder (the Visual Studio Code-based IDE).
+1. Head to the IDE of your choice. In this recipe, we are using Anypoint Code Builder, the MuleSoft IDE powered by Visual Studio Code.
 
-1. In ACB, click on **Implement an API**.
+2. In ACB, click **Implement an API**.
 
     :::note
-    If you haven't signed in to your Anypoint Platform account through ACB, it will ask you to sign in now. Follow the prompts to sign in.
+    If you haven't signed in to your Anypoint Platform account through ACB, it asks you to sign in. Follow the prompts to sign in.
     :::
 
-1. Fill out the following details:
+3. Fill out the project details:
 
     - Project Name: `ollama-llm-provider`
     - Project Location: choose any folder to keep this project
@@ -94,11 +94,11 @@ Additionally, you can compare your Mule app with [this GitHub repo](https://gith
     - Mule Runtime: `4.8.0`
     - Java Version: `17`
 
-1. Click on **Create Project** and wait for it to be fully processed.
+4. Click **Create Project** and wait for it to be fully processed.
 
 ### Maven
 
-1. Once processed, open the `pom.xml` file and add the following Maven dependency:
+1. After it is processed, open the `pom.xml` file and add the Maven dependency:
 
     ```xml
     <dependency>
@@ -109,15 +109,15 @@ Additionally, you can compare your Mule app with [this GitHub repo](https://gith
     </dependency>
     ```
 
-1. Change the `version` (should be line 6) to the following:
+2. Change the `version` in line 6:
     
     ```xml
     <version>1.0.0</version>
     ```
  
-1. Copy the `groupId` (in `dependencies`) for the `llm-open-connector` artifact. If should be a number similar to this: `d62b8a81-f143-4534-bb89-3673ad61ah01`. This is your organization ID.
+3. Copy the `groupId` (in `dependencies`) for the `llm-open-connector` artifact. The `groupId` is a number similar to: `d62b8a81-f143-4534-bb89-3673ad61ah01`. This number is your organization ID.
 
-1. Paste this organization ID in the `groupId` field at the top of the file (should be line 4), replacing `com.mycompany` with your org ID. It should look similar to this:
+4. Paste this organization ID in the `groupId` field at the top of the file, replacing `com.mycompany`:
 
     ```xml
     <groupId>d62b8a81-f143-4534-bb89-3673ad61ah01</groupId>
@@ -125,9 +125,9 @@ Additionally, you can compare your Mule app with [this GitHub repo](https://gith
 
 ### LLM Config
 
-1. Create a new file under src/main/resources named `llm-config.json`.
+1. Create a file under src/main/resources named `llm-config.json`.
 
-1. Paste the following content into this file:
+2. Paste this code into the `llm-config.json` file:
 
     ```json
     {
@@ -137,25 +137,25 @@ Additionally, you can compare your Mule app with [this GitHub repo](https://gith
     }
     ```
 
-1. Replace the example URL with the one you copied from ngrok.
+3. Replace the example URL with the one you copied from ngrok in step 3 of [Expose the Ollama URL](#expose-the-ollama-url).
 
 ### Mule Flow
 
 1. Open the `ollama-llm-provider.xml` file under src/main/mule.
 
-1. Add the following code under the `apikit:config` and before the `<flow name="llm-open-connector-main">` (should be line 7)
+2. Add this code under `apikit:config` and before `<flow name="llm-open-connector-main">`.
 
     ```xml
     <ms-aichain:config configType="Configuration Json" filePath='#[(mule.home default "") ++ "/apps/" ++ (app.name default "") ++ "/llm-config.json"]' llmType="OLLAMA" modelName="#[vars.inputPayload.model default 'llama3']" name="MAC_Config" temperature="#[vars.inputPayload.temperature default 1]" maxTokens="#[vars.inputPayload.max_tokens default 500]"></ms-aichain:config>
     ```
 
     :::note
-    If your model is not `llama3`, make sure you upload the `default` value in the previous line (i.e., `modelName="#[vars.inputPayload.model default 'llama3']"`).
+    If your model is not `llama3`, make sure you upload the `default` value in the previous line (for example, `modelName="#[vars.inputPayload.model default 'llama3']"`).
     :::
 
-1. Locate the last flow in the file (should be `post:\chat\completions:application\json:llm-open-connector-config`).
+3. Locate the last flow in the file (for example, `post:\chat\completions:application\json:llm-open-connector-config`).
 
-1. Remove the logger and add the following code inside this flow.
+4. Remove the logger and add this code to the flow.
 
     ```xml
     <logger doc:name="Logger" doc:id="ezzhif" message="#[payload]" />
@@ -202,31 +202,31 @@ Additionally, you can compare your Mule app with [this GitHub repo](https://gith
     <logger doc:name="Logger" doc:id="rzhuiw" message="#[payload]" />
     ```
 
-1. This is what you would see from the graphical view for this flow. If you can't see this flow, make sure you click on the **Flow List** button inside the canvas.
+5. The image represents the graphical view for the flow. If you can't see this flow, make sure you click the **Flow List** button inside the canvas.
 
-    ![Mule MAC Ollama Flow](/documentation/static/img/mule-mac-ollama-flow.png)
+    ![Mule MAC Ollama Flow](../static/img/mule-mac-ollama-flow.png)
 
-1. Make sure you save all the files.
+6. Save all the files.
 
 ## Deploy to CloudHub 2.0
 
 :::note
-You can test your application locally before deploying to CloudHub to verify everything was set up correctly. To do this, head to the **Run and Debug** tab, press the green run button, and use the [Test the deployed Mule app](#test-the-deployed-mule-app) instructions. Just replace the URL with `http://localhost:8081/api/chat/completions`
+To verify your setup, you can test your application locally before deploying to CloudHub. Navigate to the **Run and Debug** tab, click the green **run** button, and follow [Test the Deployed Mule App](#test-the-deployed-mule-app). Be sure to replace the URL with `http://localhost:8081/api/chat/completions`.
 :::
 
-1. Still with the `ollama-llm-provider.xml` file open, click on the **Deploy to CloudHub** button located at the top-right side of the screen (the little rocket 🚀 icon).
+1. With the `ollama-llm-provider.xml` file open, click **Deploy to CloudHub** in the top right of the screen (the rocket 🚀 icon).
 
-1. Select **CloudHub 2.0**.
+2. Select **CloudHub 2.0**.
 
-1. Select **Cloudhub-US-East-2** if you have a free trial account based on the US cloud. Otherwise, select any of the regions available to you.
+3. Select **Cloudhub-US-East-2** if you have a free trial account based on the US cloud. Otherwise, select any of the regions available to you.
 
     :::note
-    To double-check the regions you have access to in your Anypoint Platform account, you can do so from **Runtime Manager** by trying to create a new deployment and seeing the available options.
+    To verify the regions you have access to in your Anypoint Platform account, you can do so from the **Runtime Manager** by creating a deployment and checking the available options.
     :::
 
-1. Select **Sandbox** as the environment.
+4. Select **Sandbox** as the environment.
 
-1. A new file with the name `deploy_ch2.json` will be created under src/main/resources. You can change the data in this file if needed. If not, it should look like this:
+5. A new file named `deploy_ch2.json` is created under src/main/resources. You can change the data in this file if needed. By default, it contains:
 
     ```json
     {
@@ -238,21 +238,21 @@ You can test your application locally before deploying to CloudHub to verify eve
     }
     ```
 
-1. Click on **Deploy** in the message that appears at the bottom-right of the screen.
+6. In the message that appears in the bottom right, click **Deploy**.
 
-1. Select the latest Mule runtime version available from the next prompt. In this case, you can select `4.8.1:6e-java17` if available. This will change the `runtime` field from the `deploy_ch2.json` file.
+7. In the next prompt, select the latest Mule runtime version available. For this recipe, you can select `4.8.1:6e-java17` if available. This changes the `runtime` field in the `deploy_ch2.json` file.
 
-1. Your asset will first be published to Exchange as an Application. After that, the deployment to CloudHub 2.0 will start. Once you receive the *'ollama-llm-provider' is deployed to 'Sandbox' Env in CloudHub 2.0*, it means the deployment has successfully started in Anypoint Platform.
+8. Your asset is first published to Exchange as an Application. Afterwards, the deployment to CloudHub 2.0 starts. When you receive the message: *'ollama-llm-provider' is deployed to 'Sandbox' Env in CloudHub 2.0*, the deployment has successfully started in Anypoint Platform.
 
-1. Head to your Anypoint Platform account and open **Runtime Manager** (or click the **Open in Runtime Manager** button from ACB).
+9. Navigate to your Anypoint Platform account and open **Runtime Manager** (or click **Open in Runtime Manager** in ACB).
 
-1. Once your application's status appears as 🟢 `Running`, it means it's ready to start receiving requests. Copy the URL (Public Endpoint). It should look similar to this: `https://ollama-llm-provider-69s5jr.5se6i9-2.usa-e2.cloudhub.io`.
+10. When your application's status appears as 🟢 `Running`, it's ready to start receiving requests. Copy the public endpoint URL (for example, `https://ollama-llm-provider-69s5jr.5se6i9-2.usa-e2.cloudhub.io`).
 
-1. Add `/api` at the end of this URL. This is the URL we will use to call this API.
+11. Add `/api` at the end of the URL. This URL is used to call the API.
 
-## Test the deployed Mule app
+## Test the Deployed Mule App
 
-You can call the previous URL using tools like cURL or Postman. Here is an example cURL command you can use, just make sure you replace the example URL with your own.
+You can call the previous URL using tools like cURL or Postman. Here is an example cURL command; make sure you replace the example URL with your own.
 
 ```shell
 curl -X POST https://ollama-llm-provider-69s5jr.5se6i9-2.usa-e2.cloudhub.io/api/chat/completions \
@@ -285,4 +285,4 @@ Follow the instructions in [this developer blog](https://developer.salesforce.co
 
 ## Conclusion
 
-This cookbook demonstrates how to set up an LLM Open Connector using Ollama locally for Chat Completion endpoints for various models. This option is recommended for local testing since there are no credit limits. Another scenario is if you want to test your own model locally using Ollama. This is not a recommended use case for production use unless you want to host your model on-prem.
+This cookbook demonstrates how to set up the LLM Open Connector using Ollama locally for Chat Completion endpoints for various models. This option is recommended for local testing since there are no credit limits. Another scenario is if you want to test your own model locally using Ollama. The implementation in this recipe is not recommended for production use unless you plan to host your model on-premises.

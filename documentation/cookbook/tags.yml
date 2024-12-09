@@ -37,3 +37,7 @@ ibm:
 huggingface:
   label: huggingface
   permalink: /huggingface
+
+ollama:
+  label: ollama
+  permalink: /ollama
