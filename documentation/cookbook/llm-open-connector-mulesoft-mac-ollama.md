@@ -7,9 +7,12 @@ date: 2024-11-29
 
 # LLM Open Connector + MuleSoft + Ollama
 
-Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) using MuleSoft and the [MuleSoft AI Chain (MAC)](https://mac-project.ai/) project. This recipe relies on locally hosted [Ollama](https://ollama.com/) for quick testing. The Mule application and MAC project run in CloudHub to expose the API. The instructions in this recipe are based on Anypoint Code Builder (ACB).
+Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) using MuleSoft and the [MuleSoft AI Chain (MAC)](https://mac-project.ai/) project. This recipe relies on locally hosted [Ollama](https://ollama.com/) for quick testing. The Mule application and MAC project run in CloudHub to expose the API.
 
 <!-- truncate -->
+:::note
+The instructions in this recipe are based on Anypoint Code Builder (ACB). For instructions using AnyPoint Studio, see [LLM Open Connector + MuleSoft + Cerebras](../cookbook/llm-open-connector-mulesoft-mac.md).
+:::
 
 ## Prerequisites
 
@@ -236,7 +239,7 @@ To verify your setup, you can test your application locally before deploying to 
 
 6. In the message that appears in the bottom right, click **Deploy**.
 
-7. In the next prompt, select the latest Mule runtime version available. For this recipe, you can select `4.8.1:6e-java17` if available. This changes the `runtime` field in the `deploy_ch2.json` file.
+7. In the next prompt, select the latest Mule runtime version available. For this recipe, you can select `4.8.1:6e-java17` if available. This action changes the `runtime` field in the `deploy_ch2.json` file.
 
 8. Your asset is first published to Exchange as an Application. Afterwards, the deployment to CloudHub 2.0 starts. When you receive the message: *'ollama-llm-provider' is deployed to 'Sandbox' Env in CloudHub 2.0*, the deployment has successfully started in Anypoint Platform.
 

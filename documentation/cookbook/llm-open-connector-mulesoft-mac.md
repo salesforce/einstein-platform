@@ -6,11 +6,14 @@ date: 2024-11-25
 ---
 # LLM Open Connector + MuleSoft + Cerebras
 
-Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) with MuleSoft Anypoint Platform using its [AI Chain Connector](https://mac-project.ai/docs/mulechain-ai/getting-started) and [Inference Connector](https://mac-project.ai/docs/mac-inference/getting-started). The steps in this recipe use Anypoint Studio.
+Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) with MuleSoft Anypoint Platform using its [AI Chain Connector](https://mac-project.ai/docs/mulechain-ai/getting-started) and [Inference Connector](https://mac-project.ai/docs/mac-inference/getting-started). 
 
 <!-- truncate -->
-
 This recipe implements an example of Cerebras Inference; however, the high-level process is the same for all models and providers.
+
+:::note
+The steps in this recipe use Anypoint Studio. For instructions using AnyPoint Code Builder (ACB), see [LLM Open Connector + MuleSoft + Ollama](.//llm-open-connector-mulesoft-mac-ollama.md).
+:::
 
 ## Tutorial Video + High-level Process
 
@@ -88,7 +91,7 @@ This cookbook uses Anypoint Studio to implement the API Specification. If you pr
 
 3.  Click **Finish**.
 
-### Add the Inference Connector to your project
+### Add the Inference Connector to Your Project
 
 1. If you have not installed the Inference Connector, [install it](https://mac-project.ai/docs/mac-inference/getting-started) before you start. 
 2. Add the Inference Connector dependency to the Mule Project.
