@@ -4,6 +4,8 @@ authors: [amirkhan-ak-sf]
 tags: [mulesoft, mac, llm-open-connector]
 date: 2024-11-25
 ---
+import ReactPlayer from 'react-player'
+
 # LLM Open Connector + MuleSoft + Cerebras
 
 Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) with MuleSoft Anypoint Platform using its [AI Chain Connector](https://mac-project.ai/docs/mulechain-ai/getting-started) and [Inference Connector](https://mac-project.ai/docs/mac-inference/getting-started). 
@@ -12,18 +14,16 @@ Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-con
 This recipe implements an example of Cerebras Inference; however, the high-level process is the same for all models and providers.
 
 :::note
-The steps in this recipe use Anypoint Studio. For instructions using AnyPoint Code Builder (ACB), see [LLM Open Connector + MuleSoft + Ollama](.//llm-open-connector-mulesoft-mac-ollama.md).
+The steps in this recipe use Anypoint Studio. For instructions using Anypoint Code Builder (ACB), see [LLM Open Connector + MuleSoft + Ollama](.//llm-open-connector-mulesoft-mac-ollama.md).
 :::
 
-## Tutorial Video + High-level Process
-
-View a [step-by-step tutorial video](https://youtu.be/x4gMffK0Dek?si=Q9_3L__wno3Ca9uZ) that covers an implementation similar to the one covered in this recipe.
+## High-level Process
 
 There are four high-level steps for connecting your MuleSoft model endpoint to the LLM Open Connector.
 
 ![MuleSoft high-level process](../static/img/mule-mac-process.png)
 
-## Prerequisites
+## Prerequisites + Tutorial Video
 
 Before you begin, review the prerequisites:
 
@@ -31,6 +31,10 @@ Before you begin, review the prerequisites:
 2. You have [Anypoint Code Builder (ACB)](https://docs.mulesoft.com/anypoint-code-builder/start-acb-desktop) or [Anypoint Studio](https://www.mulesoft.com/lp/dl/anypoint-mule-studio) installed. The instructions in this recipe are based on Anypoint Studio.
 3. You have [Inference Connector](https://mac-project.ai/docs/mac-inference/getting-started) installed.
 4. You have a [Cerebras account](https://inference.cerebras.ai/) with an API key.
+
+View a step-by-step tutorial video that covers an implementation similar to the one covered in this recipe:
+
+<ReactPlayer playing={false} url='https://youtu.be/x4gMffK0Dek?si=Q9_3L__wno3Ca9uZ'/>
 
 ## Step 1: Download the API Specification for the LLM Open Connector
 

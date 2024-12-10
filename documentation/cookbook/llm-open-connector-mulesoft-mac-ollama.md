@@ -11,7 +11,7 @@ Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-con
 
 <!-- truncate -->
 :::note
-The steps in this recipe use Anypoint Code Builder (ACB). For instructions using AnyPoint Studio, see [LLM Open Connector + MuleSoft + Cerebras](../cookbook/llm-open-connector-mulesoft-mac.md).
+The steps in this recipe use Anypoint Code Builder (ACB). For instructions using Anypoint Studio, see [LLM Open Connector + MuleSoft + Cerebras](../cookbook/llm-open-connector-mulesoft-mac.mdx).
 :::
 
 ## Prerequisites
