@@ -44,7 +44,7 @@ Have a question that you don’t see here? Create a [GitHub Issue](https://githu
 
 - Yes, to use a bearer token instead of an API key, enter “Authorization” in the Auth Header field and enter “Bearer `<token>`”  in the Auth Key field. For example, `Bearer 1234567`.
 
-![Einstein Studio auth fields](./documentation/static/img/einstein-studio-auth.png)
+  ![Einstein Studio auth fields](./documentation/static/img/einstein-studio-auth.png)
 
 **Q: Why am I getting an error for the usage object?**
 
