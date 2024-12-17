@@ -31,19 +31,19 @@ Have a question that you don’t see here? Create a [GitHub Issue](https://githu
 
 **Q: Which IP addresses do I need to add to a network Access Control List?**
 
-A: For a list of IP addresses to add to an allowlist, see the BYO Models and Open Connector IP Addresses table in the [Salesforce Core Services - IP Addresses and Domains to Allow](https://help.salesforce.com/s/articleView?id=000384438&type=1), knowledge article.
+   A: For a list of IP addresses to add to an allowlist, see the BYO Models and Open Connector IP Addresses table in the [Salesforce Core Services - IP Addresses and Domains to Allow](https://help.salesforce.com/s/articleView?id=000384438&type=1), knowledge article.
 
 **Q: What unit of measure should I use for the timestamp?**
 
-A: Use seconds for The Unix timestamp in the created attribute of the response. If your model endpoint returns a timestamp in milliseconds, you’ll need to convert it. For more information, see [the specification](https://opensource.salesforce.com/einstein-platform/docs/apis/llm-open-connector).
+   A: Use seconds for The Unix timestamp in the created attribute of the response. If your model endpoint returns a timestamp in milliseconds, you’ll need to convert it. For more information, see [the specification](https://opensource.salesforce.com/einstein-platform/docs/apis/llm-open-connector).
 
 **Q: Does the model endpoint URL have to end in `/chat/completions`?**
 
-A: Yes, according to the Open Connector specification, a supplied model endpoint must end in `/chat/completions`.
+   A: Yes, according to the Open Connector specification, a supplied model endpoint must end in `/chat/completions`.
 
 **Q: Can I use a Bearer token for authentication?**
 
-A: Yes, to use a bearer token instead of an API key, enter “Authorization” in the Auth Header field and enter “Bearer `<token>`”  in the Auth Key field. For example, `Bearer 1234567`.
+   A: Yes, to use a bearer token instead of an API key, enter “Authorization” in the Auth Header field and enter “Bearer `<token>`”  in the Auth Key field. For example, `Bearer 1234567`.
 
 ![Einstein Studio auth fields](./documentation/static/img/einstein-studio-auth.png)
 
