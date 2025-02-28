@@ -15,7 +15,7 @@ Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-con
 
 This document outlines detailed steps for using LLM Open Connector with Vertex AI on Google Cloud.
 
-Instead of building custom, one-off integrations for each LLM vendor, the LLM Open Connector provides a standard API based on the OpenAI schema. LLM Open Connector provides a simple and quick path for teams to connect any model—be it enterprise-grade, open-source, or custom-trained—to Salesforce.
+Instead of building custom, one-off integrations for each LLM vendor, the LLM Open Connector provides a standard API-based approach on the OpenAI schema. LLM Open Connector provides a simple and quick path for teams to connect any model—be it enterprise-grade, open-source, or custom-trained—to Salesforce.
 
 In this example, we will deploy a fine-tuned Gemini model from Google on Vertex AI Model Garden, use Google Cloud Run Functions (Gen 2\) for serverless compute, providing a scalable and maintainable solution that connects Salesforce to Vertex AI's model endpoints. This approach is particularly suited for Agentforce chat completion use cases, enabling advanced conversational AI capabilities within Salesforce.
 
@@ -181,7 +181,7 @@ The Cloud Run Function serves as middleware between Salesforce and Vertex AI. Fo
         ```
 4.  Test and deploy the function.
 
-## 4. Create a Configured Model in Salesforce
+### 4. Create a Configured Model in Salesforce
 
 1. In your Salesforce Org, open Data Cloud.
 2. Go to Einstein Studio, go to Model Builder. 
