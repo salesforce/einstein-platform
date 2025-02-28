@@ -70,3 +70,12 @@ alexandramartinez:
   socials:
     github: alexandramartinez
     linkedin: alexandra-n-martinez
+
+vasundras:
+  name: Vasundra Srinivasan
+  title: Solution Consulting Director
+  url: https://github.com/vasundras
+  image_url: https://github.com/vasundras.png
+  page: true
+  socials:
+    github: vasundras
