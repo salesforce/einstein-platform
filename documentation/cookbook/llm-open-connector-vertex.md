@@ -192,7 +192,9 @@ The Cloud Run Function serves as middleware between Salesforce and Vertex AI. Fo
    * Auth Key: `{VALUE_FROM_SECRET_MANAGER}` 
    * Model Name: `{FINETUNED_MODEL_NAME}`    
 6. After the connection is successful, select and test the fine-tuned model in Model Garden. 
-7. Adjust temperature settings and create a chat completions version for use in Salesforce. Congratulations! Your Vertex AI model is now ready to use!
+7. Adjust temperature settings and create a chat completions version for use in Salesforce. 
+
+Congratulations! Your Vertex AI model is now ready to use!
 
 
 ## See Also
