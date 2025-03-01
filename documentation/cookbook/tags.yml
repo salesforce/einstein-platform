@@ -49,3 +49,7 @@ mac:
 ollama:
   label: ollama
   permalink: /ollama
+
+vertex:
+  label: vertex
+  permalink: /vertex
