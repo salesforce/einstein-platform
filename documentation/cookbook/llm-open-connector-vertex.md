@@ -5,7 +5,7 @@ tags: [vertex, llm-open-connector]
 date: 2025-02-28
 ---
 
-# LLM Open Connector + Vertex AI on Google Cloud Platform
+# LLM Open Connector + Vertex AI
 
 Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) with the Google Cloud Platform (GCP).
 
@@ -50,21 +50,19 @@ In this scenario, we will deploy a fine-tuned Gemini Model in Google Cloud Platf
 
 Before beginning the implementation, review the following requirements.
 
-1. Google Cloud Account with appropriate permissions.  
-   * Required project editor or equivalent roles.
+1. Google Cloud Account with appropriate permissions. Required project editor or equivalent roles.
 
    :::note
    If you’re new to Google Cloud, new customers get $300 in free credits to run, test, and deploy workloads as of 02/11/2025.
    :::
 
 2. A Google Cloud project with billing enabled.
-3. Google Cloud SDK (gcloud CLI). For installation instructions, see Install the gcloud CLI and Set up gcloud CLI. The cookbook walks through the following prerequisites. 
    * On the project selector page in the Google Cloud console, select or create a Google Cloud project.  
-   * Make sure that billing is enabled for your Google Cloud project.  
-   * Review documentation for setting up Google Cloud SDK (gcloud CLI)[https://cloud.google.com/sdk/docs/install-sdk](https://cloud.google.com/sdk/docs/install-sdk). 
+   * Ensure that billing is enabled for your Google Cloud project.  
+3. Google Cloud SDK (gcloud CLI). For installation instructions, see [Install the gcloud CLI](https://cloud.google.com/sdk/docs/install-sdk) and [Set up gcloud CLI](https://cloud.google.com/sdk/docs/initializing).
 4. Python 3.9 or later.
 5. Access to Vertex AI. You may need to enable the Vertex AI API in your project via the Google Cloud Console if it's not already enabled.
-6. Enable all other APIs for this cookbook:
+6. Enable all APIs required for this cookbook:
       * Vertex AI API  
       * Cloud Run API  
       * Secret Manager API  
@@ -116,18 +114,18 @@ Fine-tuning a Gemini model allows you to customize its responses for your specif
     {"contents": [{"role": "user", "parts": [{"text": "What maintenance schedule should be followed for Drilling Machine Kappa based on IoT data?"}]}, {"role": "model", "parts": [{"text": "Drilling Machine Kappa should be maintained every 6 months, with special attention if there are sudden spikes in vibration or drilling temperature that may signal an urgent service need."}]}]}
     ```
 
-3. Create and Configure the Tuning Job:
+3. Create and configure the tuning job:
     * Go to Vertex AI → Training.  
     * Click **Create Training Job**.  
-    * Select your fine-tuning dataset  
+    * Select your fine-tuning dataset.  
     * Configure the hyperparameters (start with defaults).
     * Start the training job.
 
-4. Deploy the Fine-tuned Model:
+4. Deploy the fine-tuned model:
     * After you complete training, go to the model in Vertex AI.  
     * Click **Deploy**.  
     * Select region (e.g., `us-central1`).  
-    * Store the following information:  
+    * Store the following information. You'll need these values later.  
         * Endpoint Name  
         * Endpoint ID  
         * Location  
@@ -144,7 +142,7 @@ The LLM Open Connector requires an API key for authentication. We'll store this 
    * Click **CREATE SECRET**.  
 2. Configure the secret:  
    * Name: `llm_connector_api_key`
-   * Upload a pre-generated API key -- you'll need this when configuring your model in Salesforce.
+   * Upload a pre-generated API key — you'll need this when configuring your model in Salesforce.
    * Click **CREATE SECRET**.  
 
     :::note
@@ -155,24 +153,25 @@ The LLM Open Connector requires an API key for authentication. We'll store this 
 4. Configure IAM Permissions. Ensure your Cloud Run Function's service account has the following roles:  
     * Secret Manager Secret Accessor  
     * Vertex AI User  
-    * We recommend creating an easily identifiable dedicated Cloud Run function service account and provide all required permissions to this service account for this cookbook. The user is open to use other service accounts as well.
+  
+We recommend creating a dedicated Cloud Run function service account. Provide all required permissions to this service account.
 
 
 ### 3. Implement the Cloud Run Function
 
-The Cloud Run Function serves as middleware between Salesforce and Vertex AI. Follow the steps to implement it.
+The Cloud Run Function serves as middleware between Salesforce and Vertex AI. Follow the steps to implement it. You can download asset files from the [einstein-platform repo](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-vertex).
 
 1. Create the Function Code with at least the minimum required settings.
     * Trigger type: HTTPS  
-    * Choose a dedicated service account-- this has access to the secrets as well.
+    * Choose a dedicated service account that has access to the secrets.
     * Runtime python 3.10  
 2. Configure environment variables:  
    * Project ID  
    * Location   
    * Endpoint ID (fine-tuned model endpoint)  
 3.  Create a new directory for your function and add the following files:  
-    * main.py: `openllmconnectormain.py` 
-    * `requirements.txt`:
+    * main.py: [`openllmconnectormain.py`](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-vertex/openllmconnectormain.py)
+    * [`requirements.txt`](https://github.com/salesforce/einstein-platform/tree/main/documentation/cookbook-assets/llm-open-connector-vertex/requirements.txt):
         ```txt
         functions-framework==3.*
         google-cloud-aiplatform==1.*
