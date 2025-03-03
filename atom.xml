@@ -1324,6 +1324,9 @@ Use a tool like cURL or Postman to test the endpoints of your Flask app:</p>
 <p>This document outlines detailed steps for using LLM Open Connector with Vertex AI on Google Cloud.</p>
 <p>Instead of building custom, one-off integrations for each LLM vendor, the LLM Open Connector provides a standard API-based approach on the OpenAI schema. LLM Open Connector provides a simple and quick path for teams to connect any model—be it enterprise-grade, open-source, or custom-trained—to Salesforce.</p>
 <p>In this example, we will deploy a fine-tuned Gemini model from Google on Vertex AI Model Garden, use Google Cloud Run Functions (Gen 2) for serverless compute, providing a scalable and maintainable solution that connects Salesforce to Vertex AI's model endpoints. This approach is particularly suited for Agentforce chat completion use cases, enabling advanced conversational AI capabilities within Salesforce.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="tutorial-video">Tutorial Video<a href="https://opensource.salesforce.com/einstein-platform/vertex#tutorial-video" class="hash-link" aria-label="Direct link to Tutorial Video" title="Direct link to Tutorial Video">​</a></h2>
+<p>View a step-by-step tutorial video that covers this Vertex AI recipe on YouTube:</p>
+<div style="width:640px;height:360px"></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="background-information">Background Information<a href="https://opensource.salesforce.com/einstein-platform/vertex#background-information" class="hash-link" aria-label="Direct link to Background Information" title="Direct link to Background Information">​</a></h2>
 <p>This section introduces the products and features covered in the cookbook. If you're already familiar with LLM Open Connector, Google Cloud Platform (GCP), and Vertex AI feel free to skip to the next section.</p>
 <ol>
