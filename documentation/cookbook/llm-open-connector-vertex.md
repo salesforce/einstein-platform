@@ -4,6 +4,7 @@ authors: [vasundras]
 tags: [vertex, llm-open-connector]
 date: 2025-02-28
 ---
+import ReactPlayer from 'react-player'
 
 # LLM Open Connector + Vertex AI
 
@@ -19,6 +20,12 @@ Instead of building custom, one-off integrations for each LLM vendor, the LLM Op
 
 In this example, we will deploy a fine-tuned Gemini model from Google on Vertex AI Model Garden, use Google Cloud Run Functions (Gen 2\) for serverless compute, providing a scalable and maintainable solution that connects Salesforce to Vertex AI's model endpoints. This approach is particularly suited for Agentforce chat completion use cases, enabling advanced conversational AI capabilities within Salesforce.
 
+## Tutorial Video
+
+View a step-by-step tutorial video that covers this Vertex AI recipe on YouTube:
+
+<ReactPlayer playing={false} url='https://www.youtube.com/watch?v=ixJ5N37e0EI'/>
+
 ## Background Information
 This section introduces the products and features covered in the cookbook. If you're already familiar with LLM Open Connector, Google Cloud Platform (GCP), and Vertex AI feel free to skip to the next section.
 
@@ -26,7 +33,6 @@ This section introduces the products and features covered in the cookbook. If yo
    * **AWS Bedrock:** GCP's equivalent for hosting foundation models is **Vertex AI**. Vertex AI provides access to various models, including Google's own and other partner models. All models can be found in Model Garden   
    * **AWS Lambda:** GCP's serverless compute platform is **Cloud Functions**. This will host your code that interacts with the LLM.  
    * **AWS API Gateway:** GCP's API management service is **Cloud Endpoints** or **Cloud Functions (HTTP)**. These services create the API endpoint that the LLM Open Connector will call in Salesforce.  
-
 
 2. Vertex AI offers a range of [foundation models](https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models). This cookbook uses Gemini 1.5 Pro.
    * Text models, like PaLM 2, offer different sizes (e.g., Bison, Gecko) and are optimized for various tasks and performance requirements.  
