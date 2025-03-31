@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const validateEnvironment = () => {
-    const requiredEnvVars = ['HUGGING_FACE_API_KEY'];
+    const requiredEnvVars = ['HUGGING_FACE_API_KEY', 'HUGGING_FACE_API_URL'];
 
     const missingVars = requiredEnvVars.filter((varName) => !process.env[varName]);
 
@@ -21,7 +21,7 @@ validateEnvironment();
 export default {
     port: process.env.PORT || 3000,
     huggingFaceApiKey: process.env.HUGGING_FACE_API_KEY,
-    huggingFaceApiUrl: 'https://api-inference.huggingface.co/models/',
+    huggingFaceApiUrl: process.env.HUGGING_FACE_API_URL,
     corsOptions: {
         origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : [],
         methods: ['POST'],
