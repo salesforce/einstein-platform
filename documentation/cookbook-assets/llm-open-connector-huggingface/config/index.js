@@ -22,6 +22,7 @@ export default {
     port: process.env.PORT || 3000,
     huggingFaceApiKey: process.env.HUGGING_FACE_API_KEY,
     huggingFaceApiUrl: process.env.HUGGING_FACE_API_URL,
+    useThirdPartyRouter: process.env.USE_THIRD_PARTY_ROUTER ? process.env.USE_THIRD_PARTY_ROUTER === 'true' : false,
     corsOptions: {
         origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : [],
         methods: ['POST'],

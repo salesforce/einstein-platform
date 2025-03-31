@@ -93,10 +93,18 @@ The following list provides a functional overview of each folder and file in the
    ```
    PORT=3000
    HUGGING_FACE_API_KEY=your_hugging_face_api_key
-   ALLOWED_ORIGINS=http://localhost:3000,https://yourdomain.com
+   HUGGING_FACE_API_URL=https://api-inference.huggingface.co/models
+   USE_THIRD_PARTY_ROUTER=false
+   ALLOWED_ORIGINS=http://localhost:3000,https://your-salesforce-domain.com
    ```
 
    > Replace `your_hugging_face_api_key` with your own Hugging Face API key and adjust the `ALLOWED_ORIGINS` as needed. Change `ALLOWED_ORIGINS` to allowlist your Salesforce domain.
+
+   :::note
+   The `HUGGING_FACE_API_URL` and `USE_THIRD_PARTY_ROUTER` configuration options are important when using third-party routers like Together AI:
+   - For standard Hugging Face models, use `HUGGING_FACE_API_URL=https://api-inference.huggingface.co` and `USE_THIRD_PARTY_ROUTER=false`
+   - For third-party routers (e.g., Together AI), set `HUGGING_FACE_API_URL=https://router.huggingface.co/together` and `USE_THIRD_PARTY_ROUTER=true`
+   :::
 
 2. Make sure your `.gitignore` file includes the `.env` file to avoid accidentally committing sensitive information.
 
@@ -109,28 +117,51 @@ The following list provides a functional overview of each folder and file in the
    ```
 2. The server starts on the port specified in your `.env` file. The default port is 3000.
 
-3. Test the endpoints using a tool like cURL or Postman to ensure they're working correctly. To test the `chat/completions` endpoint with cURL, run the following command:
+3. Test the endpoints using a tool like cURL or Postman to ensure they're working correctly. Here are two examples:
 
-    ```bash
-    curl -X POST http://localhost:3000/chat/completions \
-    -H 'Content-Type: application/json' \
-    -H 'api-key: <use your HuggingFace access token here>' \
-    -d '{
-      "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
-      "messages": [
-        {
-          "content": "What is the capital of Italy?",
-          "role": "user"
-        }
-      ],
-      "max_tokens": 100,
-      "temperature": 0.7,
-      "n": 2,
-      "parameters": {
-        "top_p": 0.9
-      }
-    }'
-    ```
+   a. Using a standard Hugging Face model (Mixtral):
+   ```bash
+   curl -X POST http://localhost:3000/chat/completions \
+   -H 'Content-Type: application/json' \
+   -H 'api-key: <use your HuggingFace access token here>' \
+   -d '{
+     "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+     "messages": [
+       {
+         "content": "What is the capital of Italy?",
+         "role": "user"
+       }
+     ],
+     "max_tokens": 100,
+     "temperature": 0.7,
+     "n": 2,
+     "parameters": {
+       "top_p": 0.9
+     }
+   }'
+   ```
+
+   b. Using Qwen through Together AI (requires setting `HUGGING_FACE_API_URL=https://router.huggingface.co/together` and `USE_THIRD_PARTY_ROUTER=true`):
+   ```bash
+   curl -X POST http://localhost:3000/chat/completions \
+   -H 'Content-Type: application/json' \
+   -H 'api-key: <use your Together AI access token here>' \
+   -d '{
+     "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+     "messages": [
+       {
+         "content": "What is the capital of Italy?",
+         "role": "user"
+       }
+     ],
+     "max_tokens": 100,
+     "temperature": 0.7,
+     "n": 2,
+     "parameters": {
+       "top_p": 0.9
+     }
+   }'
+   ```
 
 ## Prepare for Heroku Deployment
 
