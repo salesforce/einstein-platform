@@ -23,8 +23,33 @@ Check out this post on the Salesforce Developers Blog for more info: [Use the LL
    - Blog post: [Bring Your Own Large Language Model in Einstein 1 Studio](https://developer.salesforce.com/blogs/2024/03/bring-your-own-large-language-model-in-einstein-1-studio)
    - Help content: [Bring Your Own Large Language Model](https://help.salesforce.com/s/articleView?id=sf.c360_a_ai_foundation_models.htm)
 
-
 You can now use your LLM from anywhere that can access generative models from Einstein Studio.
+
+### FAQs
+Have a question that you don’t see here? Create a [GitHub Issue](https://github.com/salesforce/einstein-platform/issues), and we’ll take a look.
+
+**Q: Which IP addresses do I need to add to a network Access Control List?**
+
+- A: For a list of IP addresses to add to an allowlist, see the BYO Models and Open Connector IP Addresses table in the [Salesforce Core Services - IP Addresses and Domains to Allow](https://help.salesforce.com/s/articleView?id=000384438&type=1), knowledge article.
+
+**Q: What unit of measure should I use for the timestamp?**
+
+- Use seconds for The Unix timestamp in the created attribute of the response. If your model endpoint returns a timestamp in milliseconds, you’ll need to convert it. For more information, see [the specification](https://opensource.salesforce.com/einstein-platform/docs/apis/llm-open-connector).
+
+**Q: Does the model endpoint URL have to end in `/chat/completions`?**
+
+- Yes, according to the Open Connector specification, a supplied model endpoint must end in `/chat/completions`.
+
+**Q: Can I use a Bearer token for authentication?**
+
+- Yes, to use a bearer token instead of an API key, enter “Authorization” in the Auth Header field and enter “Bearer `<token>`”  in the Auth Key field. For example, `Bearer 1234567`.
+
+  ![Einstein Studio auth fields](./documentation/static/img/einstein-studio-auth.png)
+
+**Q: Why am I getting an error for the usage object?**
+
+- The Open Connector specification contains slightly different usage object fields compared to OpenAI's API specification. Please use the usage object as defined in the Open Connector specification.
+
 
 ## Cookbook
 
@@ -33,6 +58,7 @@ As a companion to this repo, the [Einstein Platform Cookbook](https://opensource
 Sample content:
 
 - Specification: [LLM Open Connector API](https://opensource.salesforce.com/einstein-platform/docs/apis/llm-open-connector)
+- Recipe: [LLM Open Connector + Hugging Face](https://opensource.salesforce.com/einstein-platform/huggingface)
 - Recipe: [LLM Open Connector + Amazon Web Services](https://opensource.salesforce.com/einstein-platform/aws)
 - Recipe: [LLM Open Connector + Groq](https://opensource.salesforce.com/einstein-platform/groq)
 - Recipe: [LLM Open Connector + SambaNova](https://opensource.salesforce.com/einstein-platform/sambanova)

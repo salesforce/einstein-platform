@@ -43,6 +43,15 @@ msrivastav13:
   socials:
     github: msrivastav13
 
+amirkhan-ak-sf:
+  name: Amir
+  title: Developer Advocate @ Salesforce
+  url: https://github.com/amirkhan-ak-sf
+  image_url: https://github.com/amirkhan-ak-sf.png
+  page: true
+  socials:
+    github: amirkhan-ak-sf
+
 # sfyz:
 #   name: Yuvi
 #   title: Technical Writer @ Salesforce
@@ -51,3 +60,22 @@ msrivastav13:
 #   page: true
 #   socials:
 #     github: sfyz
+
+alexandramartinez:
+  name: Alex Martinez
+  title: Developer Advocate @ Salesforce
+  url: https://github.com/alexandramartinez
+  image_url: https://github.com/alexandramartinez.png
+  page: true
+  socials:
+    github: alexandramartinez
+    linkedin: alexandra-n-martinez
+
+vasundras:
+  name: Vasundra Srinivasan
+  title: Solution Consulting Director
+  url: https://github.com/vasundras
+  image_url: https://github.com/vasundras.png
+  page: true
+  socials:
+    github: vasundras
