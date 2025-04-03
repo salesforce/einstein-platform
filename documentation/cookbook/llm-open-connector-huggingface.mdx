@@ -106,13 +106,14 @@ The following list provides a functional overview of each folder and file in the
    ALLOWED_ORIGINS=http://localhost:3000,https://your-salesforce-domain.com
    ```
 
-   > Replace `your_hugging_face_api_key` with your own Hugging Face API key and adjust the `ALLOWED_ORIGINS` as needed. Change `ALLOWED_ORIGINS` to allowlist your Salesforce domain.
+    Replace `your_hugging_face_api_key` with your own Hugging Face API key and adjust the `ALLOWED_ORIGINS` as needed. Change `ALLOWED_ORIGINS` to allowlist your Salesforce domain.
 
    :::note
-   The `HUGGING_FACE_API_URL` and `USE_THIRD_PARTY_ROUTER` configuration options are important when using third-party routers like Together AI:
-   - For standard Hugging Face models, use `HUGGING_FACE_API_URL=https://api-inference.huggingface.co` and `USE_THIRD_PARTY_ROUTER=false`
-   - For third-party routers (e.g., Together AI), set `HUGGING_FACE_API_URL=https://router.huggingface.co/together` and `USE_THIRD_PARTY_ROUTER=true`
+   The `HUGGING_FACE_API_URL` and `USE_THIRD_PARTY_ROUTER` configuration options are important when using third-party routers like Together AI.
    :::
+   
+   - For standard Hugging Face models, use `HUGGING_FACE_API_URL=https://api-inference.huggingface.co` and `USE_THIRD_PARTY_ROUTER=false`.
+   - For third-party routers (e.g. Together AI), use `HUGGING_FACE_API_URL=https://router.huggingface.co/together` and `USE_THIRD_PARTY_ROUTER=true`.
 
 2. Make sure your `.gitignore` file includes the `.env` file to avoid accidentally committing sensitive information.
 
