@@ -113,7 +113,7 @@ The following list provides a functional overview of each folder and file in the
    :::
    
    - For standard Hugging Face models, use `HUGGING_FACE_API_URL=https://api-inference.huggingface.co` and `USE_THIRD_PARTY_ROUTER=false`.
-   - For third-party routers (e.g. Together AI), use `HUGGING_FACE_API_URL=https://router.huggingface.co/together` and `USE_THIRD_PARTY_ROUTER=true`.
+   - For third-party routers (e.g. Together AI), use `HUGGING_FACE_API_URL=https://router.huggingface.co/together/v1/chat/completions` and `USE_THIRD_PARTY_ROUTER=true`.
 
 2. Make sure your `.gitignore` file includes the `.env` file to avoid accidentally committing sensitive information.
 
@@ -150,7 +150,7 @@ The following list provides a functional overview of each folder and file in the
    }'
    ```
 
-   b. Using Qwen through Together AI (requires setting `HUGGING_FACE_API_URL=https://router.huggingface.co/together` and `USE_THIRD_PARTY_ROUTER=true`):
+   b. Using Qwen through Together AI (requires setting `HUGGING_FACE_API_URL=https://router.huggingface.co/together/v1/chat/completions` and `USE_THIRD_PARTY_ROUTER=true`):
    ```bash
    curl -X POST http://localhost:3000/chat/completions \
    -H 'Content-Type: application/json' \
