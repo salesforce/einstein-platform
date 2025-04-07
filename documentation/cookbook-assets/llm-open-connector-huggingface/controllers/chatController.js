@@ -71,7 +71,7 @@ export const chatCompletion = async (req, res, next) => {
 
         const response = await axios.post(
             config.useThirdPartyRouter 
-                ? `${config.huggingFaceApiUrl}/v1/chat/completions`
+                ? `${config.huggingFaceApiUrl}`
                 : `${config.huggingFaceApiUrl}/${value.model}/v1/chat/completions`,
             huggingFaceRequestBody,
             {
