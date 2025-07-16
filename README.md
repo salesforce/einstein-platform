@@ -4,9 +4,9 @@ Artificial intelligence is becoming increasingly personalized and specialized. A
 
 ## LLM Open Connector
 
-LLM Open Connector is a new option for connecting customer and partner LLMs using our existing Bring Your Own Large Language Model (BYOLLM) feature in Einstein Studio Model Builder. 
+LLM Open Connector is a new option for connecting customer and partner LLMs using our existing Bring Your Own Large Language Model (BYOLLM) feature in Einstein Studio Model Builder.
 
-The BYOLLM Open Connector is a commitment to community-driven growth and innovation. By allowing users to integrate any LLM—from those models hosted on major cloud platforms to those models developed in-house—we're opening up a world of possibilities for enhanced, bespoke AI applications. 
+The BYOLLM Open Connector is a commitment to community-driven growth and innovation. By allowing users to integrate any LLM—from those models hosted on major cloud platforms to those models developed in-house—we're opening up a world of possibilities for enhanced, bespoke AI applications.
 
 At this time, BYOLLM offers four built-in options for customers wanting to connect their external LLMs to Salesforce – OpenAI, Azure OpenAI, Google Gemini Pro, and Anthropic Claude on Bedrock. While these options cover a broad swath of the LLM landscape, there are many high quality LLMs that we have not integrated. Instead of doing a point-to-point integration with each of these providers, we have embraced an open connector strategy that allows us to scale easily and lets anyone across the world integrate their own LLM with Salesforce.
 
@@ -18,7 +18,7 @@ Check out this post on the Salesforce Developers Blog for more info: [Use the LL
 
 1. Clone this repository.
 2. Implement an HTTP REST service using the [LLM Open Connector OpenAPI specification](api-specs/llm-open-connector/llm-open-connector.yml). This service can contain the `chat/completions` endpoint. The `/chat/completions` endpoint is used for chat-based use cases. It is required for Prompt Builder and Agentforce.
-> **Note**: To connect to a remote model endpoint, a standard HTTPS 443 port is required.
+   > **Note**: To connect to a remote model endpoint, a standard HTTPS 443 port is required.
 3. Test your service connection using Bring Your Own Large Language Model (BYOLLM) in Einstein 1 Studio.
    - Blog post: [Bring Your Own Large Language Model in Einstein 1 Studio](https://developer.salesforce.com/blogs/2024/03/bring-your-own-large-language-model-in-einstein-1-studio)
    - Help content: [Bring Your Own Large Language Model](https://help.salesforce.com/s/articleView?id=sf.c360_a_ai_foundation_models.htm)
@@ -26,6 +26,7 @@ Check out this post on the Salesforce Developers Blog for more info: [Use the LL
 You can now use your LLM from anywhere that can access generative models from Einstein Studio.
 
 ### FAQs
+
 Have a question that you don’t see here? Create a [GitHub Issue](https://github.com/salesforce/einstein-platform/issues), and we’ll take a look.
 
 **Q: Which IP addresses do I need to add to a network Access Control List?**
@@ -42,14 +43,13 @@ Have a question that you don’t see here? Create a [GitHub Issue](https://githu
 
 **Q: Can I use a Bearer token for authentication?**
 
-- Yes, to use a bearer token instead of an API key, enter “Authorization” in the Auth Header field and enter “Bearer `<token>`”  in the Auth Key field. For example, `Bearer 1234567`.
+- Yes, to use a bearer token instead of an API key, enter “Authorization” in the Auth Header field and enter “Bearer `<token>`” in the Auth Key field. For example, `Bearer 1234567`.
 
   ![Einstein Studio auth fields](./documentation/static/img/einstein-studio-auth.png)
 
 **Q: Why am I getting an error for the usage object?**
 
 - The Open Connector specification contains slightly different usage object fields compared to OpenAI's API specification. Please use the usage object as defined in the Open Connector specification.
-
 
 ## Cookbook
 
@@ -63,6 +63,7 @@ Sample content:
 - Recipe: [LLM Open Connector + Groq](https://opensource.salesforce.com/einstein-platform/groq)
 - Recipe: [LLM Open Connector + SambaNova](https://opensource.salesforce.com/einstein-platform/sambanova)
 - Recipe: [LLM Open Connector + IBM](https://opensource.salesforce.com/einstein-platform/ibm)
+- Recipe: [LLM Open Connector + Grok](https://opensource.salesforce.com/einstein-platform/grok)
 
 ## Models API
 
@@ -70,7 +71,7 @@ The Models API connects your application to large language models (LLMs) through
 
 The Models API is designed with flexibility and extensibility in mind, and it complements existing Salesforce AI offerings for developers. Prompt Builder and the Prompt Template Connect API are effective for fast prompt management and Agentforce provides a customizable and interactive chat experience. The Models API provides additional features like embeddings and chat generations with history which enable developers to architect custom AI applications and deploy them via Lightning web components.
 
-The Models API is currently available via Apex methods and REST endpoints. 
+The Models API is currently available via Apex methods and REST endpoints.
 
 To get started, see the [Models API Developer Guide](https://developer.salesforce.com/docs/einstein/genai/guide/models-api.html). To get hands-on in Trailhead, try building your own Lightning web component with [Get Started with the Models API](https://trailhead.salesforce.com/content/learn/modules/get-started-with-einstein-models-api).
 
