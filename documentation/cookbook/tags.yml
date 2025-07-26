@@ -6,6 +6,10 @@ bedrock:
   label: bedrock
   permalink: /bedrock
 
+grok:
+  label: grok
+  permalink: /grok
+
 groq:
   label: groq
   permalink: /groq
