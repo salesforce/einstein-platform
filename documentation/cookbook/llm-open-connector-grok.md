@@ -8,7 +8,7 @@ date: 2025-07-16
 
 # LLM Open Connector + Grok
 
-Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) with the xAI platform and [Grok](https://x.ai/news/grok-4). No custom scripts or deployments are required. Just plug in your xAI API key and you're off to the races.
+Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) with the xAI platform and [Grok](https://x.ai/news/grok-4). No custom scripts or deployments are required. Simply generate an xAI API key and create a configured model in Salesforce.
 
 <!-- truncate -->
 
@@ -18,7 +18,7 @@ Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-con
 2. Create a team in the [xAI Cloud Console](https://console.x.ai/).
    ![xAI Cloud Console Landing Page](../static/img/xai-cloud-console-landing-page.png)
 3. Purchase some xAI API credits.
-4. Create an API key. Remember to save the secret somewhere secure!
+4. Create an API key.
 
 ## Integrate with Agentforce
 
@@ -50,6 +50,6 @@ xAI is fully compatible with the Open Connector API specification, so you can fo
 
 ## Wrapping Up
 
-You’ve unlocked the power of [Grok 4](https://x.ai/news/grok-4) in Einstein Studio! You can leverage Grok’s advanced reasoning in your Agentforce application to handle complex requests and streamline workflows.
+You can now use [Grok 4](https://x.ai/news/grok-4) in Einstein Studio! You can leverage Grok’s advanced reasoning in your Agentforce application to handle complex requests and streamline workflows.
 
 To monitor consumption, purchase additional credits, and manage your Grok models, use the [xAI Cloud console](https://console.x.ai/).
