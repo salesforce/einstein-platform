@@ -79,3 +79,13 @@ vasundras:
   page: true
   socials:
     github: vasundras
+
+brettallenyo:
+  name: Brett Allen
+  title: MTS @ xAI
+  url: https://github.com/brettallenyo
+  image_url: https://github.com/brettallenyo.png
+  page: true
+  socials:
+    github: brettallenyo
+    linkedin: brett-zachary-allen
