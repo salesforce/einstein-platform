@@ -3,7 +3,7 @@
 slug: grok
 authors: [brettallenyo]
 tags: [grok, llm-open-connector]
-date: 2025-07-16
+date: 2025-08-20
 ---
 
 # LLM Open Connector + Grok
