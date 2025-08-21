@@ -4,13 +4,14 @@ authors: [msrivastav13]
 tags: [huggingface, heroku, llm-open-connector]
 date: 2024-09-12
 ---
-import ReactPlayer from 'react-player'
+
+import ReactPlayer from "react-player";
 
 # LLM Open Connector + Hugging Face
 
 Learn how to implement Salesforce's [LLM Open Connector](/docs/apis/llm-open-connector/) with the Hugging Face [Serverless Inference API](https://huggingface.co/docs/api-inference/index) for LLM models that support [Chat Completion](https://huggingface.co/docs/api-inference/en/tasks/chat-completion). We also cover how to implement and deploy the connector as a Node.js app on Heroku.
 
-<!-- truncate -->
+{/* truncate */}
 
 ## Prerequisites
 
@@ -26,14 +27,21 @@ Before you begin, make sure that your local environment meets these prerequisite
 
 View a walkthrough on using any LLM with the Open Connector on the [Salesforce Developers](https://www.youtube.com/@SalesforceDevs) channel:
 
-<ReactPlayer playing={false} url='https://www.youtube.com/watch?v=CQdJxKZl0Y4' />
+<ReactPlayer
+  playing={false}
+  src="https://www.youtube.com/watch?v=CQdJxKZl0Y4"
+  width="640px"
+  height="360px"
+  controls
+/>
 
 ## Set Up Your Local Environment
 
 1. Clone the einstein-platform repository to your local environment.
+
    ```
     git clone https://github.com/salesforce/einstein-platform.git
-    ```
+   ```
 
 2. Create a directory for your project:
    ```
@@ -42,7 +50,7 @@ View a walkthrough on using any LLM with the Open Connector on the [Salesforce D
    ```
 3. Locate the source files specific to Hugging Face connector. In the local `einstein-platform` project directory you cloned in step 1, navigate to the `documentation/cookbook-assets/llm-open-connector-huggingface` folder. Copy all the files in this folder.
 
-4.  Paste the `llm-open-connector-huggingface` files into the `llm-open-connector-hf` directory you created in step 2.
+4. Paste the `llm-open-connector-huggingface` files into the `llm-open-connector-hf` directory you created in step 2.
 
 5. Install the required dependencies.
    ```
@@ -53,25 +61,24 @@ View a walkthrough on using any LLM with the Open Connector on the [Salesforce D
 
 This section outlines the folder structure of the `llm-open-connector-hf` directory.
 
-   ```
-    llm-open-connector-hf/
-    ├── config/
-    │   └── index.js
-    ├── controllers/
-    │   └── chatController.js
-    ├── middleware/
-    │   └── index.js
-    ├── routes/
-    │   └── chat.js
-    ├── utils/
-    │   └── logger.js
-    ├── .gitignore
-    ├── .prettierrc
-    ├── index.js
-    ├── package.json
-    └── Procfile
-   ```
-
+```
+ llm-open-connector-hf/
+ ├── config/
+ │   └── index.js
+ ├── controllers/
+ │   └── chatController.js
+ ├── middleware/
+ │   └── index.js
+ ├── routes/
+ │   └── chat.js
+ ├── utils/
+ │   └── logger.js
+ ├── .gitignore
+ ├── .prettierrc
+ ├── index.js
+ ├── package.json
+ └── Procfile
+```
 
 ### Project Description
 
@@ -93,7 +100,6 @@ The following list provides a functional overview of each folder and file in the
 - `package.json`: Contains metadata for the project and manages dependencies, scripts, and configurations.
 - `Procfile`: Specifies process types and commands for deploying the app on platforms like Heroku.
 
-
 ## Configure Your Local Environment
 
 1. Create a `.env` file in the root directory of the project and add these variables:
@@ -106,12 +112,12 @@ The following list provides a functional overview of each folder and file in the
    ALLOWED_ORIGINS=http://localhost:3000,https://your-salesforce-domain.com
    ```
 
-    Replace `your_hugging_face_api_key` with your own Hugging Face API key and adjust the `ALLOWED_ORIGINS` as needed. Change `ALLOWED_ORIGINS` to allowlist your Salesforce domain.
+   Replace `your_hugging_face_api_key` with your own Hugging Face API key and adjust the `ALLOWED_ORIGINS` as needed. Change `ALLOWED_ORIGINS` to allowlist your Salesforce domain.
 
    :::note
    The `HUGGING_FACE_API_URL` and `USE_THIRD_PARTY_ROUTER` configuration options are important when using third-party routers like Together AI.
    :::
-   
+
    - For standard Hugging Face models, use `HUGGING_FACE_API_URL=https://api-inference.huggingface.co` and `USE_THIRD_PARTY_ROUTER=false`.
    - For third-party routers (e.g. Together AI), use `HUGGING_FACE_API_URL=https://router.huggingface.co/together/v1/chat/completions` and `USE_THIRD_PARTY_ROUTER=true`.
 
@@ -124,11 +130,13 @@ The following list provides a functional overview of each folder and file in the
    ```
    npm start
    ```
+
 2. The server starts on the port specified in your `.env` file. The default port is 3000.
 
 3. Test the endpoints using a tool like cURL or Postman to ensure they're working correctly. Here are two examples:
 
    a. Using a standard Hugging Face model (Mixtral):
+
    ```bash
    curl -X POST http://localhost:3000/chat/completions \
    -H 'Content-Type: application/json' \
@@ -151,6 +159,7 @@ The following list provides a functional overview of each folder and file in the
    ```
 
    b. Using Qwen through Together AI (requires setting `HUGGING_FACE_API_URL=https://router.huggingface.co/together/v1/chat/completions` and `USE_THIRD_PARTY_ROUTER=true`):
+
    ```bash
    curl -X POST http://localhost:3000/chat/completions \
    -H 'Content-Type: application/json' \
@@ -213,7 +222,6 @@ To switch the default branch used to deploy apps from `master` to `main`, follow
 
    - Use the `heroku-reset` command from the `heroku-repo` CLI plugin. This command does not impact the running application.
 
-   
    :::important
    Communicate this change with your team. If other developers are unaware of the reset and push to `master`, the reset will be overwritten.
    :::
@@ -246,11 +254,11 @@ To switch the default branch used to deploy apps from `master` to `main`, follow
 
 4. Set the ALLOWED_ORIGINS config var on Heroku:
 
-    ```
-    heroku config:set ALLOWED_ORIGINS=your_salesforce_domain_here -a your-app-name
-    ```
+   ```
+   heroku config:set ALLOWED_ORIGINS=your_salesforce_domain_here -a your-app-name
+   ```
 
-    Replace `your_salesforce_domain_here` with your own Salesforce domain.
+   Replace `your_salesforce_domain_here` with your own Salesforce domain.
 
 5. Deploy your app to Heroku:
 
@@ -262,7 +270,7 @@ To switch the default branch used to deploy apps from `master` to `main`, follow
 
 You can test your deployed application using the deployed API endpoint. Use a tool like cURL or Postman to test the endpoints of your Node.js app:
 
-   - Chat Completions: `POST https://your-app-name.herokuapp.com/chat/completions`
+- Chat Completions: `POST https://your-app-name.herokuapp.com/chat/completions`
 
 To test the `chat/completions` endpoint with cURL, run this command:
 
@@ -286,12 +294,15 @@ curl -X POST https://still-beach-80840-58cbb07ae5f4.herokuapp.com/chat/completio
   }
 }'
 ```
+
 ## Bring Your Connected Endpoint to Salesforce Model Builder
 
 Follow the instructions in [this developer blog](https://developer.salesforce.com/blogs/2024/10/build-generative-ai-solutions-with-llm-open-connector) to use your model in Model Builder. When you activate your model, you can use it within [Prompt Builder](https://developer.salesforce.com/docs/einstein/genai/guide/get-started-prompt-builder.html), the [Models API](https://developer.salesforce.com/docs/einstein/genai/guide/models-api.html), and for building actions using prompt templates in Agent Builder. All these methods provide built-in security offered by the [Einstein Trust Layer](https://help.salesforce.com/s/articleView?id=sf.generative_ai_trust_layer.htm&type=5).
 
 ## Current Features
+
 The following list outlines the features included in this recipe:
+
 - Integration with the [Hugging Face](https://huggingface.co/docs/api-inference/index) Serverless Inference API for [models](https://huggingface.co/docs/api-inference/en/tasks/chat-completion) that support Chat Completion
 - Express server with advanced security configurations
 - CORS configuration with customizable allowed origins
@@ -312,11 +323,11 @@ The following list outlines the features included in this recipe:
     ```json
     {
       "messages": [
-        {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "system", "content": "Always be polite."},
-        {"role": "user", "content": "Hello!"},
-        {"role": "assistant", "content": "Hi there!"},
-        {"role": "user", "content": "How are you?"}
+        { "role": "system", "content": "You are a helpful assistant." },
+        { "role": "system", "content": "Always be polite." },
+        { "role": "user", "content": "Hello!" },
+        { "role": "assistant", "content": "Hi there!" },
+        { "role": "user", "content": "How are you?" }
       ],
       "model": "gpt-3.5-turbo",
       "max_tokens": 150
@@ -326,10 +337,13 @@ The following list outlines the features included in this recipe:
     ```json
     {
       "messages": [
-        {"role": "system", "content": "You are a helpful assistant.\nAlways be polite."},
-        {"role": "user", "content": "Hello!"},
-        {"role": "assistant", "content": "Hi there!"},
-        {"role": "user", "content": "How are you?"}
+        {
+          "role": "system",
+          "content": "You are a helpful assistant.\nAlways be polite."
+        },
+        { "role": "user", "content": "Hello!" },
+        { "role": "assistant", "content": "Hi there!" },
+        { "role": "user", "content": "How are you?" }
       ],
       "model": "gpt-3.5-turbo",
       "max_tokens": 150
@@ -337,9 +351,11 @@ The following list outlines the features included in this recipe:
     ```
 
 ## Current Security Measures
+
 The recipe's security measures include a Helmet.js configuration, a CORS configuration, rate limiting, API key validation, and sanitized logging.
 
-The following list briefly highlights the current security measures: 
+The following list briefly highlights the current security measures:
+
 - A Helmet.js configuration with strict security settings:
   - Content Security Policy (CSP) with restrictive directives
   - Cross-Origin Embedder Policy
@@ -368,4 +384,5 @@ The following list briefly highlights the current security measures:
 4. Consider implementing further security measures for production use.
 
 ## Conclusion
+
 This cookbook demonstrates how to set up an LLM Open Connector using Hugging Face Serverless API for Chat Completion endpoints for various models. For production purposes, remember to use Hugging Face's dedicated [Interference Endpoints](https://ui.endpoints.huggingface.co/) feature. Always optimize your implementation based on your specific requirements and expected usage patterns.
