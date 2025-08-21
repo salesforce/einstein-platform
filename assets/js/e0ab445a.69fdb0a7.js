@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkcookbook=self.webpackChunkcookbook||[]).push([[6331],{21079:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/einstein-platform/","page":1,"postsPerPage":10,"totalPages":1,"totalCount":10,"blogDescription":"Example code for building with the Einstein Platform","blogTitle":"Recipes"}}')}}]);

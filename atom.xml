@@ -1531,4 +1531,49 @@ Use a tool like cURL or Postman to test the endpoints of your Flask app:</p>
         <category label="vertex" term="vertex"/>
         <category label="llm-open-connector" term="llm-open-connector"/>
     </entry>
+    <entry>
+        <title type="html"><![CDATA[LLM Open Connector + Grok]]></title>
+        <id>https://opensource.salesforce.com/einstein-platform/grok</id>
+        <link href="https://opensource.salesforce.com/einstein-platform/grok"/>
+        <updated>2025-08-20T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Learn how to implement Salesforce's LLM Open Connector with the xAI platform and Grok. This blog walks through generating an xAI API key and creating a configured model in Salesforce. No custom scripts or deployments are required.]]></summary>
+        <content type="html"><![CDATA[<p>Learn how to implement Salesforce's <a href="https://opensource.salesforce.com/einstein-platform/docs/apis/llm-open-connector">LLM Open Connector</a> with the xAI platform and <a href="https://x.ai/news/grok-4" target="_blank" rel="noopener noreferrer">Grok</a>. This blog walks through generating an xAI API key and creating a configured model in Salesforce. No custom scripts or deployments are required.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="prerequisites">Prerequisites<a href="https://opensource.salesforce.com/einstein-platform/grok#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites">​</a></h2>
+<ol>
+<li>If you don't already have one, <a href="https://accounts.x.ai/sign-up" target="_blank" rel="noopener noreferrer">create an xAI account</a>.</li>
+<li>Create a team in the <a href="https://console.x.ai/" target="_blank" rel="noopener noreferrer">xAI Cloud Console</a>.
+<img decoding="async" loading="lazy" alt="xAI Cloud Console Landing Page" src="https://opensource.salesforce.com/einstein-platform/assets/images/xai-cloud-console-landing-page-506e934b29ccae4c88de44db1f83f4e9.png" width="3456" height="2162" class="img_ev3q"></li>
+<li>Purchase some xAI API credits.</li>
+<li>Create an API key.</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="integrate-with-agentforce">Integrate with Agentforce<a href="https://opensource.salesforce.com/einstein-platform/grok#integrate-with-agentforce" class="hash-link" aria-label="Direct link to Integrate with Agentforce" title="Direct link to Integrate with Agentforce">​</a></h2>
+<p>xAI is fully compatible with the Open Connector API specification, so you can follow the LLM Open Connector <a href="https://developer.salesforce.com/blogs/2024/10/build-generative-ai-solutions-with-llm-open-connector" target="_blank" rel="noopener noreferrer">product guide</a>. Follow the steps in this post for an overview.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="step-1-add-a-foundation-model">Step 1. Add a Foundation Model<a href="https://opensource.salesforce.com/einstein-platform/grok#step-1-add-a-foundation-model" class="hash-link" aria-label="Direct link to Step 1. Add a Foundation Model" title="Direct link to Step 1. Add a Foundation Model">​</a></h3>
+<p>Navigate to Einstein Studio in Data Cloud.</p>
+<p><img decoding="async" loading="lazy" alt="Agentforce Add Foundation Model" src="https://opensource.salesforce.com/einstein-platform/assets/images/agentforce-add-foundation-model-9d680482317f1486a0a5843db00f7198.png" width="1562" height="306" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="step-2-connect-your-llm">Step 2. Connect Your LLM<a href="https://opensource.salesforce.com/einstein-platform/grok#step-2-connect-your-llm" class="hash-link" aria-label="Direct link to Step 2. Connect Your LLM" title="Direct link to Step 2. Connect Your LLM">​</a></h3>
+<p>Select the option to bring your own model.</p>
+<p><img decoding="async" loading="lazy" alt="Agentforce Connect Your LLM" src="https://opensource.salesforce.com/einstein-platform/assets/images/agentforce-connect-your-llm-80761893d8265b54083b467ed1c2c24b.png" width="1539" height="1000" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="step-3-enter-your-xai-api-key">Step 3. Enter Your xAI API Key<a href="https://opensource.salesforce.com/einstein-platform/grok#step-3-enter-your-xai-api-key" class="hash-link" aria-label="Direct link to Step 3. Enter Your xAI API Key" title="Direct link to Step 3. Enter Your xAI API Key">​</a></h3>
+<p>Enter your xAI details to create a new model connection in Model Builder.</p>
+<p><img decoding="async" loading="lazy" alt="Model Builder" src="https://opensource.salesforce.com/einstein-platform/assets/images/xai-grok-connection-8a478037c9ad7a76ec42e3ea990bbf41.png" width="1766" height="1156" class="img_ev3q"></p>
+<ul>
+<li>Add <code>https://api.x.ai/v1/chat/completions</code> to the <strong>URL</strong> field.</li>
+<li>Add your API secret to the <strong>Auth Key</strong> field.</li>
+<li>Add <code>grok-4</code> to the <strong>Model Name</strong> field.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="step-4-create-a-configured-model">Step 4. Create A Configured Model<a href="https://opensource.salesforce.com/einstein-platform/grok#step-4-create-a-configured-model" class="hash-link" aria-label="Direct link to Step 4. Create A Configured Model" title="Direct link to Step 4. Create A Configured Model">​</a></h3>
+<p>Before you can use your connected model, you need to create a configured model. Select grok-4 in the Model Library and click <strong>New Configuration</strong>.</p>
+<p><img decoding="async" loading="lazy" alt="Agentforce New Configuration" src="https://opensource.salesforce.com/einstein-platform/assets/images/xai-grok-configuration-81aedfcc002ef3a73eba9b3f62aafe88.png" width="2224" height="1152" class="img_ev3q"></p>
+<p>Test your model in the the Model Playground. When you're ready, you can save your configuration and create the model for use in Salesforce.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="step-5-start-using-grok">Step 5. Start Using Grok<a href="https://opensource.salesforce.com/einstein-platform/grok#step-5-start-using-grok" class="hash-link" aria-label="Direct link to Step 5. Start Using Grok" title="Direct link to Step 5. Start Using Grok">​</a></h3>
+<p>You can now use <a href="https://x.ai/news/grok-4" target="_blank" rel="noopener noreferrer">Grok 4</a> via Salesforce's Open Connector! You can leverage Grok’s advanced reasoning in your Agentforce application to handle complex requests and streamline workflows.</p>
+<p>To monitor consumption, purchase additional credits, and manage your Grok models, use the <a href="https://console.x.ai/" target="_blank" rel="noopener noreferrer">xAI Cloud console</a>.</p>]]></content>
+        <author>
+            <name>Brett Allen</name>
+            <uri>https://github.com/brettallenyo</uri>
+        </author>
+        <category label="grok" term="grok"/>
+        <category label="llm-open-connector" term="llm-open-connector"/>
+    </entry>
 </feed>
