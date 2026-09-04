@@ -1,6 +1,6 @@
 # Tips for Running the Agentforce Voice Guide
 
-This is a companion to [Build a Voice Agent with Agentforce](./voice-intro.md). It collects the things that make the guided walkthrough smoother: how to pause and pick back up, how to keep it fast, and how to use the packaged skills to build for your own use case.
+This is a companion to [Build a Voice Agent with Agentforce](./voice-intro.md). It explains how to make the guided walkthrough smoother: how to pause and pick back up, how to keep it fast, and how to use the packaged skills to build for your own use case.
 
 ## Pick up where you left off
 

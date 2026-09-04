@@ -9,7 +9,7 @@ The [Open Connector Cookbook](https://opensource.salesforce.com/einstein-platfor
 
 ## LLM Open Connector
 
-LLM Open Connector is a new option for connecting customer and partner LLMs using our existing Bring Your Own Large Language Model (BYOLLM) feature in Einstein Studio Model Builder.
+LLM Open Connector is a way to connect customer and partner LLMs using our existing Bring Your Own Large Language Model (BYOLLM) feature in Einstein Studio Model Builder.
 
 The BYOLLM Open Connector is a commitment to community-driven growth and innovation. By allowing users to integrate any LLM—from those models hosted on major cloud platforms to those models developed in-house—we're opening up a world of possibilities for enhanced, bespoke AI applications.
 
@@ -28,7 +28,7 @@ Check out this post on the Salesforce Developers Blog for more info: [Use the LL
    - Blog post: [Bring Your Own Large Language Model in Einstein 1 Studio](https://developer.salesforce.com/blogs/2024/03/bring-your-own-large-language-model-in-einstein-1-studio)
    - Help content: [Bring Your Own Large Language Model](https://help.salesforce.com/s/articleView?id=sf.c360_a_ai_foundation_models.htm)
 
-You can now use your LLM from anywhere that can access generative models from Einstein Studio.
+You can now use your LLM from anywhere that can access generative models from AI Models.
 
 ### FAQs
 
@@ -36,7 +36,7 @@ Have a question that you don't see here? Create a [GitHub Issue](https://github.
 
 **Q: Which IP addresses do I need to add to a network Access Control List?**
 
-- A: For a list of IP addresses to add to an allowlist, see the BYO Models and Open Connector IP Addresses table in the [Salesforce Core Services - IP Addresses and Domains to Allow](https://help.salesforce.com/s/articleView?id=000384438&type=1), knowledge article.
+- A: For a list of IP addresses to add to an allowlist, see the BYO Models and Open Connector IP Addresses table in the [Salesforce Core Services - IP Addresses and Domains to Allow](https://help.salesforce.com/s/articleView?id=000384438&type=1) knowledge article.
 
 **Q: What unit of measure should I use for the timestamp?**
 

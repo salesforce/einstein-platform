@@ -5,7 +5,7 @@ title: Agentforce Voice Implementation Guide
 # Agentforce Voice Implementation Guide
 
 An interactive guide for building a Voice agent and implementing Agentforce Voice, with accompanying skills. It
-walks the full agent development lifecycle, using a real-world retail example.
+walks through the full agent development lifecycle, using a real-world retail example.
 
 The guide ships as a downloadable package in the
 [`salesforce/einstein-platform`](https://github.com/salesforce/einstein-platform)

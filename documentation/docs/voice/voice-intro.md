@@ -53,7 +53,7 @@ The only difference between the two modes is whether you perform the setup steps
 
 **2. Build along (in an org licensed for Agentforce Voice).** The same walkthrough, but you perform each step in your own org as the concierge walks you through it. Two things to know:
 
-- **Bring your own org, licensed for Agentforce Voice.** It needs the Agentforce Voice licenses your org requires in place, plus the permissions you need to build. The walkthrough assumes you have one and does not set one up for you.
+- **Bring your own org, licensed for Agentforce Voice.** It needs the Agentforce Voice licenses your org requires, plus the permissions you need to build. The walkthrough assumes you have an org and does not set one up for you.
 - **Ground the agent with the knowledge article.** The Build phase creates a data library that grounds Pippin's FAQ answers on NTO's customer-service knowledge. The article ships with the guide as `nto-customer-service-knowledge.pdf` (at the package root). Upload it when the walkthrough reaches "Ground the Agent with Data."
 
 ## What's in the package
