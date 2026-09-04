@@ -23,21 +23,19 @@ You can also read the section files (`01-get-started.md` through `06-monitor.md`
 
 ## Get the guide
 
-The guide package is included as a GitHub Release in the [`salesforce/einstein-platform`](https://github.com/salesforce/einstein-platform/releases) repository. Clone the repository to get the files into your local environment.
+The guide package is available two ways, and both give you the same files. If you don't use Git, download the package. If you want to pull in later updates easily, clone the repository.
 
-1. **Clone the repository.** On the [repository page](https://github.com/salesforce/einstein-platform), click the green **Code** button, copy the HTTPS URL, then run:
-   ```bash
-   git clone https://github.com/salesforce/einstein-platform.git
-   ```
-2. **Go to the guide package folder.**
-   ```bash
-   cd einstein-platform/resources/afv-implementation-guide
-   ```
-3. **Open the package folder at its root** in your agentic host. The walkthrough reads files at the package root, including `03-build.md`, the `skills/` folder, and the NTO assets, so the root must be your working directory.
+**Option 1:** Download the package on the [GitHub Releases page](https://sfdc.co/voice-implementation-guide) (no Git required). Download the guide `.zip` from the latest release and unzip it.
 
-> **No Git?** On the [repository page](https://github.com/salesforce/einstein-platform), click the green **Code** button, then **Download ZIP**. Unzip the download, and open the guide package folder inside it.
+**Option 2:** Clone the repository (best for getting updates).
+```bash
+git clone https://github.com/salesforce/einstein-platform.git
+cd einstein-platform/resources/afv-implementation-guide
+```
 
-> **Getting updates.** If you cloned the repository, run `git pull` in your copy to pick up later updates. If you downloaded a ZIP, that copy is a snapshot from the time you downloaded it, so download it again to update.
+Then open the guide package folder at its root in your agentic host. The walkthrough reads files at the package root, including `03-build.md`, the `skills/` folder, and the NTO assets, so the root must be your working directory.
+
+> **Getting updates.** The Release `.zip` is a snapshot from when you downloaded it, so download the latest release again to update. If you cloned the repository, run `git pull` in your copy to pick up later updates.
 
 ## Start the walkthrough
 
@@ -61,7 +59,7 @@ The only difference between the two modes is whether you perform the setup steps
 ## What's in the package
 
 - **`01-get-started.md` – `06-monitor.md`** — the guide, one file per lifecycle stage.
-- **`skills/`** — five AI-assistant skills for building your **own** voice agent. The NTO walkthrough ships with pre-built versions of what these produce (agent instructions, a pronunciation dictionary, a test suite), so you follow along without generating anything. The skills are how you create those artifacts for your own use case: Ideate planning, voice-instruction scaffolding, pronunciation-dictionary entries, test-suite generation, and analyzing your own test results once you have run them. The guide points to each at the right stage, and the walkthrough ends with an optional step to run them on your own use case.
+- **`skills/`** — five AI-assistant skills (instructions your agentic host runs, not Agentforce subagents) for building your **own** voice agent. The NTO walkthrough ships with pre-built versions of what these produce (agent instructions, a pronunciation dictionary, a test suite), so you follow along without generating anything. The skills are how you create those artifacts for your own use case: Ideate planning, voice-instruction scaffolding, pronunciation-dictionary entries, test-suite generation, and analyzing your own test results once you have run them. The guide points to each at the right stage, and the walkthrough ends with an optional step to run them on your own use case.
 - **`interactive-voice-guide/`** — the concierge that powers the guided walkthrough.
 - **`nto-customer-service-knowledge.pdf`** — NTO's customer-service knowledge article, uploaded to the agent's data library in Build.
 - **`nto-voice-test-suite.csv`** — a pre-built set of voice test cases, uploaded in Testing Center during Test.
