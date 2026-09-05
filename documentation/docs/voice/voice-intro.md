@@ -12,7 +12,7 @@ This is an early release of the implementation guide in a new, interactive forma
 
 ## How to use this guide
 
-This guide is built to be run as a **guided walkthrough** in an agentic host. A concierge reads the guide with you and, for the hands-on phases, walks the setup clicks one at a time. It is built to never invent a click, a field name, or a value. If something is not in the guide, it says so and points you to the source rather than making it up. That is the experience the guide was designed for, and it is where the walkthrough below picks up.
+This guide is built to be run as a **guided walkthrough** in an agentic host. A concierge reads the guide with you and, for the hands-on phases, walks through the setup clicks one at a time. It is built to never invent a click, a field name, or a value. If something is not in the guide, it says so and points you to the source rather than making it up. That is the experience the guide was designed for, and it is where the walkthrough below picks up.
 
 You can also read the section files (`01-get-started.md` through `06-monitor.md`) as plain Markdown if you don't have an agentic host. They stand on their own, but the guide was written for the walkthrough, not for straight reading, so open them in a Markdown-capable viewer such as an IDE, a code editor, or a rendered Markdown view rather than a plain text window.
 
