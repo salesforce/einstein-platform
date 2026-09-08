@@ -25,7 +25,7 @@ You can also read the section files (`01-get-started.md` through `06-monitor.md`
 
 The guide package is available two ways, and both give you the same files. If you don't use Git, download the package. If you want to pull in later updates easily, clone the repository.
 
-**Option 1:** Download the package on the [GitHub Releases page](https://sfdc.co/voice-implementation-guide-zip) (no Git required). Expand the assets in the latest release, click on `afv-implementation-guide.zip` to download it. Unzip the files before running the guide in Claude Code or another agentic host.
+**Option 1:** Download the package on the [GitHub Releases page](https://sfdc.co/voice-implementation-guide-zip) (no Git required). Expand the assets in the latest release and click on `afv-implementation-guide.zip` to download it. Unzip the files before running the guide in Claude Code or another agentic host.
 
 **Option 2:** Clone the repository (best for getting updates).
 ```bash
