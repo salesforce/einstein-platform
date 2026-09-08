@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkcookbook||=[]).push([[8491],{28491(e,c,a){a.d(c,{createPacketServices:()=>k.$});var k=a(39773);a(51400)}}]);

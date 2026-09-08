@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkcookbook=self.webpackChunkcookbook||[]).push([[1903],{1912:e=>{e.exports=JSON.parse('{"blogBasePath":"/einstein-platform/","blogTitle":"Recipes","authorsListPath":"/einstein-platform/authors"}')}}]);

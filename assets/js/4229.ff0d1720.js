@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkcookbook||=[]).push([[4229],{64229(e,c,o){o.d(c,{createCynefinServices:()=>s.t});var s=o(63486);o(51400)}}]);

@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkcookbook||=[]).push([[8488],{8488(e,c,r){r.d(c,{createArchitectureServices:()=>o.S});var o=r(89221);r(51400)}}]);

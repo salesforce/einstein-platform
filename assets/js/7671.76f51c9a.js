@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkcookbook||=[]).push([[7671],{47671(e,a,c){c.d(a,{createTreemapServices:()=>o.d});var o=c(14687);c(51400)}}]);

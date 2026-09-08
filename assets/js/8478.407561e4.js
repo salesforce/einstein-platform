@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkcookbook||=[]).push([[8478],{48478(e,a,c){c.d(a,{createWardleyServices:()=>o.J});var o=c(88937);c(51400)}}]);

@@ -1,0 +1,47 @@
+/*!
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
+*/
+
+/*!
+ * Redocusaurus
+ * https://redocusaurus.vercel.app/
+ * (c) 2025 Rohit Gohri
+ * Released under the MIT License
+ */
+
+/*!
+ * Stickyfill -- `position: sticky` polyfill
+ * v. 1.1.1 | https://github.com/wilddeer/stickyfill
+ * Copyright Oleg Korsunsky | http://wd.dizaina.net/
+ *
+ * MIT License
+ */
+
+/*!
+ * perfect-scrollbar v1.5.6
+ * Copyright 2024 Hyunje Jun, MDBootstrap and Contributors
+ * Licensed under MIT
+ */
+
+/*! @license DOMPurify 3.4.13 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.13/LICENSE */
+
+/*! For license information please see redoc.browser.lib.js.LICENSE.txt */
+
+/*!***************************************************
+* mark.js v8.11.1
+* https://markjs.io/
+* Copyright (c) 2014–2018, Julian Kühnel
+* Released under the MIT license https://git.io/vwTVl
+*****************************************************/
+
+/**
+ * @license React
+ * use-sync-external-store-shim.production.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */

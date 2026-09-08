@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkcookbook||=[]).push([[5041],{95041(e,o,c){c.d(o,{createEventModelingServices:()=>s.g});var s=c(76737);c(51400)}}]);

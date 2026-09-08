@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkcookbook=self.webpackChunkcookbook||[]).push([[3826],{83864:o=>{o.exports={}}}]);

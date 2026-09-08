@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkcookbook||=[]).push([[8391],{28391(e,o,c){c.d(o,{createInfoServices:()=>s.v});var s=c(6491);c(51400)}}]);

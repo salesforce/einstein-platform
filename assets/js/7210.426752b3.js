@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkcookbook||=[]).push([[7210],{17210(a,e,c){c.d(e,{createRadarServices:()=>o.f});var o=c(97899);c(51400)}}]);
