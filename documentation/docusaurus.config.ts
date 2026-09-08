@@ -4,10 +4,10 @@ import type * as Preset from "@docusaurus/preset-classic";
 const path = require("path");
 
 const config: Config = {
-  title: "Einstein Platform Cookbook",
+  // Site title for the Agentforce companion docs hub (rebrand from Einstein).
+  title: "Agentforce Companion Resources",
   tagline:
     "Open-source examples and API specs for building with the Einstein Platform from Salesforce.",
-  favicon: "img/favicon.ico",
 
   // Set the production url of your site here
   url: "https://opensource.salesforce.com/",
@@ -38,9 +38,17 @@ const config: Config = {
     [
       "@docusaurus/preset-classic",
       {
-        docs: false,
+        docs: {
+          // Docs are served at /docs. The API specs (redocusaurus, below) also
+          // live under /docs/apis/*; the two coexist on distinct sub-paths.
+          sidebarPath: "./sidebars.ts",
+        },
         blog: {
           path: "cookbook",
+          // Blog is rooted at "/" so recipe posts keep their original
+          // root-level URLs (/about, /huggingface, /aws, …). The site root "/"
+          // is rendered by the swizzled src/theme/BlogListPage hub; the full
+          // scrollable post list stays available at the auto-generated /archive.
           routeBasePath: "/",
           blogDescription:
             "Example code for building with the Einstein Platform",
@@ -115,13 +123,15 @@ const config: Config = {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     navbar: {
-      title: "Einstein Platform Cookbook",
-      logo: {
-        alt: "Einstein Platform Logo",
-        src: "img/logo.svg",
-      },
+      title: "Agentforce Companion Resources",
       items: [
-        { to: "/", label: "Recipes", position: "left" },
+        {
+          type: "docSidebar",
+          sidebarId: "tutorialSidebar",
+          label: "Voice Guide",
+          position: "left",
+        },
+        { to: "/about", label: "Open Connector Recipes", position: "left" },
         {
           type: "dropdown",
           label: "API Specs",
@@ -151,7 +161,7 @@ const config: Config = {
           items: [
             {
               label: "Recent Recipes",
-              to: "/",
+              to: "/about",
             },
             {
               label: "LLM Open Connector API Spec",
